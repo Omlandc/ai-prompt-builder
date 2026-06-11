@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume Prompt Generator - Complex AI Prompt Builder</title>
+<meta name="description" content="Generate resume writing and optimization prompts tailored to target roles, industries, and experience levels.">
+<link rel="canonical" href="https://example.com/en/tools/resume.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/resume.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/resume.html">
+<link rel="stylesheet" href="../../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/en/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Complex AI Prompt Builder
+    </a>
+    <nav class="nav-links">
+      <a href="/en/">Home</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">Writing</a>
+      <a href="image.html">Image</a>
+      <a href="video.html">Video</a>
+      <a href="skill.html">Skill</a>
+      <a href="research.html">Research</a>
+      <a href="app.html">App</a>
+      <a href="web.html">Web</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">Resume</a>
+      <a href="business.html">Business</a>
+      <a href="bid.html">Bid</a>
+      <button class="lang-switch" onclick="location.href='../../tools/resume.html'">中文</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/en/">Home</a> / Resume Prompt Generator
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 Prompt Preview</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">Live update</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">📄 Resume Prompt Builder</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">Generate resume writing, optimization, and rewriting prompts for your target job.</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: 'Resume-Prompt',
+  fields: [
+    { name: 'job', label: 'Target Job Title', type: 'text', placeholder: 'e.g. Senior Product Manager (SaaS)', hint: 'Precise titles help match keywords.' },
+    { name: 'industry', label: 'Target Industry', type: 'text', placeholder: 'e.g. Internet / Fintech / Manufacturing', hint: 'Different industries focus on different resume aspects.' },
+    { name: 'years', label: 'Years of Experience', type: 'text', placeholder: 'e.g. 5 years / New graduate', hint: 'Experience level affects narrative focus.' },
+    { name: 'skills', label: 'Core Skills', type: 'textarea', placeholder: 'e.g.\n- Product planning & requirements analysis\n- SQL/Python data analysis\n- Agile project management\n- UX design', hint: 'List hard and soft skills most relevant to the target role.', rows: 4 },
+    { name: 'edu', label: 'Education', type: 'text', placeholder: 'e.g. BS Computer Science, XYZ University', hint: 'Briefly mention degree, major, and school tier.' },
+    { name: 'highlights', label: 'Achievements / Projects', type: 'textarea', placeholder: 'e.g.\n- Led user growth project; DAU increased from 100K to 500K\n- Optimized recommendation algorithm; conversion rate up 23%', hint: 'Quantify results with data — the most attractive part of a resume.', rows: 5 },
+    { name: 'company', label: 'Target Company Type', type: 'select', options: [
+      { value: 'Big Tech / Public', label: 'Big Tech / Public' },
+      { value: 'Startup', label: 'Startup' },
+      { value: 'Foreign Enterprise', label: 'Foreign Enterprise' },
+      { value: 'State-owned / Public Sector', label: 'State-owned / Public Sector' },
+      { value: 'Freelance / Remote', label: 'Freelance / Remote' }
+    ], hint: 'Company type affects resume style and emphasis.' },
+    { name: 'style', label: 'Resume Style', type: 'radio', options: [
+      { value: 'Clean & Professional', label: 'Clean & Professional' },
+      { value: 'Data-Driven', label: 'Data-Driven' },
+      { value: 'Creative Standout', label: 'Creative Standout' },
+      { value: 'Academic Rigorous', label: 'Academic Rigorous' }
+    ], hint: 'Style should match industry culture and role characteristics.' },
+    { name: 'lang', label: 'Resume Language', type: 'radio', options: [
+      { value: 'English', label: 'English' },
+      { value: 'Chinese', label: 'Chinese' },
+      { value: 'Bilingual', label: 'Bilingual' }
+    ] }
+  ],
+  template: function(v) {
+    return '# Resume Optimization Prompt\n\n> Please help me generate/optimize a resume for the target role based on the following information.\n\n## Job Target\n- **Target Role**: ' + (v.job || 'Not provided; please infer from other info.') + '\n- **Target Industry**: ' + (v.industry || 'Not provided') + '\n- **Target Company Type**: ' + (v.company || 'Not provided') + '\n- **Experience**: ' + (v.years || 'Not provided') + '\n- **Education**: ' + (v.edu || 'Not provided; please infer from other info.') + '\n- **Resume Language**: ' + (v.lang || 'English') + '\n- **Style Preference**: ' + (v.style || 'Not provided') + '\n\n## Core Skills\n' + (v.skills || 'Not provided; please infer reasonable skills from the target role.') + '\n\n## Achievements & Projects\n' + (v.highlights || 'Not provided; please infer reasonable achievements from the target role.') + '\n\n## Output Requirements\n1. Generate a complete resume text including: personal info, career objective, education, work experience, projects, core skills, and self-evaluation.\n2. Use the STAR method (Situation-Task-Action-Result) for work experience and projects, quantifying results with data.\n3. Optimize keyword matching against typical job descriptions for the target role.\n4. Use concise, powerful language; avoid vague descriptions.\n5. If there are obvious weaknesses, provide suggestions to mitigate them.\n6. Output in a format ready to copy into Word or a Markdown editor.';
+  }
+};
+</script>
+<script src="../../js/tool-engine.js"></script>
+</body>
+</html>

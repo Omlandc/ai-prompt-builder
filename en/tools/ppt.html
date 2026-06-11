@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PPT Prompt Generator - Complex AI Prompt Builder</title>
+<meta name="description" content="Generate presentation outlines, slide content, and speaker notes. Supports business, academic, creative, and minimalist styles.">
+<link rel="canonical" href="https://example.com/en/tools/ppt.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/ppt.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/ppt.html">
+<link rel="stylesheet" href="../../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/en/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Complex AI Prompt Builder
+    </a>
+    <nav class="nav-links">
+      <a href="/en/">Home</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">Writing</a>
+      <a href="image.html">Image</a>
+      <a href="video.html">Video</a>
+      <a href="skill.html">Skill</a>
+      <a href="research.html">Research</a>
+      <a href="app.html">App</a>
+      <a href="web.html">Web</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">Resume</a>
+      <a href="business.html">Business</a>
+      <a href="bid.html">Bid</a>
+      <button class="lang-switch" onclick="location.href='../../tools/ppt.html'">中文</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/en/">Home</a> / PPT Prompt Generator
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 Prompt Preview</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">Live update</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">📊 PPT Prompt Builder</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">Fill the form to generate a structured AI prompt for presentation creation.</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: 'PPT-Prompt',
+  fields: [
+    { name: 'title', label: 'Presentation Title / Topic', type: 'text', placeholder: 'e.g. Q3 2026 Product Strategy Review', hint: 'Define the core theme clearly.' },
+    { name: 'pages', label: 'Expected Page Count', type: 'number', default: 15, min: 3, max: 100, hint: 'Recommended: 10-30 slides.' },
+    { name: 'style', label: 'Visual Style', type: 'radio', options: [
+      { value: 'Business Professional', label: 'Business Professional' },
+      { value: 'Academic Rigorous', label: 'Academic Rigorous' },
+      { value: 'Creative Energetic', label: 'Creative Energetic' },
+      { value: 'Minimalist Modern', label: 'Minimalist Modern' },
+      { value: 'Data-Driven', label: 'Data-Driven' }
+    ], hint: 'Choose a visual tone that matches the occasion.' },
+    { name: 'audience', label: 'Target Audience', type: 'text', placeholder: 'e.g. Executives, investors, clients, students', hint: 'Understanding the audience helps adjust depth and tone.' },
+    { name: 'purpose', label: 'Presentation Purpose', type: 'select', options: [
+      { value: 'Report & Summary', label: 'Report & Summary' },
+      { value: 'Persuasive Pitch', label: 'Persuasive Pitch' },
+      { value: 'Teaching & Training', label: 'Teaching & Training' },
+      { value: 'Product Launch', label: 'Product Launch' },
+      { value: 'Data Insight', label: 'Data Insight' }
+    ], hint: 'Different purposes require different narrative structures.' },
+    { name: 'keypoints', label: 'Key Content Points', type: 'textarea', placeholder: '1. Market status analysis\n2. Competitor comparison\n3. Core product advantages\n4. Roadmap & milestones', hint: 'List the main points you want to cover.', rows: 6 },
+    { name: 'color', label: 'Color Preference', type: 'text', placeholder: 'e.g. Corporate blue + white, or warm tones', hint: 'Specify primary/secondary colors or brand VI reference.' },
+    { name: 'speaker', label: 'Need Speaker Notes?', type: 'radio', options: [
+      { value: 'Yes', label: 'Yes' },
+      { value: 'No', label: 'No' }
+    ], hint: 'Speaker notes help you deliver the presentation smoothly.' },
+    { name: 'pages_table', label: 'Slide Requirements Table', type: 'table', columns: [
+      { label: 'Page #', placeholder: 'e.g. 1' },
+      { label: 'Slide Title', placeholder: 'e.g. Project Background' },
+      { label: 'Layout Type', placeholder: 'Full-image / Text-Image / Data Chart / Timeline' },
+      { label: 'Core Content', placeholder: 'Key info for this slide' },
+      { label: 'Notes', placeholder: 'Special requirements or references' }
+    ], defaultRows: 3, hint: 'Fill in design and content requirements for each slide.' },
+    { name: 'lang', label: 'Output Language', type: 'radio', options: [
+      { value: 'English', label: 'English' },
+      { value: 'Chinese', label: 'Chinese' },
+      { value: 'Bilingual', label: 'Bilingual' }
+    ] }
+  ],
+  template: function(v) {
+    var kp = (v.keypoints || '').split(/\n/).filter(function(l){return l.trim();});
+    var pt = '';
+    if (Array.isArray(v.pages_table) && v.pages_table.length) {
+      pt = '\n\n## Slide Requirements\n| Page # | Slide Title | Layout Type | Core Content | Notes |\n|---|---|---|---|---|\n' + v.pages_table.map(function(r){ return '| ' + r.map(function(c){ return (c||'').replace(/\|/g,'\\|'); }).join(' | ') + ' |'; }).join('\n') + '\n';
+    }
+    return '# PPT Creation Prompt\n\n> Please generate a complete presentation outline and content framework based on the following requirements.\n\n## Basic Info\n- **Topic**: ' + (v.title || 'Not provided; please infer from context and supplement.') + '\n- **Pages**: ~ ' + (v.pages || 'Not provided') + ' slides\n- **Visual Style**: ' + (v.style || 'Not provided') + '\n- **Color Preference**: ' + (v.color || 'Not provided; please infer from theme and style.') + '\n- **Target Audience**: ' + (v.audience || 'Not provided; please infer from topic.') + '\n- **Purpose**: ' + (v.purpose || 'Not provided') + '\n- **Output Language**: ' + (v.lang || 'English') + '\n- **Speaker Notes**: ' + (v.speaker || 'No') + '\n\n## Key Content Points\n' + (kp.length ? kp.map(function(l, i){ return (i+1) + '. ' + l.trim(); }).join('\n') : 'Not provided; please supplement based on the topic.') + pt + '\n\n## Output Requirements\n1. Generate a full PPT outline with each slide\'s title and key content points.\n2. Recommend a layout type for each slide (e.g. full-image, text-image mix, data chart, timeline).\n3. Provide draft copy for key slides.\n4. ' + (v.speaker==='Yes' ? 'Generate speaker notes (talking points) for each slide.' : 'No speaker notes needed.') + '\n5. If data slides are involved, suggest appropriate chart types and presentation methods.\n6. Maintain a consistent style, use concise and powerful language suitable for live presentation reading.';
+  }
+};
+</script>
+<script src="../../js/tool-engine.js"></script>
+</body>
+</html>

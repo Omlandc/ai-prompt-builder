@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>网页提示词生成器 - 复杂AI提示词构造</title>
+<meta name="description" content="生成网页设计、落地页、官网建设、SaaS后台等场景的结构化提示词。">
+<link rel="canonical" href="https://example.com/tools/web.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/web.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/web.html">
+<link rel="stylesheet" href="../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      复杂AI提示词构造
+    </a>
+    <nav class="nav-links">
+      <a href="/">首页</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">写文章</a>
+      <a href="image.html">画图片</a>
+      <a href="video.html">视频脚本</a>
+      <a href="skill.html">技能</a>
+      <a href="research.html">调研</a>
+      <a href="app.html">APP</a>
+      <a href="web.html">网页</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">简历</a>
+      <a href="business.html">商业书</a>
+      <a href="bid.html">标书</a>
+      <button class="lang-switch" onclick="location.href='../en/tools/web.html'">English</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/">首页</a> / 网页提示词生成器
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 提示词预览</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">实时更新</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">🌐 网页提示词构造器</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">生成网页设计、落地页、官网、SaaS后台等场景的专业提示词。</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: '网页提示词',
+  fields: [
+    { name: 'wtype', label: '网站类型', type: 'select', options: [
+      { value: '品牌官网', label: '品牌官网' },
+      { value: '产品落地页', label: '产品落地页' },
+      { value: '电商站', label: '电商站' },
+      { value: '个人博客', label: '个人博客' },
+      { value: '作品集', label: '作品集' },
+      { value: 'SaaS后台', label: 'SaaS后台' },
+      { value: '文档/知识库', label: '文档/知识库' }
+    ], hint: '不同类型网站的结构、重心与转化目标差异很大。' },
+    { name: 'brand', label: '品牌 / 产品名称', type: 'text', placeholder: '例如：极光云设计', hint: '网站的所属品牌或产品名。' },
+    { name: 'audience', label: '目标访客', type: 'text', placeholder: '例如：B2B企业决策者、设计师、自由职业者', hint: '决定内容策略、视觉风格与CTA设计。' },
+    { name: 'requirements', label: '具体需求 / 设计要求', type: 'textarea', placeholder: '例如：\n- 首页需要有全屏Hero视频背景\n- 产品页需要3D模型展示模块\n- 联系我们页需要集成地图定位\n- 整体希望呈现高端科技感', hint: '详细描述你对网站的功能、视觉、交互等方面的具体期望。', rows: 6 },
+    { name: 'pages', label: '核心页面', type: 'checkbox', options: [
+      { value: '首页', label: '首页' },
+      { value: '关于我们', label: '关于我们' },
+      { value: '产品/服务', label: '产品/服务' },
+      { value: '案例/作品集', label: '案例/作品集' },
+      { value: '价格方案', label: '价格方案' },
+      { value: '博客/资讯', label: '博客/资讯' },
+      { value: '联系我们', label: '联系我们' },
+      { value: 'FAQ', label: 'FAQ' }
+    ], hint: '勾选网站需要包含的页面。' },
+    { name: 'style', label: '风格偏好', type: 'radio', options: [
+      { value: '极简现代', label: '极简现代' },
+      { value: '商务专业', label: '商务专业' },
+      { value: '活泼创意', label: '活泼创意' },
+      { value: '科技感', label: '科技感' },
+      { value: '复古经典', label: '复古经典' }
+    ], hint: '风格应与品牌调性和目标受众匹配。' },
+    { name: 'tech', label: '技术栈偏好', type: 'select', options: [
+      { value: 'React / Next.js', label: 'React / Next.js' },
+      { value: 'Vue / Nuxt', label: 'Vue / Nuxt' },
+      { value: '纯HTML+CSS+JS', label: '纯HTML+CSS+JS' },
+      { value: '无代码(WordPress/Webflow)', label: '无代码(WordPress/Webflow)' },
+      { value: '无特殊偏好', label: '无特殊偏好' }
+    ], hint: '技术栈影响组件复用、性能与维护成本。' },
+    { name: 'features', label: '必须功能', type: 'checkbox', options: [
+      { value: 'SEO优化', label: 'SEO优化' },
+      { value: '多语言', label: '多语言' },
+      { value: '联系表单', label: '联系表单' },
+      { value: '在线支付', label: '在线支付' },
+      { value: '内容管理(CMS)', label: '内容管理(CMS)' },
+      { value: '用户登录/会员', label: '用户登录/会员' },
+      { value: '深色模式', label: '深色模式' },
+      { value: '无障碍访问', label: '无障碍访问' }
+    ], hint: '勾选网站必须具备的功能模块。' },
+    { name: 'refs', label: '参考网站', type: 'textarea', placeholder: '例如：\n- https://example.com (喜欢它的导航)\n- https://another.com (喜欢它的配色)', hint: '提供参考链接帮助AI理解你的审美偏好。', rows: 4 }
+  ],
+  template: function(v) {
+    var pg = Array.isArray(v.pages) ? v.pages.join('、') : (v.pages || '暂无');
+    var ft = Array.isArray(v.features) ? v.features.join('、') : (v.features || '暂无');
+    return '# 网页设计提示词\n\n> 请根据以下要求生成一份完整的网页设计/开发需求文档。\n\n## 项目设定\n- **网站类型**：' + (v.wtype || '暂无') + '\n- **品牌/产品**：' + (v.brand || '暂无，请根据其他信息自动判断并补充。') + '\n- **目标访客**：' + (v.audience || '暂无，请根据类型自动判断并补充。') + '\n- **风格偏好**：' + (v.style || '暂无') + '\n- **技术栈**：' + (v.tech || '暂无') + '\n\n## 具体需求\n' + (v.requirements || '暂无，请根据网站类型自动补充合理的设计与功能建议。') + '\n\n## 核心页面\n' + pg + '\n\n## 必须功能\n' + ft + '\n\n## 参考网站\n' + (v.refs || '暂无，请根据类型自动推荐优秀参考案例。') + '\n\n## 输出要求\n1. 提供网站信息架构（IA）与页面层级图。\n2. 为每个核心页面提供：页面目标、内容模块、CTA设计、响应式适配要点。\n3. 提供首页线框图的文字描述（模块从上到下排列，含布局建议）。\n4. 提供配色方案、字体搭配与视觉规范建议。\n5. 提供SEO基础优化清单（URL结构、Meta、Schema、图片优化、性能）。\n6. 提供性能目标（Lighthouse评分、Core Web Vitals）。\n7. 如含交互功能，提供交互说明与状态流转描述。\n8. 语言清晰、结构化，适合设计师与前端开发直接参照执行。';
+  }
+};
+</script>
+<script src="../js/tool-engine.js"></script>
+</body>
+</html>

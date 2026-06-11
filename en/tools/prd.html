@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRD Prompt Generator - Complex AI Prompt Builder</title>
+<meta name="description" content="Generate PRD product requirement documents with user stories, priorities, and acceptance criteria.">
+<link rel="canonical" href="https://example.com/en/tools/prd.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/prd.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/prd.html">
+<link rel="stylesheet" href="../../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/en/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Complex AI Prompt Builder
+    </a>
+    <nav class="nav-links">
+      <a href="/en/">Home</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">Writing</a>
+      <a href="image.html">Image</a>
+      <a href="video.html">Video</a>
+      <a href="skill.html">Skill</a>
+      <a href="research.html">Research</a>
+      <a href="app.html">App</a>
+      <a href="web.html">Web</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">Resume</a>
+      <a href="business.html">Business</a>
+      <a href="bid.html">Bid</a>
+      <button class="lang-switch" onclick="location.href='../../tools/prd.html'">中文</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/en/">Home</a> / PRD Prompt Generator
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 Prompt Preview</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">Live update</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">📋 PRD Product Requirements Document Builder</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">Generate complete PRD prompts with background, features, scenarios, and acceptance criteria.</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: 'PRD-Prompt',
+  fields: [
+    { name: 'product', label: 'Product Name', type: 'text', placeholder: 'e.g. Smart Schedule Assistant App', hint: 'Formal product name or codename.' },
+    { name: 'ptype', label: 'Product Type', type: 'select', options: [
+      { value: 'Mobile App', label: 'Mobile App' },
+      { value: 'Web App', label: 'Web App' },
+      { value: 'Mini Program', label: 'Mini Program' },
+      { value: 'SaaS Platform', label: 'SaaS Platform' },
+      { value: 'Admin System', label: 'Admin System' },
+      { value: 'AI Feature Module', label: 'AI Feature Module' }
+    ] },
+    { name: 'users', label: 'Target Users', type: 'text', placeholder: 'e.g. 25-40 office workers who need efficient cross-timezone meeting management', hint: 'The clearer the persona, the more precise the scenario design.' },
+    { name: 'problem', label: 'Core Problem to Solve', type: 'textarea', placeholder: 'e.g. Users waste time switching between calendar systems; frequent meeting conflicts; no smart best-time recommendation...', hint: 'Defining pain points is the starting point of a PRD.', rows: 4 },
+    { name: 'features', label: 'Core Feature List', type: 'table', columns: [
+      { label: 'Feature Name', placeholder: 'e.g. Smart Conflict Detection' },
+      { label: 'Description', placeholder: 'Briefly describe what it does' },
+      { label: 'Priority', placeholder: 'P0/P1/P2' }
+    ], defaultRows: 4, hint: 'Organize features in a table to avoid omissions.' },
+    { name: 'scenarios', label: 'Key User Scenarios', type: 'textarea', placeholder: 'e.g.\n1. User receives a meeting invite; system auto-detects conflicts and suggests alternatives\n2. User voice-inputs "meet client next Wed afternoon"; system auto-creates event and sends invites', hint: 'Describe how features are used via user stories or scenarios.', rows: 5 },
+    { name: 'metrics', label: 'Success Metrics', type: 'text', placeholder: 'e.g. Event creation <30s; meeting conflict rate down 50%; weekly active rate >60%', hint: 'Quantifiable metrics for acceptance and iteration evaluation.' },
+    { name: 'competitors', label: 'Competitor References', type: 'text', placeholder: 'e.g. Calendly, Google Calendar, Feishu Calendar', hint: 'Knowing competitors helps avoid reinventing the wheel and find differentiation.' },
+    { name: 'constraints', label: 'Constraints & Assumptions', type: 'textarea', placeholder: 'e.g.\n- Must support iOS 14+ and Android 10+\n- Integrate Google/Outlook/WeCom calendars\n- First release excludes AI voice assistant', hint: 'Technical, timeline, and resource constraints.', rows: 4 }
+  ],
+  template: function(v) {
+    var ft = '';
+    if (Array.isArray(v.features) && v.features.length) {
+      ft = '| Feature Name | Description | Priority |\n|---|---|---|\n' + v.features.map(function(r){ return '| ' + (r[0]||'') + ' | ' + (r[1]||'') + ' | ' + (r[2]||'') + ' |'; }).join('\n');
+    } else {
+      ft = 'Not provided; please infer a reasonable feature list from the product goal.';
+    }
+    return '# PRD (Product Requirements Document) Prompt\n\n> Please generate a structured product requirements document (PRD) based on the following information.\n\n## Product Overview\n- **Product Name**: ' + (v.product || 'Not provided; please infer from other info.') + '\n- **Product Type**: ' + (v.ptype || 'Not provided') + '\n- **Target Users**: ' + (v.users || 'Not provided; please infer from product type.') + '\n\n## Problem Statement\n' + (v.problem || 'Not provided; please infer reasonable core pain points from the product.') + '\n\n## Core Features\n' + ft + '\n\n## User Scenarios\n' + (v.scenarios || 'Not provided; please infer key user scenarios from the feature list.') + '\n\n## Success Metrics\n' + (v.metrics || 'Not provided; please infer quantifiable acceptance metrics from the product goal.') + '\n\n## Competitor References\n' + (v.competitors || 'Not provided; please recommend relevant competitors based on product type.') + '\n\n## Constraints & Assumptions\n' + (v.constraints || 'No specific constraints.') + '\n\n## Output Requirements\n1. Follow standard PRD structure: Revision History, Background & Goals, User Personas, Detailed Requirements (feature description, business rules, flow descriptions), UI Prototype Description (information architecture + key pages), Data Requirements, Non-functional Requirements (performance, security, compatibility), Launch Checklist.\n2. Each feature must include: description, preconditions, normal flow, exception flow, postconditions, acceptance criteria.\n3. Use tables, lists, and hierarchical headings for readability.\n4. Mark requirement priorities (P0/P1/P2).\n5. For complex flows, provide text-based flow descriptions (mermaid syntax acceptable).\n6. Language must be precise and unambiguous, ready for direct handover to the development team.';
+  }
+};
+</script>
+<script src="../../js/tool-engine.js"></script>
+</body>
+</html>

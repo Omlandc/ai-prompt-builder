@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>简历提示词生成器 - 复杂AI提示词构造</title>
+<meta name="description" content="针对不同岗位、行业、经验年限生成简历优化与撰写提示词，提升求职竞争力。">
+<link rel="canonical" href="https://example.com/tools/resume.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/resume.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/resume.html">
+<link rel="stylesheet" href="../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      复杂AI提示词构造
+    </a>
+    <nav class="nav-links">
+      <a href="/">首页</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">写文章</a>
+      <a href="image.html">画图片</a>
+      <a href="video.html">视频脚本</a>
+      <a href="skill.html">技能</a>
+      <a href="research.html">调研</a>
+      <a href="app.html">APP</a>
+      <a href="web.html">网页</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">简历</a>
+      <a href="business.html">商业书</a>
+      <a href="bid.html">标书</a>
+      <button class="lang-switch" onclick="location.href='../en/tools/resume.html'">English</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/">首页</a> / 简历提示词生成器
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 提示词预览</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">实时更新</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">📄 简历提示词构造器</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">生成针对目标岗位的简历撰写、优化与改写提示词。</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: '简历提示词',
+  fields: [
+    { name: 'job', label: '目标岗位', type: 'text', placeholder: '例如：高级产品经理（SaaS方向）', hint: '精确的岗位名称有助于匹配关键词。' },
+    { name: 'industry', label: '目标行业', type: 'text', placeholder: '例如：互联网 / 金融科技 / 制造业', hint: '不同行业对简历的侧重点不同。' },
+    { name: 'years', label: '工作经验年限', type: 'text', placeholder: '例如：5年 / 应届毕业生', hint: '经验年限影响简历的叙事重心。' },
+    { name: 'skills', label: '核心技能', type: 'textarea', placeholder: '例如：\n- 产品规划与需求分析\n- SQL/Python数据分析\n- 敏捷项目管理\n- 用户体验设计', hint: '列出与目标岗位最相关的硬技能和软技能。', rows: 4 },
+    { name: 'edu', label: '教育背景', type: 'text', placeholder: '例如：XX大学 计算机科学 硕士', hint: '简要说明学历、专业、学校层次。' },
+    { name: 'highlights', label: '成就亮点 / 项目经历', type: 'textarea', placeholder: '例如：\n- 主导用户增长项目，DAU从10万提升至50万\n- 优化推荐算法，转化率提升23%', hint: '用数据量化成果，这是简历最吸引人的部分。', rows: 5 },
+    { name: 'company', label: '目标公司类型', type: 'select', options: [
+      { value: '大厂/上市公司', label: '大厂/上市公司' },
+      { value: '创业公司', label: '创业公司' },
+      { value: '外企', label: '外企' },
+      { value: '国企/事业单位', label: '国企/事业单位' },
+      { value: '自由职业/远程', label: '自由职业/远程' }
+    ], hint: '公司类型影响简历的风格与侧重点。' },
+    { name: 'style', label: '简历风格', type: 'radio', options: [
+      { value: '简洁专业', label: '简洁专业' },
+      { value: '数据驱动', label: '数据驱动' },
+      { value: '创意突出', label: '创意突出' },
+      { value: '学术严谨', label: '学术严谨' }
+    ], hint: '风格应与行业文化和岗位特性匹配。' },
+    { name: 'lang', label: '简历语言', type: 'radio', options: [
+      { value: '中文', label: '中文' },
+      { value: 'English', label: 'English' },
+      { value: '中英双语', label: '中英双语' }
+    ] }
+  ],
+  template: function(v) {
+    return '# 简历优化提示词\n\n> 请根据以下信息帮我生成/优化一份针对目标岗位的简历。\n\n## 求职目标\n- **目标岗位**：' + (v.job || '暂无，请根据其他信息自动判断并补充。') + '\n- **目标行业**：' + (v.industry || '暂无') + '\n- **目标公司类型**：' + (v.company || '暂无') + '\n- **工作经验**：' + (v.years || '暂无') + '\n- **教育背景**：' + (v.edu || '暂无，请根据其他信息自动判断并补充。') + '\n- **简历语言**：' + (v.lang || '中文') + '\n- **风格偏好**：' + (v.style || '暂无') + '\n\n## 核心技能\n' + (v.skills || '暂无，请根据目标岗位自动补充合理的技能项。') + '\n\n## 成就与项目经历\n' + (v.highlights || '暂无，请根据目标岗位自动补充合理的成就亮点。') + '\n\n## 输出要求\n1. 生成一份完整的简历文本，包含：个人信息、求职意向、教育背景、工作经历、项目经验、核心技能、自我评价。\n2. 工作经历和项目经验采用STAR法则（情境-任务-行动-结果）描述，并用数据量化成果。\n3. 针对目标岗位JD优化关键词匹配度。\n4. 语言简洁有力，避免空泛描述。\n5. 如有明显短板，请给出弥补建议。\n6. 输出可直接复制到Word或Markdown编辑器中排版的格式。';
+  }
+};
+</script>
+<script src="../js/tool-engine.js"></script>
+</body>
+</html>

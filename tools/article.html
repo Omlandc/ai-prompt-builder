@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>写文章提示词生成器 - 复杂AI提示词构造</title>
+<meta name="description" content="使用写文章提示词生成器，生成博客、论文、新闻、小说等文章类型的结构化AI提示词，提升写作效率与内容质量。">
+<link rel="canonical" href="https://example.com/tools/article.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/article.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/article.html">
+<link rel="stylesheet" href="../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      复杂AI提示词构造
+    </a>
+    <nav class="nav-links">
+      <a href="/">首页</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">写文章</a>
+      <a href="image.html">画图片</a>
+      <a href="video.html">视频脚本</a>
+      <a href="skill.html">技能</a>
+      <a href="research.html">调研</a>
+      <a href="app.html">APP</a>
+      <a href="web.html">网页</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">简历</a>
+      <a href="business.html">商业书</a>
+      <a href="bid.html">标书</a>
+      <button class="lang-switch" onclick="location.href='../en/tools/article.html'">English</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/">首页</a> / 写文章提示词生成器
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 提示词预览</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">实时更新</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">✍️ 写文章提示词构造器</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">填写表单，生成针对特定文章类型的高质量AI写作提示词。</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: '写文章提示词',
+  fields: [
+    { name: 'type', label: '文章类型', type: 'select', options: [
+      { value: '博客文章', label: '博客文章' },
+      { value: '学术论文', label: '学术论文' },
+      { value: '新闻报道', label: '新闻报道' },
+      { value: '小说故事', label: '小说故事' },
+      { value: '技术文档', label: '技术文档' },
+      { value: '产品评测', label: '产品评测' },
+      { value: '社交媒体长文', label: '社交媒体长文' }
+    ], hint: '不同文章类型对应不同的结构和写作规范。' },
+    { name: 'topic', label: '文章主题', type: 'text', placeholder: '例如：人工智能在医疗诊断中的突破与挑战', hint: '主题越具体，AI输出越精准。' },
+    { name: 'audience', label: '目标读者', type: 'text', placeholder: '例如：普通大众、行业从业者、学术研究者', hint: '决定内容深度、术语使用与案例选择。' },
+    { name: 'tone', label: '语气风格', type: 'radio', options: [
+      { value: '专业严谨', label: '专业严谨' },
+      { value: '轻松活泼', label: '轻松活泼' },
+      { value: '客观中立', label: '客观中立' },
+      { value: '深度思辨', label: '深度思辨' },
+      { value: '故事叙事', label: '故事叙事' }
+    ], hint: '语气应匹配文章类型与读者预期。' },
+    { name: 'length', label: '目标字数', type: 'text', placeholder: '例如：2000字 / 3000-5000字', hint: '可给范围或具体数字。' },
+    { name: 'keywords', label: '核心关键词 / SEO关键词', type: 'text', placeholder: 'AI医疗, 深度学习, 诊断准确率', hint: '有助于AI在内容中自然融入关键词，提升SEO效果。' },
+    { name: 'outline', label: '期望大纲 / 结构要求', type: 'textarea', placeholder: '1. 引言：现状描述\n2. 核心突破\n3. 实际案例\n4. 面临挑战\n5. 未来展望\n6. 结论', hint: '提供你希望的文章结构，AI将按此框架生成。', rows: 6 },
+    { name: 'refs', label: '参考来源 / 背景信息', type: 'textarea', placeholder: '可粘贴相关研究链接、数据、背景资料...', hint: '提供参考材料可帮助AI生成更准确、有依据的内容。', rows: 4 },
+    { name: 'lang', label: '输出语言', type: 'radio', options: [
+      { value: '中文', label: '中文' },
+      { value: 'English', label: 'English' },
+      { value: '中英双语', label: '中英双语' }
+    ] }
+  ],
+  template: function(v) {
+    var ol = (v.outline || '').split('\n').filter(function(l){return l.trim();});
+    return '# 写作提示词\n\n> 请根据以下要求撰写一篇高质量文章。\n\n## 文章设定\n- **类型**：' + (v.type || '暂无，请根据主题自动判断并补充。') + '\n- **主题**：' + (v.topic || '暂无，请根据其他信息自动判断并补充。') + '\n- **目标读者**：' + (v.audience || '暂无，请根据主题自动判断并补充。') + '\n- **语气风格**：' + (v.tone || '暂无') + '\n- **目标字数**：' + (v.length || '暂无，请根据主题自动判断并补充。') + '\n- **输出语言**：' + (v.lang || '中文') + '\n\n## 关键词要求\n' + (v.keywords ? '请在文章中自然融入以下关键词：' + v.keywords : '暂无特定关键词要求。') + '\n\n## 文章结构\n' + (ol.length ? ol.map(function(l, i){ return (i+1) + '. ' + l.trim(); }).join('\n') : '暂无，请根据主题自动设计合理结构。') + '\n\n## 参考信息\n' + (v.refs || '暂无，请基于你的知识库生成。') + '\n\n## 输出要求\n1. 严格遵循上述结构与字数要求。\n2. 开头要吸引人，结尾要有力。\n3. 段落之间过渡自然，逻辑清晰。\n4. 使用具体案例或数据支撑论点（如适用）。\n5. 避免陈词滥调，保持原创性与可读性。\n6. 完成后自检：检查事实准确性、语法正确性、逻辑一致性。';
+  }
+};
+</script>
+<script src="../js/tool-engine.js"></script>
+</body>
+</html>

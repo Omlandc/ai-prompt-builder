@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>视频脚本提示词生成器 - 复杂AI提示词构造</title>
+<meta name="description" content="生成短视频、广告、教程、Vlog等视频类型的分镜脚本、口播稿与拍摄提示词。">
+<link rel="canonical" href="https://example.com/tools/video.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/video.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/video.html">
+<link rel="stylesheet" href="../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      复杂AI提示词构造
+    </a>
+    <nav class="nav-links">
+      <a href="/">首页</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">写文章</a>
+      <a href="image.html">画图片</a>
+      <a href="video.html">视频脚本</a>
+      <a href="skill.html">技能</a>
+      <a href="research.html">调研</a>
+      <a href="app.html">APP</a>
+      <a href="web.html">网页</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">简历</a>
+      <a href="business.html">商业书</a>
+      <a href="bid.html">标书</a>
+      <button class="lang-switch" onclick="location.href='../en/tools/video.html'">English</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/">首页</a> / 视频脚本提示词生成器
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 提示词预览</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">实时更新</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">🎬 视频脚本提示词构造器</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">生成包含分镜、口播稿、拍摄建议的完整视频脚本提示词。</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: '视频脚本提示词',
+  fields: [
+    { name: 'type', label: '视频类型', type: 'select', options: [
+      { value: '短视频（1-3分钟）', label: '短视频（1-3分钟）' },
+      { value: '品牌广告', label: '品牌广告' },
+      { value: '产品教程', label: '产品教程' },
+      { value: 'Vlog', label: 'Vlog' },
+      { value: '纪录片风格', label: '纪录片风格' },
+      { value: '直播脚本', label: '直播脚本' },
+      { value: '宣传片', label: '宣传片' }
+    ], hint: '不同类型对应不同的叙事节奏与结构。' },
+    { name: 'duration', label: '视频时长', type: 'text', placeholder: '例如：90秒 / 5分钟', hint: '精确时长有助于控制内容密度。' },
+    { name: 'platform', label: '主要发布平台', type: 'checkbox', options: [
+      { value: '抖音/TikTok', label: '抖音/TikTok' },
+      { value: 'YouTube', label: 'YouTube' },
+      { value: 'B站', label: 'B站' },
+      { value: '小红书', label: '小红书' },
+      { value: '视频号', label: '视频号' },
+      { value: 'Instagram Reels', label: 'Instagram Reels' }
+    ], hint: '平台特性会影响视频比例、时长、风格与互动引导方式。' },
+    { name: 'audience', label: '目标观众', type: 'text', placeholder: '例如：18-30岁科技爱好者、新手妈妈、企业决策者', hint: '决定内容切入点与语言风格。' },
+    { name: 'message', label: '核心信息 / 传播目标', type: 'textarea', placeholder: '例如：让观众了解新品的核心卖点，并引导点击购买链接', hint: '视频必须传达的最重要的1-3个信息点。', rows: 3 },
+    { name: 'tone', label: '风格基调', type: 'radio', options: [
+      { value: '搞笑娱乐', label: '搞笑娱乐' },
+      { value: '温情走心', label: '温情走心' },
+      { value: '专业硬核', label: '专业硬核' },
+      { value: '快节奏卡点', label: '快节奏卡点' },
+      { value: '悬念反转', label: '悬念反转' },
+      { value: '励志正能量', label: '励志正能量' }
+    ], hint: '基调决定了音乐、节奏、剪辑风格与演员表演方向。' },
+    { name: 'scenes', label: '期望场景数量', type: 'number', default: 5, min: 1, max: 50, hint: '场景数越多，视频信息密度越高，但制作成本也越高。' },
+    { name: 'storyboard', label: '是否需要分镜描述', type: 'radio', options: [
+      { value: '是', label: '是' },
+      { value: '否', label: '否' }
+    ], hint: '分镜描述包含景别、运镜、画面内容与台词的对应关系。' },
+    { name: 'storyboard_table', label: '分镜表', type: 'table', showIf: { field: 'storyboard', value: '是' }, columns: [
+      { label: '镜号', placeholder: '如：1' },
+      { label: '景别', placeholder: '特写/中景/全景' },
+      { label: '运镜', placeholder: '固定/推/拉/摇/移' },
+      { label: '画面内容', placeholder: '描述画面' },
+      { label: '台词/旁白', placeholder: '该镜头对应的台词' },
+      { label: '时长', placeholder: '如：5s' },
+      { label: '备注', placeholder: '特效/音效/其他' }
+    ], defaultRows: 3, hint: '逐行填写每个镜头的详细信息。' },
+    { name: 'cta', label: '结尾行动号召 (CTA)', type: 'text', placeholder: '例如：关注账号、点击链接、留言评论、购买产品', hint: '你希望观众在看完视频后采取什么行动？' }
+  ],
+  template: function(v) {
+    var pf = Array.isArray(v.platform) ? v.platform.join('、') : (v.platform || '暂无');
+    var sb = '';
+    if (v.storyboard === '是' && Array.isArray(v.storyboard_table) && v.storyboard_table.length) {
+      sb = '\n\n## 分镜表\n| 镜号 | 景别 | 运镜 | 画面内容 | 台词/旁白 | 时长 | 备注 |\n|---|---|---|---|---|---|---|\n' + v.storyboard_table.map(function(r){ return '| ' + r.map(function(c){ return (c||'').replace(/\|/g,'\\|'); }).join(' | ') + ' |'; }).join('\n') + '\n';
+    }
+    return '# 视频脚本提示词\n\n> 请根据以下要求生成一份完整的视频脚本。\n\n## 项目设定\n- **视频类型**：' + (v.type || '暂无，请根据其他信息自动判断并补充。') + '\n- **时长**：' + (v.duration || '暂无') + '\n- **发布平台**：' + pf + '\n- **目标观众**：' + (v.audience || '暂无，请根据主题自动判断并补充。') + '\n- **风格基调**：' + (v.tone || '暂无') + '\n- **场景数量**：约 ' + (v.scenes || '暂无') + ' 个\n- **分镜描述**：' + (v.storyboard || '否') + '\n\n## 核心信息\n' + (v.message || '暂无，请根据视频类型自动补充合理的传播目标。') + '\n\n## 结尾CTA\n' + (v.cta || '暂无，请根据平台特性推荐合适的行动号召。') + sb + '\n\n## 输出要求\n1. 提供完整的口播稿/旁白文案，标注时间码。\n2. 为每个场景提供画面描述（景别、内容、氛围）。\n3. ' + (v.storyboard==='是' ? '提供详细分镜表（可参考上方表格结构）。' : '无需分镜表，但需说明场景衔接逻辑。') + '\n4. 推荐合适的背景音乐风格与节奏。\n5. 如有出镜需求，给出演员表演指导要点。\n6. 标注平台特有的优化建议（如字幕样式、封面建议、标签策略）。';
+  }
+};
+</script>
+<script src="../js/tool-engine.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UI Design Prompt Generator - Complex AI Prompt Builder</title>
+<meta name="description" content="Generate professional prompts for UI design, interface design, design systems, and icon sets. Supports Figma, Sketch, and Adobe XD.">
+<link rel="canonical" href="https://example.com/en/tools/ui.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/ui.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/ui.html">
+<link rel="stylesheet" href="../../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/en/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Complex AI Prompt Builder
+    </a>
+    <nav class="nav-links">
+      <a href="/en/">Home</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">Writing</a>
+      <a href="image.html">Image</a>
+      <a href="video.html">Video</a>
+      <a href="skill.html">Skill</a>
+      <a href="research.html">Research</a>
+      <a href="app.html">App</a>
+      <a href="web.html">Web</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">Resume</a>
+      <a href="business.html">Business</a>
+      <a href="bid.html">Bid</a>
+      <button class="lang-switch" onclick="location.href='../../tools/ui.html'">中文</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/en/">Home</a> / UI Design Prompt Generator
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 Prompt Preview</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">Live update</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">🎨 UI Design Prompt Builder</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">Generate professional prompts for UI interface design, design systems, and icon sets.</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: 'UI-Design-Prompt',
+  fields: [
+    { name: 'ptype', label: 'Project Type', type: 'select', options: [
+      { value: 'App Interface', label: 'App Interface' },
+      { value: 'Web Interface', label: 'Web Interface' },
+      { value: 'Design System', label: 'Design System' },
+      { value: 'Icon Set', label: 'Icon Set' },
+      { value: 'Illustration / Marketing Graphics', label: 'Illustration / Marketing Graphics' },
+      { value: 'Data Visualization', label: 'Data Visualization' }
+    ], hint: 'Different project types have very different deliverables and specifications.' },
+    { name: 'style', label: 'Design Style', type: 'radio', options: [
+      { value: 'Flat', label: 'Flat' },
+      { value: 'Skeuomorphic', label: 'Skeuomorphic' },
+      { value: 'Glassmorphism', label: 'Glassmorphism' },
+      { value: 'Neumorphism', label: 'Neumorphism' },
+      { value: '3D', label: '3D' },
+      { value: 'Hand-drawn Illustration', label: 'Hand-drawn Illustration' }
+    ], hint: 'Style is the core visual language of UI design.' },
+    { name: 'color', label: 'Color Scheme', type: 'text', placeholder: 'e.g. Primary #2563EB, Accent #F59E0B, Background #F8FAFC', hint: 'Enter hex codes, color keywords, or brand color references.' },
+    { name: 'font', label: 'Font Preference', type: 'text', placeholder: 'e.g. Chinese: Source Han Sans, English: Inter', hint: 'Fonts affect readability and brand personality.' },
+    { name: 'components', label: 'Component Scope', type: 'checkbox', options: [
+      { value: 'Buttons', label: 'Buttons' },
+      { value: 'Form Inputs', label: 'Form Inputs' },
+      { value: 'Cards / Lists', label: 'Cards / Lists' },
+      { value: 'Navigation / Tabs', label: 'Navigation / Tabs' },
+      { value: 'Modals / Dialogs', label: 'Modals / Dialogs' },
+      { value: 'Charts / Data', label: 'Charts / Data' },
+      { value: 'Empty States / Loading', label: 'Empty States / Loading' },
+      { value: 'Feedback (Toast / Alert)', label: 'Feedback (Toast / Alert)' }
+    ], hint: 'Clear component scope helps produce more complete design specs.' },
+    { name: 'tool', label: 'Design Tool', type: 'select', options: [
+      { value: 'Figma', label: 'Figma' },
+      { value: 'Sketch', label: 'Sketch' },
+      { value: 'Adobe XD', label: 'Adobe XD' },
+      { value: 'MasterGo / Jishi Design', label: 'MasterGo / Jishi Design' },
+      { value: 'No Preference', label: 'No Preference' }
+    ], hint: 'Different tools have different plugin ecosystems and delivery workflows.' },
+    { name: 'deliver', label: 'Deliverables', type: 'checkbox', options: [
+      { value: 'Design Source Files', label: 'Design Source Files' },
+      { value: 'Assets / Exports', label: 'Assets / Exports' },
+      { value: 'Annotations / Redlines', label: 'Annotations / Redlines' },
+      { value: 'Interactive Prototype', label: 'Interactive Prototype' },
+      { value: 'Design Spec Document', label: 'Design Spec Document' }
+    ], hint: 'Different deliverables correspond to different levels of effort.' },
+    { name: 'a11y', label: 'Accessibility Requirements', type: 'radio', options: [
+      { value: 'WCAG 2.1 AA', label: 'WCAG 2.1 AA' },
+      { value: 'Basic Readability', label: 'Basic Readability' },
+      { value: 'No Special Requirements', label: 'No Special Requirements' }
+    ], hint: 'Accessibility affects color contrast, focus states, and semantic structure.' }
+  ],
+  template: function(v) {
+    var cm = Array.isArray(v.components) ? v.components.join(', ') : (v.components || 'Not provided');
+    var dl = Array.isArray(v.deliver) ? v.deliver.join(', ') : (v.deliver || 'Not provided');
+    return '# UI Design Prompt\n\n> Please generate a professional UI design requirements and specification document based on the following requirements.\n\n## Project Settings\n- **Project Type**: ' + (v.ptype || 'Not provided') + '\n- **Design Style**: ' + (v.style || 'Not provided') + '\n- **Color Scheme**: ' + (v.color || 'Not provided; please recommend a palette based on style.') + '\n- **Font Preference**: ' + (v.font || 'Not provided; please recommend font pairings based on style.') + '\n- **Design Tool**: ' + (v.tool || 'Not provided') + '\n- **Accessibility**: ' + (v.a11y || 'Not provided') + '\n\n## Required Components\n' + cm + '\n\n## Deliverables\n' + dl + '\n\n## Output Requirements\n1. Provide overall design principles and visual language explanation.\n2. For each component: design description, state variants (default / hover / active / disabled), size and spacing annotations, color and font specs.\n3. Provide page layout grid system recommendations.\n4. Provide motion and micro-interaction suggestions (e.g. button feedback, page transitions).\n5. ' + (v.a11y==='WCAG 2.1 AA' ? 'Provide an accessibility checklist (contrast, focus indicators, screen reader compatibility).' : 'Mention basic readability recommendations.') + '\n6. Provide file organization and naming conventions for team collaboration.\n7. Output should be structured and actionable for designers to execute directly.';
+  }
+};
+</script>
+<script src="../../js/tool-engine.js"></script>
+</body>
+</html>

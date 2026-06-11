@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>App Prompt Generator - Complex AI Prompt Builder</title>
+<meta name="description" content="Generate structured prompts for App product requirements, feature design, and store listing copy across iOS, Android, and mini-program platforms.">
+<link rel="canonical" href="https://example.com/en/tools/app.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/app.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/app.html">
+<link rel="stylesheet" href="../../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/en/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Complex AI Prompt Builder
+    </a>
+    <nav class="nav-links">
+      <a href="/en/">Home</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">Writing</a>
+      <a href="image.html">Image</a>
+      <a href="video.html">Video</a>
+      <a href="skill.html">Skill</a>
+      <a href="research.html">Research</a>
+      <a href="app.html">App</a>
+      <a href="web.html">Web</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">Resume</a>
+      <a href="business.html">Business</a>
+      <a href="bid.html">Bid</a>
+      <button class="lang-switch" onclick="location.href='../../tools/app.html'">中文</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/en/">Home</a> / App Prompt Generator
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 Prompt Preview</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">Live update</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">📱 App Prompt Builder</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">Generate App product requirements, feature design, and store listing prompts.</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: 'App-Prompt',
+  fields: [
+    { name: 'name', label: 'App Name', type: 'text', placeholder: 'e.g. Mint Budget', hint: 'The formal product name.' },
+    { name: 'atype', label: 'App Type', type: 'select', options: [
+      { value: 'Productivity Tool', label: 'Productivity Tool' },
+      { value: 'Social Commerce', label: 'Social Commerce' },
+      { value: 'Content & News', label: 'Content & News' },
+      { value: 'Online Education', label: 'Online Education' },
+      { value: 'Health & Medical', label: 'Health & Medical' },
+      { value: 'Gaming & Entertainment', label: 'Gaming & Entertainment' },
+      { value: 'Finance', label: 'Finance' }
+    ], hint: 'Type determines core feature framework and UX priorities.' },
+    { name: 'platform', label: 'Target Platforms', type: 'checkbox', options: [
+      { value: 'iOS', label: 'iOS' },
+      { value: 'Android', label: 'Android' },
+      { value: 'Mini Program', label: 'Mini Program' },
+      { value: 'HarmonyOS', label: 'HarmonyOS' },
+      { value: 'Cross-platform (Flutter/RN)', label: 'Cross-platform (Flutter/RN)' }
+    ], hint: 'Different platforms have different design guidelines and review requirements.' },
+    { name: 'users', label: 'Target Users', type: 'text', placeholder: 'e.g. 22-35 new professionals who want to build a budgeting habit', hint: 'User personas directly impact feature prioritization and interaction design.' },
+    { name: 'features', label: 'Core Features', type: 'table', columns: [
+      { label: 'Feature Module', placeholder: 'e.g. Smart Budgeting' },
+      { label: 'Description', placeholder: 'Brief description' },
+      { label: 'Priority', placeholder: 'P0/P1/P2' }
+    ], defaultRows: 4, hint: 'Organize core feature modules in a table.' },
+    { name: 'design', label: 'Design Guideline Preference', type: 'select', options: [
+      { value: 'iOS Human Interface', label: 'iOS Human Interface' },
+      { value: 'Material Design', label: 'Material Design' },
+      { value: 'Custom Brand Style', label: 'Custom Brand Style' },
+      { value: 'No Preference', label: 'No Preference' }
+    ], hint: 'Guidelines affect UI component selection and interaction patterns.' },
+    { name: 'competitors', label: 'Competitor References', type: 'text', placeholder: 'e.g. YNAB, PocketGuard, MoneyWiz', hint: 'Understanding competitors helps with differentiated positioning.' },
+    { name: 'store', label: 'Generate App Store Listing?', type: 'radio', options: [
+      { value: 'Yes', label: 'Yes' },
+      { value: 'No', label: 'No' }
+    ], hint: 'Store listing copy directly impacts conversion rates.' }
+  ],
+  template: function(v) {
+    var pl = Array.isArray(v.platform) ? v.platform.join(', ') : (v.platform || 'Not provided');
+    var ft = '';
+    if (Array.isArray(v.features) && v.features.length) {
+      ft = '| Feature Module | Description | Priority |\n|---|---|---|\n' + v.features.map(function(r){ return '| ' + (r[0]||'') + ' | ' + (r[1]||'') + ' | ' + (r[2]||'') + ' |'; }).join('\n');
+    } else {
+      ft = 'Not provided; please infer a reasonable feature list from the app type.';
+    }
+    return '# App Development Prompt\n\n> Please generate an App product requirements and development辅助 document based on the following information.\n\n## Product Overview\n- **App Name**: ' + (v.name || 'Not provided; please infer from context.') + '\n- **Type**: ' + (v.atype || 'Not provided') + '\n- **Target Platforms**: ' + pl + '\n- **Target Users**: ' + (v.users || 'Not provided; please infer from type.') + '\n- **Design Guideline**: ' + (v.design || 'Not provided') + '\n\n## Core Features\n' + ft + '\n\n## Competitor References\n' + (v.competitors || 'Not provided; please recommend relevant competitors based on type.') + '\n\n## Output Requirements\n1. Generate a product requirements document (PRD) summary, including information architecture, core page flows, states and exception handling.\n2. Provide information structure and interaction notes for key screens.\n3. ' + (v.store==='Yes' ? 'Generate app store title, subtitle, keywords, description copy, and update log template.' : 'No app store copy needed.') + '\n4. Provide technical stack recommendations (frontend framework, backend service, database, third-party SDKs).\n5. List platform review considerations and common rejection reasons.\n6. Provide data tracking and growth strategy recommendations.\n7. Use professional, clear language suitable for product, design, and engineering teams.';
+  }
+};
+</script>
+<script src="../../js/tool-engine.js"></script>
+</body>
+</html>

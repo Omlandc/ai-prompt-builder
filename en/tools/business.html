@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Plan Prompt Generator - Complex AI Prompt Builder</title>
+<meta name="description" content="Generate prompts for business plans, investor pitch decks, and partnership proposals with market analysis and competitive advantages.">
+<link rel="canonical" href="https://example.com/en/tools/business.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/business.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/business.html">
+<link rel="stylesheet" href="../../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/en/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Complex AI Prompt Builder
+    </a>
+    <nav class="nav-links">
+      <a href="/en/">Home</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">Writing</a>
+      <a href="image.html">Image</a>
+      <a href="video.html">Video</a>
+      <a href="skill.html">Skill</a>
+      <a href="research.html">Research</a>
+      <a href="app.html">App</a>
+      <a href="web.html">Web</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">Resume</a>
+      <a href="business.html">Business</a>
+      <a href="bid.html">Bid</a>
+      <button class="lang-switch" onclick="location.href='../../tools/business.html'">中文</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/en/">Home</a> / Business Plan Prompt Generator
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 Prompt Preview</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">Live update</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">💼 Business Plan Prompt Builder</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">Generate structured prompts for business plans, pitch decks, and partnership proposals.</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: 'Business-Plan-Prompt',
+  fields: [
+    { name: 'doctype', label: 'Document Type', type: 'select', options: [
+      { value: 'Investor Pitch Deck', label: 'Investor Pitch Deck' },
+      { value: 'Internal Business Plan', label: 'Internal Business Plan' },
+      { value: 'Partnership Proposal', label: 'Partnership Proposal' },
+      { value: 'Market Research Report', label: 'Market Research Report' }
+    ] },
+    { name: 'industry', label: 'Industry', type: 'text', placeholder: 'e.g. SaaS enterprise services / new energy / cross-border e-commerce', hint: 'Industry determines analysis framework and key metrics.' },
+    { name: 'audience', label: 'Target Readers', type: 'select', options: [
+      { value: 'VC / Angel Investors', label: 'VC / Angel Investors' },
+      { value: 'Enterprise Partners', label: 'Enterprise Partners' },
+      { value: 'Banks / Financial Institutions', label: 'Banks / Financial Institutions' },
+      { value: 'Internal Management', label: 'Internal Management' }
+    ], hint: 'Different readers care about completely different things.' },
+    { name: 'product', label: 'Core Product / Service', type: 'textarea', placeholder: 'e.g. AI-powered tax SaaS platform for SMBs, automatically recognizing invoices and generating reports', hint: 'One sentence explaining what you do and for whom.', rows: 3 },
+    { name: 'model', label: 'Business Model', type: 'select', options: [
+      { value: 'SaaS Subscription', label: 'SaaS Subscription' },
+      { value: 'Marketplace', label: 'Marketplace' },
+      { value: 'E-commerce', label: 'E-commerce' },
+      { value: 'Ad Monetization', label: 'Ad Monetization' },
+      { value: 'On-demand Service', label: 'On-demand Service' },
+      { value: 'Hardware + Service', label: 'Hardware + Service' },
+      { value: 'Licensing / Franchise', label: 'Licensing / Franchise' }
+    ], hint: 'A clear business model is the core of the plan.' },
+    { name: 'market', label: 'Market Size & Trends', type: 'textarea', placeholder: 'e.g. China SMB tax service market ~200B CNY, 15% YoY growth, policy-driven digital transformation...', hint: 'Support market judgment with TAM/SAM/SOM or authoritative data.', rows: 4 },
+    { name: 'advantage', label: 'Core Competitive Advantages', type: 'textarea', placeholder: 'e.g.\n- Tech barrier: proprietary OCR 99.5% accuracy\n- First-mover: already serving 5,000+ enterprises\n- Network effects: more users, better model', hint: 'Why you? Why now? Why will you win?', rows: 4 },
+    { name: 'finance', label: 'Financial Projections / Funding Needs', type: 'textarea', placeholder: 'e.g. Seeking Series A 10M USD for 10% equity, funds for R&D and market expansion...', hint: 'For investor decks, this is what investors care about most.', rows: 4 },
+    { name: 'team', label: 'Core Team', type: 'textarea', placeholder: 'e.g. CEO serial entrepreneur, CTO ex-big-tech architect, CMO 10 years B2B marketing...', hint: 'Investors bet on people; show complementary skills and execution ability.', rows: 3 }
+  ],
+  template: function(v) {
+    return '# Business Plan Prompt\n\n> Please generate a professional ' + (v.doctype || 'business plan') + ' based on the following information.\n\n## Document Settings\n- **Document Type**: ' + (v.doctype || 'Not provided') + '\n- **Target Readers**: ' + (v.audience || 'Not provided') + '\n- **Industry**: ' + (v.industry || 'Not provided') + '\n- **Business Model**: ' + (v.model || 'Not provided') + '\n\n## Product & Service\n' + (v.product || 'Not provided; please infer from other info.') + '\n\n## Market Analysis\n' + (v.market || 'Not provided; please infer reasonable market size and trends from the industry.') + '\n\n## Competitive Advantages\n' + (v.advantage || 'Not provided; please infer reasonable competitive moats from the product and model.') + '\n\n## Team\n' + (v.team || 'Not provided; please infer a reasonable team setup.') + '\n\n## Finance & Funding\n' + (v.finance || 'Not provided; please infer a reasonable financial projection framework from the business model.') + '\n\n## Output Requirements\n1. Follow standard business plan structure: Executive Summary, Company Overview, Product/Service, Market Analysis, Competitive Landscape, Business Model, Marketing Strategy, Operations, Management Team, Financial Projections, Funding Needs, Risk Analysis, Appendix.\n2. Executive summary must be concise and compelling enough to win the reader in 2 minutes.\n3. Market analysis must be data-backed, citing authoritative sources.\n4. Competitive analysis presented in matrix or comparison table format.\n5. Financial projections provide 3-5 year revenue, cost, profit, and cash flow framework.\n6. Language should be professional, confident but not boastful, data-driven.\n7. Mark placeholders where real data needs to be filled in.';
+  }
+};
+</script>
+<script src="../../js/tool-engine.js"></script>
+</body>
+</html>

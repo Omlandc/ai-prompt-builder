@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APP提示词生成器 - 复杂AI提示词构造</title>
+<meta name="description" content="生成App产品需求、功能设计、上架描述等结构化提示词，覆盖iOS、Android、小程序等多平台。">
+<link rel="canonical" href="https://example.com/tools/app.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/app.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/app.html">
+<link rel="stylesheet" href="../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      复杂AI提示词构造
+    </a>
+    <nav class="nav-links">
+      <a href="/">首页</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">写文章</a>
+      <a href="image.html">画图片</a>
+      <a href="video.html">视频脚本</a>
+      <a href="skill.html">技能</a>
+      <a href="research.html">调研</a>
+      <a href="app.html">APP</a>
+      <a href="web.html">网页</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">简历</a>
+      <a href="business.html">商业书</a>
+      <a href="bid.html">标书</a>
+      <button class="lang-switch" onclick="location.href='../en/tools/app.html'">English</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/">首页</a> / APP提示词生成器
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 提示词预览</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">实时更新</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">📱 APP 提示词构造器</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">生成App产品需求、功能设计、上架描述与开发辅助提示词。</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: 'APP提示词',
+  fields: [
+    { name: 'name', label: 'App名称', type: 'text', placeholder: '例如：薄荷记账', hint: '产品的正式名称。' },
+    { name: 'atype', label: 'App类型', type: 'select', options: [
+      { value: '工具效率', label: '工具效率' },
+      { value: '社交电商', label: '社交电商' },
+      { value: '内容资讯', label: '内容资讯' },
+      { value: '在线教育', label: '在线教育' },
+      { value: '健康医疗', label: '健康医疗' },
+      { value: '游戏娱乐', label: '游戏娱乐' },
+      { value: '金融理财', label: '金融理财' }
+    ], hint: '类型决定核心功能框架与用户体验重点。' },
+    { name: 'platform', label: '目标平台', type: 'checkbox', options: [
+      { value: 'iOS', label: 'iOS' },
+      { value: 'Android', label: 'Android' },
+      { value: '微信小程序', label: '微信小程序' },
+      { value: '鸿蒙', label: '鸿蒙' },
+      { value: '跨平台(Flutter/React Native)', label: '跨平台(Flutter/React Native)' }
+    ], hint: '不同平台的设计规范与审核要求不同。' },
+    { name: 'users', label: '目标用户', type: 'text', placeholder: '例如：22-35岁职场新人，希望养成记账习惯', hint: '用户画像直接影响功能优先级与交互设计。' },
+    { name: 'features', label: '核心功能', type: 'table', columns: [
+      { label: '功能模块', placeholder: '如：智能记账' },
+      { label: '功能描述', placeholder: '简要说明' },
+      { label: '优先级', placeholder: 'P0/P1/P2' }
+    ], defaultRows: 4, hint: '用表格梳理App的核心功能模块。' },
+    { name: 'design', label: '设计规范偏好', type: 'select', options: [
+      { value: 'iOS Human Interface', label: 'iOS Human Interface' },
+      { value: 'Material Design', label: 'Material Design' },
+      { value: '自定义品牌风格', label: '自定义品牌风格' },
+      { value: '无特殊偏好', label: '无特殊偏好' }
+    ], hint: '设计规范影响UI组件选择与交互模式。' },
+    { name: 'competitors', label: '竞品参考', type: 'text', placeholder: '例如：随手记、挖财、MoneyWiz', hint: '了解竞品有助于差异化定位。' },
+    { name: 'store', label: '是否需要生成应用商店描述', type: 'radio', options: [
+      { value: '是', label: '是' },
+      { value: '否', label: '否' }
+    ], hint: '应用商店描述直接影响转化率。' }
+  ],
+  template: function(v) {
+    var pl = Array.isArray(v.platform) ? v.platform.join('、') : (v.platform || '暂无');
+    var ft = '';
+    if (Array.isArray(v.features) && v.features.length) {
+      ft = '| 功能模块 | 功能描述 | 优先级 |\n|---|---|---|\n' + v.features.map(function(r){ return '| ' + (r[0]||'') + ' | ' + (r[1]||'') + ' | ' + (r[2]||'') + ' |'; }).join('\n');
+    } else {
+      ft = '暂无，请根据App类型自动补充合理的功能列表。';
+    }
+    return '# App开发提示词\n\n> 请根据以下信息生成一份App产品需求与开发辅助文档。\n\n## 产品概述\n- **App名称**：' + (v.name || '暂无，请根据其他信息自动判断并补充。') + '\n- **类型**：' + (v.atype || '暂无') + '\n- **目标平台**：' + pl + '\n- **目标用户**：' + (v.users || '暂无，请根据类型自动判断并补充。') + '\n- **设计规范**：' + (v.design || '暂无') + '\n\n## 核心功能\n' + ft + '\n\n## 竞品参考\n' + (v.competitors || '暂无，请根据类型自动推荐相关竞品。') + '\n\n## 输出要求\n1. 生成产品需求文档（PRD）概要，包含信息架构、核心页面流程、状态与异常处理。\n2. 提供关键页面的信息结构与交互说明。\n3. ' + (v.store==='是' ? '生成应用商店标题、副标题、关键词、描述文案与更新日志模板。' : '无需生成应用商店文案。') + '\n4. 提供技术选型建议（前端框架、后端服务、数据库、第三方SDK）。\n5. 列出各平台审核注意事项与常见被拒原因。\n6. 提供数据埋点与增长策略建议。\n7. 语言专业、结构清晰，适合产品、设计、开发团队协作使用。';
+  }
+};
+</script>
+<script src="../js/tool-engine.js"></script>
+</body>
+</html>

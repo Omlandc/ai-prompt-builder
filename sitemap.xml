@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://example.com/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/"/>
+  </url>
+  <url>
+    <loc>https://example.com/en/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/"/>
+  </url>
+  <url>
+    <loc>https://example.com/about.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/about.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/en/about.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/about.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/contact.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/contact.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/en/contact.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/contact.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/privacy-policy.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/privacy-policy.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/en/privacy-policy.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/privacy-policy.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/tools/ppt.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/ppt.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/ppt.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/en/tools/ppt.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/ppt.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/ppt.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/tools/article.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/article.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/article.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/en/tools/article.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/article.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/article.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/tools/image.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/image.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/image.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/en/tools/image.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/image.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/image.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/tools/video.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/video.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/video.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/en/tools/video.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/video.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/video.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/tools/skill.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/skill.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/skill.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/en/tools/skill.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/skill.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/skill.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/tools/resume.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/resume.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/resume.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/en/tools/resume.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/resume.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/resume.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/tools/bid.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/bid.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/bid.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/en/tools/bid.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/bid.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/bid.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/tools/business.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/business.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/business.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/en/tools/business.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/business.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/business.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/tools/prd.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/prd.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/prd.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/en/tools/prd.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/prd.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/prd.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/tools/research.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/research.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/research.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/en/tools/research.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/research.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/research.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/tools/app.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/app.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/app.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/en/tools/app.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/app.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/app.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/tools/web.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/web.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/web.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/en/tools/web.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/web.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/web.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/tools/ui.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/ui.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/ui.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/en/tools/ui.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/ui.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/tools/ui.html"/>
+  </url>
+</urlset>

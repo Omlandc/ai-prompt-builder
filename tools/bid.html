@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>标书提示词生成器 - 复杂AI提示词构造</title>
+<meta name="description" content="生成招投标项目的技术方案、公司优势、交付计划等结构化标书撰写提示词。">
+<link rel="canonical" href="https://example.com/tools/bid.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/bid.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/bid.html">
+<link rel="stylesheet" href="../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      复杂AI提示词构造
+    </a>
+    <nav class="nav-links">
+      <a href="/">首页</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">写文章</a>
+      <a href="image.html">画图片</a>
+      <a href="video.html">视频脚本</a>
+      <a href="skill.html">技能</a>
+      <a href="research.html">调研</a>
+      <a href="app.html">APP</a>
+      <a href="web.html">网页</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">简历</a>
+      <a href="business.html">商业书</a>
+      <a href="bid.html">标书</a>
+      <button class="lang-switch" onclick="location.href='../en/tools/bid.html'">English</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/">首页</a> / 标书提示词生成器
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 提示词预览</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">实时更新</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">📑 标书提示词构造器</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">生成招投标技术方案、商务响应与实施计划的专业提示词。</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: '标书提示词',
+  fields: [
+    { name: 'project', label: '项目名称', type: 'text', placeholder: '例如：XX市智慧交通管理系统建设项目', hint: '完整的项目或标书名称。' },
+    { name: 'bidder', label: '招标方 / 采购单位', type: 'text', placeholder: '例如：XX市交通运输局', hint: '了解招标方有助于调整语言风格与关注重点。' },
+    { name: 'type', label: '项目类型', type: 'select', options: [
+      { value: '软件开发', label: '软件开发' },
+      { value: '系统集成', label: '系统集成' },
+      { value: '咨询服务', label: '咨询服务' },
+      { value: '工程施工', label: '工程施工' },
+      { value: '设备采购', label: '设备采购' },
+      { value: '运维服务', label: '运维服务' }
+    ] },
+    { name: 'advantage', label: '我方核心优势', type: 'textarea', placeholder: '例如：\n- 拥有10个同类项目成功案例\n- 自主知识产权的核心平台\n- 本地化7×24小时服务团队', hint: '提炼与竞争对手相比最突出的差异化优势。', rows: 5 },
+    { name: 'tech', label: '技术方案要点', type: 'textarea', placeholder: '例如：\n- 采用微服务架构，支持高并发\n- 多云部署，容灾等级RPO<15分钟\n- 符合等保三级要求', hint: '列出技术方案中最有竞争力的关键点。', rows: 5 },
+    { name: 'budget', label: '预算范围 / 报价策略', type: 'text', placeholder: '例如：预算500万，我方策略为中等报价+增值服务', hint: '预算信息影响方案定位与资源配置描述。' },
+    { name: 'timeline', label: '交付周期要求', type: 'text', placeholder: '例如：6个月完成上线，12个月免费运维', hint: '明确的时间节点有助于生成可行的实施计划。' },
+    { name: 'team', label: '团队配置', type: 'textarea', placeholder: '例如：项目经理1名（PMP认证）、技术负责人1名（10年经验）、开发团队8人...', hint: '展示团队专业度与项目匹配度。', rows: 4 }
+  ],
+  template: function(v) {
+    return '# 标书撰写提示词\n\n> 请根据以下项目信息帮我生成一份高质量的投标文件核心内容。\n\n## 项目信息\n- **项目名称**：' + (v.project || '暂无，请根据其他信息自动判断并补充。') + '\n- **招标方**：' + (v.bidder || '暂无') + '\n- **项目类型**：' + (v.type || '暂无') + '\n- **预算范围**：' + (v.budget || '暂无') + '\n- **交付周期**：' + (v.timeline || '暂无') + '\n\n## 我方优势\n' + (v.advantage || '暂无，请根据项目类型自动补充合理的竞争优势。') + '\n\n## 技术方案要点\n' + (v.tech || '暂无，请根据项目类型自动补充合理的技术方案框架。') + '\n\n## 团队配置\n' + (v.team || '暂无，请根据项目规模自动补充合理的团队配置建议。') + '\n\n## 输出要求\n1. 生成「技术方案」章节的核心框架与关键段落。\n2. 生成「公司优势与案例」章节，突出差异化竞争力。\n3. 生成「项目实施计划」甘特图文字描述与里程碑说明。\n4. 生成「售后服务与培训」方案要点。\n5. 语言正式、严谨，符合招投标文件规范。\n6. 针对评分标准（如技术分、商务分）优化内容侧重点。\n7. 标注需要我方补充具体数据的占位符。';
+  }
+};
+</script>
+<script src="../js/tool-engine.js"></script>
+</body>
+</html>

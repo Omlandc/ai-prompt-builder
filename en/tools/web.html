@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Design Prompt Generator - Complex AI Prompt Builder</title>
+<meta name="description" content="Generate structured prompts for website design, landing pages, corporate sites, SaaS dashboards, and e-commerce stores.">
+<link rel="canonical" href="https://example.com/en/tools/web.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/web.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/web.html">
+<link rel="stylesheet" href="../../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/en/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Complex AI Prompt Builder
+    </a>
+    <nav class="nav-links">
+      <a href="/en/">Home</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">Writing</a>
+      <a href="image.html">Image</a>
+      <a href="video.html">Video</a>
+      <a href="skill.html">Skill</a>
+      <a href="research.html">Research</a>
+      <a href="app.html">App</a>
+      <a href="web.html">Web</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">Resume</a>
+      <a href="business.html">Business</a>
+      <a href="bid.html">Bid</a>
+      <button class="lang-switch" onclick="location.href='../../tools/web.html'">中文</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/en/">Home</a> / Web Design Prompt Generator
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 Prompt Preview</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">Live update</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">🌐 Web Design Prompt Builder</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">Generate professional prompts for website design, landing pages, corporate sites, and SaaS dashboards.</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: 'Web-Design-Prompt',
+  fields: [
+    { name: 'wtype', label: 'Website Type', type: 'select', options: [
+      { value: 'Brand Website', label: 'Brand Website' },
+      { value: 'Product Landing Page', label: 'Product Landing Page' },
+      { value: 'E-commerce', label: 'E-commerce' },
+      { value: 'Personal Blog', label: 'Personal Blog' },
+      { value: 'Portfolio', label: 'Portfolio' },
+      { value: 'SaaS Dashboard', label: 'SaaS Dashboard' },
+      { value: 'Docs / Knowledge Base', label: 'Docs / Knowledge Base' }
+    ], hint: 'Different website types have different structures, priorities, and conversion goals.' },
+    { name: 'brand', label: 'Brand / Product Name', type: 'text', placeholder: 'e.g. Aurora Cloud Design', hint: 'The brand or product the website belongs to.' },
+    { name: 'audience', label: 'Target Visitors', type: 'text', placeholder: 'e.g. B2B decision-makers, designers, freelancers', hint: 'Determines content strategy, visual style, and CTA design.' },
+    { name: 'requirements', label: 'Specific Requirements / Design Needs', type: 'textarea', placeholder: 'e.g.\n- Homepage needs a full-screen hero video background\n- Product page needs a 3D model showcase module\n- Contact page needs integrated map location\n- Overall should convey a premium tech feel', hint: 'Describe your specific expectations for functionality, visuals, and interactions.', rows: 6 },
+    { name: 'pages', label: 'Core Pages', type: 'checkbox', options: [
+      { value: 'Home', label: 'Home' },
+      { value: 'About', label: 'About' },
+      { value: 'Products / Services', label: 'Products / Services' },
+      { value: 'Case Studies / Portfolio', label: 'Case Studies / Portfolio' },
+      { value: 'Pricing', label: 'Pricing' },
+      { value: 'Blog / News', label: 'Blog / News' },
+      { value: 'Contact', label: 'Contact' },
+      { value: 'FAQ', label: 'FAQ' }
+    ], hint: 'Select the pages the website should include.' },
+    { name: 'style', label: 'Style Preference', type: 'radio', options: [
+      { value: 'Minimal & Modern', label: 'Minimal & Modern' },
+      { value: 'Business Professional', label: 'Business Professional' },
+      { value: 'Playful & Creative', label: 'Playful & Creative' },
+      { value: 'Tech / Futuristic', label: 'Tech / Futuristic' },
+      { value: 'Vintage / Classic', label: 'Vintage / Classic' }
+    ], hint: 'Style should match brand tone and target audience.' },
+    { name: 'tech', label: 'Tech Stack Preference', type: 'select', options: [
+      { value: 'React / Next.js', label: 'React / Next.js' },
+      { value: 'Vue / Nuxt', label: 'Vue / Nuxt' },
+      { value: 'Plain HTML+CSS+JS', label: 'Plain HTML+CSS+JS' },
+      { value: 'No-code (WordPress / Webflow)', label: 'No-code (WordPress / Webflow)' },
+      { value: 'No Preference', label: 'No Preference' }
+    ], hint: 'Tech stack affects component reuse, performance, and maintenance cost.' },
+    { name: 'features', label: 'Must-have Features', type: 'checkbox', options: [
+      { value: 'SEO Optimization', label: 'SEO Optimization' },
+      { value: 'Multilingual', label: 'Multilingual' },
+      { value: 'Contact Form', label: 'Contact Form' },
+      { value: 'Online Payment', label: 'Online Payment' },
+      { value: 'Content Management (CMS)', label: 'Content Management (CMS)' },
+      { value: 'User Login / Membership', label: 'User Login / Membership' },
+      { value: 'Dark Mode', label: 'Dark Mode' },
+      { value: 'Accessibility', label: 'Accessibility' }
+    ], hint: 'Select essential functional modules.' },
+    { name: 'refs', label: 'Reference Websites', type: 'textarea', placeholder: 'e.g.\n- https://example.com (like its navigation)\n- https://another.com (like its color scheme)', hint: 'Provide references to help AI understand your aesthetic preference.', rows: 4 }
+  ],
+  template: function(v) {
+    var pg = Array.isArray(v.pages) ? v.pages.join(', ') : (v.pages || 'Not provided');
+    var ft = Array.isArray(v.features) ? v.features.join(', ') : (v.features || 'Not provided');
+    return '# Web Design Prompt\n\n> Please generate a complete website design / development requirements document based on the following requirements.\n\n## Project Settings\n- **Website Type**: ' + (v.wtype || 'Not provided') + '\n- **Brand / Product**: ' + (v.brand || 'Not provided; please infer from context.') + '\n- **Target Visitors**: ' + (v.audience || 'Not provided; please infer from type.') + '\n- **Style Preference**: ' + (v.style || 'Not provided') + '\n- **Tech Stack**: ' + (v.tech || 'Not provided') + '\n\n## Specific Requirements\n' + (v.requirements || 'Not provided; please infer reasonable design and feature suggestions from the website type.') + '\n\n## Core Pages\n' + pg + '\n\n## Must-have Features\n' + ft + '\n\n## Reference Websites\n' + (v.refs || 'Not provided; please recommend excellent references based on type.') + '\n\n## Output Requirements\n1. Provide website information architecture (IA) and page hierarchy.\n2. For each core page: page goal, content modules, CTA design, responsive adaptation notes.\n3. Provide a text-based homepage wireframe description (modules top-to-bottom with layout suggestions).\n4. Provide color scheme, font pairing, and visual guideline recommendations.\n5. Provide SEO basics checklist (URL structure, Meta, Schema, image optimization, performance).\n6. Provide performance targets (Lighthouse scores, Core Web Vitals).\n7. If interactive features are included, provide interaction notes and state flow descriptions.\n8. Use clear, structured language suitable for designers and frontend developers.';
+  }
+};
+</script>
+<script src="../../js/tool-engine.js"></script>
+</body>
+</html>

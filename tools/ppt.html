@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PPT提示词生成器 - 复杂AI提示词构造</title>
+<meta name="description" content="使用PPT提示词生成器，快速生成演示文稿大纲、单页内容与演讲备注。支持商务、学术、创意等多种风格。">
+<link rel="canonical" href="https://example.com/tools/ppt.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/ppt.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/ppt.html">
+<link rel="stylesheet" href="../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      复杂AI提示词构造
+    </a>
+    <nav class="nav-links">
+      <a href="/">首页</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">写文章</a>
+      <a href="image.html">画图片</a>
+      <a href="video.html">视频脚本</a>
+      <a href="skill.html">技能</a>
+      <a href="research.html">调研</a>
+      <a href="app.html">APP</a>
+      <a href="web.html">网页</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">简历</a>
+      <a href="business.html">商业书</a>
+      <a href="bid.html">标书</a>
+      <button class="lang-switch" onclick="location.href='../en/tools/ppt.html'">English</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/">首页</a> / PPT提示词生成器
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 提示词预览</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">实时更新</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">📊 PPT 提示词构造器</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">填写右侧表单，左侧实时生成针对PPT制作的结构化AI提示词。</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: 'PPT提示词',
+  fields: [
+    { name: 'title', label: 'PPT主题 / 标题', type: 'text', placeholder: '例如：2026年Q3产品战略汇报', hint: '明确演示的核心主题。' },
+    { name: 'pages', label: '期望页数', type: 'number', default: 15, min: 3, max: 100, hint: '建议控制在 10-30 页之间。' },
+    { name: 'style', label: '视觉风格', type: 'radio', options: [
+      { value: '商务专业', label: '商务专业' },
+      { value: '学术严谨', label: '学术严谨' },
+      { value: '创意活力', label: '创意活力' },
+      { value: '极简现代', label: '极简现代' },
+      { value: '数据驱动', label: '数据驱动' }
+    ], hint: '选择最符合演示场合的视觉调性。' },
+    { name: 'audience', label: '目标受众', type: 'text', placeholder: '例如：公司高管、投资人、客户、学生', hint: '了解受众有助于调整内容深度与表达方式。' },
+    { name: 'purpose', label: '演示目的', type: 'select', options: [
+      { value: '汇报总结', label: '汇报总结' },
+      { value: '提案说服', label: '提案说服' },
+      { value: '教学培训', label: '教学培训' },
+      { value: '产品发布', label: '产品发布' },
+      { value: '数据洞察', label: '数据洞察' }
+    ], hint: '不同目的对应不同的叙事结构和论证方式。' },
+    { name: 'keypoints', label: '关键内容点', type: 'textarea', placeholder: '1. 市场现状分析\n2. 竞品对比\n3. 产品核心优势\n4. 路线图与里程碑', hint: '列出希望在PPT中重点呈现的内容要点。', rows: 6 },
+    { name: 'color', label: '配色偏好', type: 'text', placeholder: '例如：企业品牌蓝+白，或暖色调', hint: '可指定主色、辅色，或参考品牌VI。' },
+    { name: 'speaker', label: '是否需要演讲备注', type: 'radio', options: [
+      { value: '是', label: '是' },
+      { value: '否', label: '否' }
+    ], hint: '演讲备注可帮助你在演示时掌握话术要点。' },
+    { name: 'pages_table', label: '分页要求表', type: 'table', columns: [
+      { label: '页码', placeholder: '如：1' },
+      { label: '页面标题', placeholder: '如：项目背景' },
+      { label: '版式类型', placeholder: '全图型/图文混排/数据图表/时间轴' },
+      { label: '核心内容', placeholder: '该页需要呈现的关键信息' },
+      { label: '备注', placeholder: '特殊要求或参考素材' }
+    ], defaultRows: 3, hint: '逐页填写你对每一页的设计与内容要求。' },
+    { name: 'lang', label: '输出语言', type: 'radio', options: [
+      { value: '中文', label: '中文' },
+      { value: 'English', label: 'English' },
+      { value: '中英双语', label: '中英双语' }
+    ] }
+  ],
+  template: function(v) {
+    var kp = (v.keypoints || '').split(/\n/).filter(function(l){return l.trim();});
+    var pt = '';
+    if (Array.isArray(v.pages_table) && v.pages_table.length) {
+      pt = '\n\n## 分页要求\n| 页码 | 页面标题 | 版式类型 | 核心内容 | 备注 |\n|---|---|---|---|---|\n' + v.pages_table.map(function(r){ return '| ' + r.map(function(c){ return (c||'').replace(/\|/g,'\\|'); }).join(' | ') + ' |'; }).join('\n') + '\n';
+    }
+    return '# PPT制作提示词\n\n> 请根据以下要求为我生成一份完整的PPT大纲与内容框架。\n\n## 基本信息\n- **主题**：' + (v.title || '暂无，请根据其他信息自动判断并补充。') + '\n- **页数**：约 ' + (v.pages || '暂无') + ' 页\n- **视觉风格**：' + (v.style || '暂无') + '\n- **配色偏好**：' + (v.color || '暂无，请根据主题与风格自动判断并补充。') + '\n- **目标受众**：' + (v.audience || '暂无，请根据主题自动判断并补充。') + '\n- **演示目的**：' + (v.purpose || '暂无') + '\n- **输出语言**：' + (v.lang || '中文') + '\n- **演讲备注**：' + (v.speaker || '否') + '\n\n## 关键内容点\n' + (kp.length ? kp.map(function(l, i){ return (i+1) + '. ' + l.trim(); }).join('\n') : '暂无，请根据主题自动补充。') + pt + '\n\n## 输出要求\n1. 生成完整的PPT大纲，包含每一页的标题与核心内容要点。\n2. 对每一页给出推荐的版式建议（如：全图型、图文混排、数据图表、时间轴等）。\n3. 提供关键页面的文案草稿。\n4. ' + (v.speaker==='是' ? '为每一页生成对应的演讲备注（话术要点）。' : '无需演讲备注。') + '\n5. 如果涉及数据页，请建议合适的图表类型与呈现方式。\n6. 保持风格统一，语言简洁有力，适合现场演示阅读。';
+  }
+};
+</script>
+<script src="../js/tool-engine.js"></script>
+</body>
+</html>

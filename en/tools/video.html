@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Script Prompt Generator - Complex AI Prompt Builder</title>
+<meta name="description" content="Generate storyboards, shot lists, and scripts for short videos, ads, tutorials, and vlogs.">
+<link rel="canonical" href="https://example.com/en/tools/video.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/video.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/video.html">
+<link rel="stylesheet" href="../../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/en/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Complex AI Prompt Builder
+    </a>
+    <nav class="nav-links">
+      <a href="/en/">Home</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">Writing</a>
+      <a href="image.html">Image</a>
+      <a href="video.html">Video</a>
+      <a href="skill.html">Skill</a>
+      <a href="research.html">Research</a>
+      <a href="app.html">App</a>
+      <a href="web.html">Web</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">Resume</a>
+      <a href="business.html">Business</a>
+      <a href="bid.html">Bid</a>
+      <button class="lang-switch" onclick="location.href='../../tools/video.html'">中文</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/en/">Home</a> / Video Script Prompt Generator
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 Prompt Preview</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">Live update</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">🎬 Video Script Prompt Builder</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">Generate complete video scripts with storyboards, narration, and shooting suggestions.</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: 'Video-Script-Prompt',
+  fields: [
+    { name: 'type', label: 'Video Type', type: 'select', options: [
+      { value: 'Short Video (1-3 min)', label: 'Short Video (1-3 min)' },
+      { value: 'Brand Ad', label: 'Brand Ad' },
+      { value: 'Product Tutorial', label: 'Product Tutorial' },
+      { value: 'Vlog', label: 'Vlog' },
+      { value: 'Documentary Style', label: 'Documentary Style' },
+      { value: 'Live Stream Script', label: 'Live Stream Script' },
+      { value: 'Promo Video', label: 'Promo Video' }
+    ], hint: 'Different types have different pacing and structures.' },
+    { name: 'duration', label: 'Video Duration', type: 'text', placeholder: 'e.g. 90 seconds / 5 minutes', hint: 'Precise duration helps control content density.' },
+    { name: 'platform', label: 'Primary Platforms', type: 'checkbox', options: [
+      { value: 'TikTok / Reels', label: 'TikTok / Reels' },
+      { value: 'YouTube', label: 'YouTube' },
+      { value: 'Bilibili', label: 'Bilibili' },
+      { value: 'Instagram', label: 'Instagram' },
+      { value: 'Xiaohongshu', label: 'Xiaohongshu' },
+      { value: 'WeChat Channels', label: 'WeChat Channels' }
+    ], hint: 'Platform characteristics affect aspect ratio, duration, style, and CTA design.' },
+    { name: 'audience', label: 'Target Audience', type: 'text', placeholder: 'e.g. 18-30 tech enthusiasts, new moms, enterprise decision-makers', hint: 'Determines content angle and language style.' },
+    { name: 'message', label: 'Core Message / Goal', type: 'textarea', placeholder: 'e.g. Let viewers understand the new product\'s core selling points and click the purchase link', hint: 'The 1-3 most important messages the video must convey.', rows: 3 },
+    { name: 'tone', label: 'Tone', type: 'radio', options: [
+      { value: 'Funny & Entertaining', label: 'Funny & Entertaining' },
+      { value: 'Warm & Emotional', label: 'Warm & Emotional' },
+      { value: 'Professional & Hardcore', label: 'Professional & Hardcore' },
+      { value: 'Fast-paced & Punchy', label: 'Fast-paced & Punchy' },
+      { value: 'Suspense & Twist', label: 'Suspense & Twist' },
+      { value: 'Inspirational', label: 'Inspirational' }
+    ], hint: 'Tone drives music, pacing, editing style, and performance direction.' },
+    { name: 'scenes', label: 'Expected Scene Count', type: 'number', default: 5, min: 1, max: 50, hint: 'More scenes = higher info density but higher production cost.' },
+    { name: 'storyboard', label: 'Need Storyboard Descriptions?', type: 'radio', options: [
+      { value: 'Yes', label: 'Yes' },
+      { value: 'No', label: 'No' }
+    ], hint: 'Storyboard includes shot size, camera movement, visual content, and dialogue mapping.' },
+    { name: 'storyboard_table', label: 'Storyboard Table', type: 'table', showIf: { field: 'storyboard', value: 'Yes' }, columns: [
+      { label: 'Shot #', placeholder: 'e.g. 1' },
+      { label: 'Shot Size', placeholder: 'Close-up / Medium / Wide' },
+      { label: 'Camera Move', placeholder: 'Static / Push / Pull / Pan / Tilt' },
+      { label: 'Visual Content', placeholder: 'Describe the shot' },
+      { label: 'Dialogue / Narration', placeholder: 'Lines for this shot' },
+      { label: 'Duration', placeholder: 'e.g. 5s' },
+      { label: 'Notes', placeholder: 'Effects / Sound / Other' }
+    ], defaultRows: 3, hint: 'Fill in each shot in detail.' },
+    { name: 'cta', label: 'End CTA (Call to Action)', type: 'text', placeholder: 'e.g. Follow the account, click the link, leave a comment, buy the product', hint: 'What action do you want viewers to take after watching?' }
+  ],
+  template: function(v) {
+    var pf = Array.isArray(v.platform) ? v.platform.join(', ') : (v.platform || 'Not provided');
+    var sb = '';
+    if (v.storyboard === 'Yes' && Array.isArray(v.storyboard_table) && v.storyboard_table.length) {
+      sb = '\n\n## Storyboard Table\n| Shot # | Shot Size | Camera Move | Visual Content | Dialogue/Narration | Duration | Notes |\n|---|---|---|---|---|---|---|\n' + v.storyboard_table.map(function(r){ return '| ' + r.map(function(c){ return (c||'').replace(/\|/g,'\\|'); }).join(' | ') + ' |'; }).join('\n') + '\n';
+    }
+    return '# Video Script Prompt\n\n> Please generate a complete video script based on the following requirements.\n\n## Project Settings\n- **Video Type**: ' + (v.type || 'Not provided; please infer from other info.') + '\n- **Duration**: ' + (v.duration || 'Not provided') + '\n- **Platforms**: ' + pf + '\n- **Target Audience**: ' + (v.audience || 'Not provided; please infer from topic.') + '\n- **Tone**: ' + (v.tone || 'Not provided') + '\n- **Scene Count**: ~ ' + (v.scenes || 'Not provided') + '\n- **Storyboard**: ' + (v.storyboard || 'No') + '\n\n## Core Message\n' + (v.message || 'Not provided; please infer from video type and supplement a reasonable communication goal.') + '\n\n## End CTA\n' + (v.cta || 'Not provided; please recommend a suitable CTA based on platform characteristics.') + sb + '\n\n## Output Requirements\n1. Provide a complete narration script with timecodes.\n2. Provide visual descriptions for each scene (shot size, content, atmosphere).\n3. ' + (v.storyboard==='Yes' ? 'Provide a detailed storyboard table (refer to the table structure above).' : 'No storyboard table needed, but explain scene transition logic.') + '\n4. Recommend suitable background music style and tempo.\n5. If on-camera talent is needed, provide performance direction notes.\n6. Include platform-specific optimization tips (caption style, thumbnail suggestions, hashtag strategy).';
+  }
+};
+</script>
+<script src="../../js/tool-engine.js"></script>
+</body>
+</html>

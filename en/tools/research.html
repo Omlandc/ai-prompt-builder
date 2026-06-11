@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Prompt Generator - Complex AI Prompt Builder</title>
+<meta name="description" content="Generate structured prompts for market research, user research, competitor analysis, and academic research.">
+<link rel="canonical" href="https://example.com/en/tools/research.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/research.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/research.html">
+<link rel="stylesheet" href="../../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/en/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Complex AI Prompt Builder
+    </a>
+    <nav class="nav-links">
+      <a href="/en/">Home</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">Writing</a>
+      <a href="image.html">Image</a>
+      <a href="video.html">Video</a>
+      <a href="skill.html">Skill</a>
+      <a href="research.html">Research</a>
+      <a href="app.html">App</a>
+      <a href="web.html">Web</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">Resume</a>
+      <a href="business.html">Business</a>
+      <a href="bid.html">Bid</a>
+      <button class="lang-switch" onclick="location.href='../../tools/research.html'">中文</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/en/">Home</a> / Research Prompt Generator
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 Prompt Preview</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">Live update</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">🔍 Research Prompt Builder</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">Generate professional prompts for market, user, competitor, and academic research.</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: 'Research-Prompt',
+  fields: [
+    { name: 'type', label: 'Research Type', type: 'select', options: [
+      { value: 'Market Research', label: 'Market Research' },
+      { value: 'User Research', label: 'User Research' },
+      { value: 'Competitor Analysis', label: 'Competitor Analysis' },
+      { value: 'Academic Research', label: 'Academic Research' },
+      { value: 'Industry Trend Research', label: 'Industry Trend Research' }
+    ], hint: 'Different types require different methods and frameworks.' },
+    { name: 'topic', label: 'Research Topic', type: 'text', placeholder: 'e.g. Gen Z awareness and purchase intent toward sustainable fashion brands', hint: 'The more focused, the more actionable the output.' },
+    { name: 'audience', label: 'Target Audience / Respondent Profile', type: 'text', placeholder: 'e.g. 18-28 white-collar workers in tier-1 cities, monthly disposable income 8K+', hint: 'Clear personas help design more precise research questions.' },
+    { name: 'purpose', label: 'Research Purpose', type: 'textarea', placeholder: 'e.g. Understand target users\' pain points with existing competitors to inform new product feature prioritization', hint: 'Explain "why" and "what decisions" this research will drive.', rows: 3 },
+    { name: 'methods', label: 'Research Methods', type: 'checkbox', options: [
+      { value: 'Survey', label: 'Survey' },
+      { value: 'In-depth Interview', label: 'In-depth Interview' },
+      { value: 'Focus Group', label: 'Focus Group' },
+      { value: 'Desk Research', label: 'Desk Research' },
+      { value: 'Field Observation', label: 'Field Observation' },
+      { value: 'Data Mining', label: 'Data Mining' }
+    ], hint: 'Select multiple; AI will tailor the execution plan accordingly.' },
+    { name: 'questions', label: 'Core Questions / Hypotheses', type: 'textarea', placeholder: 'e.g.\n1. What are the top purchase decision factors for users?\n2. Where do current competitors fall short in after-sales service?', hint: 'List 3-5 questions you want answered or hypotheses to validate.', rows: 5 },
+    { name: 'scope', label: 'Sample Size / Scope', type: 'text', placeholder: 'e.g. Quantitative 200 valid responses + Qualitative 10 in-depth interviews', hint: 'Clear scope helps AI design a feasible research execution plan.' },
+    { name: 'output', label: 'Output Format', type: 'radio', options: [
+      { value: 'Full Research Report', label: 'Full Research Report' },
+      { value: 'Presentation Deck', label: 'Presentation Deck' },
+      { value: 'Data Visualization', label: 'Data Visualization' },
+      { value: 'Execution Plan + Questionnaire Outline', label: 'Execution Plan + Questionnaire Outline' }
+    ], hint: 'Different formats correspond to different structures and depth.' }
+  ],
+  template: function(v) {
+    var mt = Array.isArray(v.methods) ? v.methods.join(', ') : (v.methods || 'Not provided');
+    var qs = (v.questions || '').split('\n').filter(function(l){return l.trim();});
+    return '# Research Prompt\n\n> Please generate a structured research plan or report based on the following requirements.\n\n## Research Settings\n- **Type**: ' + (v.type || 'Not provided') + '\n- **Topic**: ' + (v.topic || 'Not provided; please infer from context.') + '\n- **Target Audience**: ' + (v.audience || 'Not provided; please infer from topic.') + '\n- **Methods**: ' + mt + '\n- **Sample Size/Scope**: ' + (v.scope || 'Not provided') + '\n- **Output Format**: ' + (v.output || 'Not provided') + '\n\n## Purpose\n' + (v.purpose || 'Not provided; please infer a reasonable research goal from the topic.') + '\n\n## Core Questions\n' + (qs.length ? qs.map(function(l, i){ return (i+1) + '. ' + l.trim(); }).join('\n') : 'Not provided; please infer key questions from the research purpose.') + '\n\n## Output Requirements\n1. Design a complete research execution plan (timeline, team roles, budget framework).\n2. For surveys/interviews, provide a full outline with question lists (question types, options, skip logic).\n3. Provide recruitment criteria and screening conditions.\n4. Provide data collection and cleaning guidelines.\n5. Provide an analysis framework (e.g. SWOT, Porter\'s Five Forces, user journey map, satisfaction model, depending on research type).\n6. Conclusions must be data-driven, avoiding subjective assumptions.\n7. If sensitive information is involved, note ethics review and privacy protection requirements.';
+  }
+};
+</script>
+<script src="../../js/tool-engine.js"></script>
+</body>
+</html>

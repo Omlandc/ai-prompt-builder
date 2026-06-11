@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI角色Skill提示词生成器 - 复杂AI提示词构造</title>
+<meta name="description" content="构建AI角色设定、专家技能包、限制规则与示例对话，打造可复用的自定义AI助手。">
+<link rel="canonical" href="https://example.com/tools/skill.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/skill.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/skill.html">
+<link rel="stylesheet" href="../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      复杂AI提示词构造
+    </a>
+    <nav class="nav-links">
+      <a href="/">首页</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">写文章</a>
+      <a href="image.html">画图片</a>
+      <a href="video.html">视频脚本</a>
+      <a href="skill.html">技能</a>
+      <a href="research.html">调研</a>
+      <a href="app.html">APP</a>
+      <a href="web.html">网页</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">简历</a>
+      <a href="business.html">商业书</a>
+      <a href="bid.html">标书</a>
+      <button class="lang-switch" onclick="location.href='../en/tools/skill.html'">English</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/">首页</a> / AI角色Skill提示词生成器
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 提示词预览</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">实时更新</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">🧠 AI角色 / Skill 构造器</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">为AI设定专业角色、知识边界、输出格式与行为规则，打造可复用的专家助手。</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: 'AI角色Skill提示词',
+  fields: [
+    { name: 'name', label: '角色名称 / 身份', type: 'text', placeholder: '例如：资深Python架构师 / 市场洞察分析师', hint: '名称应直接体现角色专业领域。' },
+    { name: 'domain', label: '专业领域', type: 'text', placeholder: '例如：云计算、数字营销、心理咨询、法律文书', hint: '界定角色擅长解决什么问题。' },
+    { name: 'experience', label: '经验背景设定', type: 'text', placeholder: '例如：10年大厂经验，主导过3个千万级用户产品', hint: '经验背景影响回答的深度与权威性。' },
+    { name: 'style', label: '沟通风格', type: 'radio', options: [
+      { value: '严谨专业', label: '严谨专业' },
+      { value: '亲和易懂', label: '亲和易懂' },
+      { value: '犀利直接', label: '犀利直接' },
+      { value: '引导启发', label: '引导启发' },
+      { value: '幽默风趣', label: '幽默风趣' }
+    ], hint: '风格决定了回答的语气与表达方式。' },
+    { name: 'scope', label: '知识范围', type: 'textarea', placeholder: '例如：精通Python/Go，熟悉AWS/GCP云架构，了解DevOps最佳实践', hint: '明确角色知道什么，也间接暗示不知道的边界。', rows: 4 },
+    { name: 'restrictions', label: '限制规则 / 禁止事项', type: 'textarea', placeholder: '例如：不回答非技术类问题；不提供未经验证的医疗建议；遇到不确定的问题时明确告知', hint: '设定边界可避免AI越界回答或产生幻觉。', rows: 4 },
+    { name: 'format', label: '输出格式要求', type: 'textarea', placeholder: '例如：\n1. 先给出结论\n2. 再展开解释\n3. 最后给出可执行代码或清单', hint: '统一的输出格式提升可读性与可用性。', rows: 4 },
+    { name: 'examples', label: '示例对话（可选）', type: 'textarea', placeholder: '用户：如何优化慢查询？\n助手：[展示期望的回答风格与深度]', hint: '通过示例让AI更精确地理解你的期望。', rows: 5 }
+  ],
+  template: function(v) {
+    return '# AI角色 / Skill 设定提示词\n\n> 请在以下设定下扮演指定角色，并始终以该角色的视角和能力回答问题。\n\n## 角色设定\n- **角色名称**：' + (v.name || '暂无，请根据其他信息自动判断并补充。') + '\n- **专业领域**：' + (v.domain || '暂无') + '\n- **经验背景**：' + (v.experience || '暂无，请根据领域自动补充合理的背景。') + '\n- **沟通风格**：' + (v.style || '暂无') + '\n\n## 知识范围\n' + (v.scope || '暂无，请根据专业领域自动判断并补充。') + '\n\n## 限制规则\n' + (v.restrictions || '暂无特定限制，请根据专业领域自动补充合理的安全与边界规则。') + '\n\n## 输出格式\n' + (v.format || '暂无特定格式要求，请根据问题类型自动选择最合适的呈现方式。') + '\n\n' + (v.examples ? '## 示例对话\n' + v.examples + '\n\n' : '') + '## 启动确认\n如果你已理解以上设定，请回复："已准备好以【' + (v.name || '指定角色') + '】的身份为你服务。请问有什么问题？"';
+  }
+};
+</script>
+<script src="../js/tool-engine.js"></script>
+</body>
+</html>

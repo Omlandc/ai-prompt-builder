@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRD产品需求文档提示词生成器 - 复杂AI提示词构造</title>
+<meta name="description" content="生成PRD产品需求文档，包含核心功能、用户场景、优先级与验收标准的结构化提示词。">
+<link rel="canonical" href="https://example.com/tools/prd.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/prd.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/prd.html">
+<link rel="stylesheet" href="../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      复杂AI提示词构造
+    </a>
+    <nav class="nav-links">
+      <a href="/">首页</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">写文章</a>
+      <a href="image.html">画图片</a>
+      <a href="video.html">视频脚本</a>
+      <a href="skill.html">技能</a>
+      <a href="research.html">调研</a>
+      <a href="app.html">APP</a>
+      <a href="web.html">网页</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">简历</a>
+      <a href="business.html">商业书</a>
+      <a href="bid.html">标书</a>
+      <button class="lang-switch" onclick="location.href='../en/tools/prd.html'">English</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/">首页</a> / PRD提示词生成器
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 提示词预览</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">实时更新</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">📋 PRD 产品需求文档构造器</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">生成包含背景、功能、场景、验收标准的完整PRD提示词。</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: 'PRD提示词',
+  fields: [
+    { name: 'product', label: '产品名称', type: 'text', placeholder: '例如：智能日程助手 App', hint: '产品的正式名称或代号。' },
+    { name: 'ptype', label: '产品类型', type: 'select', options: [
+      { value: '移动App', label: '移动App' },
+      { value: 'Web应用', label: 'Web应用' },
+      { value: '小程序', label: '小程序' },
+      { value: 'SaaS平台', label: 'SaaS平台' },
+      { value: '后台管理系统', label: '后台管理系统' },
+      { value: 'AI功能模块', label: 'AI功能模块' }
+    ] },
+    { name: 'users', label: '目标用户', type: 'text', placeholder: '例如：25-40岁职场人士，需要高效管理跨时区会议', hint: '用户画像越清晰，场景设计越精准。' },
+    { name: 'problem', label: '解决的核心问题', type: 'textarea', placeholder: '例如：用户在不同日历系统间切换耗时，会议冲突频发，无法智能推荐最佳会议时间...', hint: '明确痛点是PRD的起点。', rows: 4 },
+    { name: 'features', label: '核心功能列表', type: 'table', columns: [
+      { label: '功能名称', placeholder: '如：智能冲突检测' },
+      { label: '功能描述', placeholder: '简要说明功能做什么' },
+      { label: '优先级', placeholder: 'P0/P1/P2' }
+    ], defaultRows: 4, hint: '用表格梳理功能，确保不遗漏。' },
+    { name: 'scenarios', label: '关键用户场景', type: 'textarea', placeholder: '例如：\n1. 用户收到会议邀请，系统自动检测与现有日程冲突并推荐替代时间\n2. 用户语音输入"下周三下午和客户开会"，系统自动创建日程并发送邀请', hint: '用用户故事或场景描述功能如何被使用。', rows: 5 },
+    { name: 'metrics', label: '成功指标', type: 'text', placeholder: '例如：日程创建耗时<30秒、会议冲突率降低50%、用户周活跃率>60%', hint: '可量化的指标用于验收与迭代评估。' },
+    { name: 'competitors', label: '竞品参考', type: 'text', placeholder: '例如：Calendly、Google Calendar、飞书日历', hint: '了解竞品可避免重复造轮子，同时找到差异化机会。' },
+    { name: 'constraints', label: '约束与假设', type: 'textarea', placeholder: '例如：\n- 需支持iOS 14+与Android 10+\n- 集成Google/Outlook/企业微信日历\n- 首批上线不包含AI语音助手', hint: '技术、时间、资源上的限制条件。', rows: 4 }
+  ],
+  template: function(v) {
+    var ft = '';
+    if (Array.isArray(v.features) && v.features.length) {
+      ft = '| 功能名称 | 功能描述 | 优先级 |\n|---|---|---|\n' + v.features.map(function(r){ return '| ' + (r[0]||'') + ' | ' + (r[1]||'') + ' | ' + (r[2]||'') + ' |'; }).join('\n');
+    } else {
+      ft = '暂无，请根据产品目标自动补充合理的功能列表。';
+    }
+    return '# PRD（产品需求文档）提示词\n\n> 请根据以下信息生成一份结构化的产品需求文档（PRD）。\n\n## 产品概述\n- **产品名称**：' + (v.product || '暂无，请根据其他信息自动判断并补充。') + '\n- **产品类型**：' + (v.ptype || '暂无') + '\n- **目标用户**：' + (v.users || '暂无，请根据产品类型自动判断并补充。') + '\n\n## 问题陈述\n' + (v.problem || '暂无，请根据产品自动补充合理的核心痛点。') + '\n\n## 核心功能\n' + ft + '\n\n## 用户场景\n' + (v.scenarios || '暂无，请根据功能列表自动补充关键用户场景。') + '\n\n## 成功指标\n' + (v.metrics || '暂无，请根据产品目标自动补充可量化的验收指标。') + '\n\n## 竞品参考\n' + (v.competitors || '暂无，请根据产品类型自动推荐相关竞品。') + '\n\n## 约束与假设\n' + (v.constraints || '暂无特定约束。') + '\n\n## 输出要求\n1. 按照标准PRD结构输出：修订记录、背景与目标、用户画像、需求详述（含功能描述、业务规则、流程图文字描述）、界面原型描述（信息架构+关键页面）、数据需求、非功能需求（性能、安全、兼容）、上线 checklist。\n2. 每个功能需包含：功能说明、前置条件、正常流程、异常流程、后置条件、验收标准。\n3. 使用表格、列表、分级标题保持文档可读性。\n4. 标注需求优先级（P0/P1/P2）。\n5. 对复杂流程提供文字版流程图描述（可用mermaid语法）。\n6. 语言精确、无歧义，适合直接交付开发团队。';
+  }
+};
+</script>
+<script src="../js/tool-engine.js"></script>
+</body>
+</html>

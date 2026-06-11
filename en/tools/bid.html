@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bid Proposal Prompt Generator - Complex AI Prompt Builder</title>
+<meta name="description" content="Generate structured prompts for bid proposals, technical solutions, company strengths, and delivery plans.">
+<link rel="canonical" href="https://example.com/en/tools/bid.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/bid.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/bid.html">
+<link rel="stylesheet" href="../../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/en/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Complex AI Prompt Builder
+    </a>
+    <nav class="nav-links">
+      <a href="/en/">Home</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">Writing</a>
+      <a href="image.html">Image</a>
+      <a href="video.html">Video</a>
+      <a href="skill.html">Skill</a>
+      <a href="research.html">Research</a>
+      <a href="app.html">App</a>
+      <a href="web.html">Web</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">Resume</a>
+      <a href="business.html">Business</a>
+      <a href="bid.html">Bid</a>
+      <button class="lang-switch" onclick="location.href='../../tools/bid.html'">中文</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/en/">Home</a> / Bid Proposal Prompt Generator
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 Prompt Preview</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">Live update</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">📑 Bid Proposal Prompt Builder</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">Generate professional prompts for technical proposals, commercial responses, and implementation plans.</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: 'Bid-Proposal-Prompt',
+  fields: [
+    { name: 'project', label: 'Project Name', type: 'text', placeholder: 'e.g. Smart Traffic Management System for City X', hint: 'Full project or tender name.' },
+    { name: 'bidder', label: 'Procuring Entity', type: 'text', placeholder: 'e.g. City X Transportation Bureau', hint: 'Understanding the buyer helps adjust tone and focus.' },
+    { name: 'type', label: 'Project Type', type: 'select', options: [
+      { value: 'Software Development', label: 'Software Development' },
+      { value: 'System Integration', label: 'System Integration' },
+      { value: 'Consulting Service', label: 'Consulting Service' },
+      { value: 'Construction', label: 'Construction' },
+      { value: 'Equipment Procurement', label: 'Equipment Procurement' },
+      { value: 'O&M Service', label: 'O&M Service' }
+    ] },
+    { name: 'advantage', label: 'Our Core Strengths', type: 'textarea', placeholder: 'e.g.\n- 10 similar successful project cases\n- Proprietary core platform with IP rights\n- Local 7×24 service team', hint: 'Differentiating advantages compared to competitors.', rows: 5 },
+    { name: 'tech', label: 'Technical Solution Highlights', type: 'textarea', placeholder: 'e.g.\n- Microservices architecture supporting high concurrency\n- Multi-cloud deployment, disaster recovery RPO<15min\n- Compliance with security level 3 requirements', hint: 'List the most competitive technical key points.', rows: 5 },
+    { name: 'budget', label: 'Budget / Pricing Strategy', type: 'text', placeholder: 'e.g. Budget 5M USD; our strategy is mid-range price + value-added services', hint: 'Budget affects solution positioning and resource description.' },
+    { name: 'timeline', label: 'Delivery Timeline', type: 'text', placeholder: 'e.g. 6 months to go-live, 12 months free O&M', hint: 'Clear timelines help generate feasible implementation plans.' },
+    { name: 'team', label: 'Team Configuration', type: 'textarea', placeholder: 'e.g. 1 PM (PMP certified), 1 Tech Lead (10 years exp), 8 developers...', hint: 'Show team professionalism and project fit.', rows: 4 }
+  ],
+  template: function(v) {
+    return '# Bid Proposal Writing Prompt\n\n> Please help generate high-quality bid document core content based on the following project information.\n\n## Project Info\n- **Project Name**: ' + (v.project || 'Not provided; please infer from other info.') + '\n- **Procuring Entity**: ' + (v.bidder || 'Not provided') + '\n- **Project Type**: ' + (v.type || 'Not provided') + '\n- **Budget Range**: ' + (v.budget || 'Not provided') + '\n- **Delivery Timeline**: ' + (v.timeline || 'Not provided') + '\n\n## Our Strengths\n' + (v.advantage || 'Not provided; please infer reasonable competitive advantages from the project type.') + '\n\n## Technical Highlights\n' + (v.tech || 'Not provided; please infer a reasonable technical framework from the project type.') + '\n\n## Team Configuration\n' + (v.team || 'Not provided; please infer a reasonable team setup from the project scale.') + '\n\n## Output Requirements\n1. Generate core framework and key paragraphs for the "Technical Solution" chapter.\n2. Generate the "Company Strengths & Cases" chapter highlighting differentiation.\n3. Generate "Project Implementation Plan" with milestone descriptions in Gantt-like text.\n4. Generate "After-sales Service & Training" key points.\n5. Use formal, rigorous language compliant with bidding document standards.\n6. Optimize content emphasis against evaluation criteria (technical score, commercial score).\n7. Mark placeholders where real data needs to be filled in.';
+  }
+};
+</script>
+<script src="../../js/tool-engine.js"></script>
+</body>
+</html>

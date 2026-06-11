@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>调研提示词生成器 - 复杂AI提示词构造</title>
+<meta name="description" content="生成市场调研、用户调研、竞品调研、学术调研等结构化提示词，助力高效获取洞察。">
+<link rel="canonical" href="https://example.com/tools/research.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/research.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/research.html">
+<link rel="stylesheet" href="../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      复杂AI提示词构造
+    </a>
+    <nav class="nav-links">
+      <a href="/">首页</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">写文章</a>
+      <a href="image.html">画图片</a>
+      <a href="video.html">视频脚本</a>
+      <a href="skill.html">技能</a>
+      <a href="research.html">调研</a>
+      <a href="app.html">APP</a>
+      <a href="web.html">网页</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">简历</a>
+      <a href="business.html">商业书</a>
+      <a href="bid.html">标书</a>
+      <button class="lang-switch" onclick="location.href='../en/tools/research.html'">English</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/">首页</a> / 调研提示词生成器
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 提示词预览</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">实时更新</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">🔍 调研提示词构造器</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">生成市场调研、用户调研、竞品调研等场景的专业AI提示词。</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: '调研提示词',
+  fields: [
+    { name: 'type', label: '调研类型', type: 'select', options: [
+      { value: '市场调研', label: '市场调研' },
+      { value: '用户调研', label: '用户调研' },
+      { value: '竞品调研', label: '竞品调研' },
+      { value: '学术调研', label: '学术调研' },
+      { value: '行业趋势调研', label: '行业趋势调研' }
+    ], hint: '不同调研类型对应不同的方法与框架。' },
+    { name: 'topic', label: '调研主题', type: 'text', placeholder: '例如：Z世代对可持续时尚品牌的认知与购买意愿', hint: '主题越聚焦，输出越 actionable。' },
+    { name: 'audience', label: '目标受众 / 受访者画像', type: 'text', placeholder: '例如：18-28岁一二线城市白领，月可支配收入8K+', hint: '明确的画像有助于设计更精准的调研问题。' },
+    { name: 'purpose', label: '调研目的', type: 'textarea', placeholder: '例如：了解目标用户对现有竞品的满意度痛点，为新产品功能优先级提供依据', hint: '说清楚"为什么要做这次调研"以及"希望拿到什么结论"。', rows: 3 },
+    { name: 'methods', label: '调研方法', type: 'checkbox', options: [
+      { value: '问卷调查', label: '问卷调查' },
+      { value: '深度访谈', label: '深度访谈' },
+      { value: '焦点小组', label: '焦点小组' },
+      { value: '桌面研究', label: '桌面研究' },
+      { value: '实地观察', label: '实地观察' },
+      { value: '数据挖掘', label: '数据挖掘' }
+    ], hint: '可多选，AI会根据方法组合输出相应执行方案。' },
+    { name: 'questions', label: '核心问题 / 假设', type: 'textarea', placeholder: '例如：\n1. 用户最看重的购买决策因素是什么？\n2. 当前竞品在售后服务上的短板在哪里？', hint: '列出你最想通过调研回答的3-5个问题或验证假设。', rows: 5 },
+    { name: 'scope', label: '样本量 / 范围', type: 'text', placeholder: '例如：定量200份有效问卷 + 定性10人深度访谈', hint: '明确样本规模有助于AI设计合理的调研执行计划。' },
+    { name: 'output', label: '输出格式', type: 'radio', options: [
+      { value: '完整调研报告', label: '完整调研报告' },
+      { value: 'PPT汇报版', label: 'PPT汇报版' },
+      { value: '数据可视化', label: '数据可视化' },
+      { value: '执行方案+问卷大纲', label: '执行方案+问卷大纲' }
+    ], hint: '不同输出格式对应不同的内容结构与深度。' }
+  ],
+  template: function(v) {
+    var mt = Array.isArray(v.methods) ? v.methods.join('、') : (v.methods || '暂无');
+    var qs = (v.questions || '').split('\n').filter(function(l){return l.trim();});
+    return '# 调研提示词\n\n> 请根据以下要求生成一份结构化的调研方案或报告。\n\n## 调研设定\n- **调研类型**：' + (v.type || '暂无') + '\n- **主题**：' + (v.topic || '暂无，请根据其他信息自动判断并补充。') + '\n- **目标受众**：' + (v.audience || '暂无，请根据主题自动判断并补充。') + '\n- **调研方法**：' + mt + '\n- **样本量/范围**：' + (v.scope || '暂无') + '\n- **输出格式**：' + (v.output || '暂无') + '\n\n## 调研目的\n' + (v.purpose || '暂无，请根据主题自动补充合理的调研目标。') + '\n\n## 核心问题\n' + (qs.length ? qs.map(function(l, i){ return (i+1) + '. ' + l.trim(); }).join('\n') : '暂无，请根据调研目的自动补充关键问题。') + '\n\n## 输出要求\n1. 设计完整的调研执行计划（时间线、人员分工、预算框架）。\n2. 如果是问卷/访谈类，提供完整的大纲与问题列表（含题型、选项、跳转逻辑）。\n3. 提供样本招募标准与筛选条件。\n4. 提供数据收集与清洗的规范说明。\n5. 提供分析框架（如SWOT、波特五力、用户旅程地图、满意度模型等，视调研类型而定）。\n6. 输出结论需有数据支撑，避免主观臆断。\n7. 如有敏感信息，需标注伦理审查与隐私保护要求。';
+  }
+};
+</script>
+<script src="../js/tool-engine.js"></script>
+</body>
+</html>

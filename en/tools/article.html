@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing Prompt Generator - Complex AI Prompt Builder</title>
+<meta name="description" content="Generate structured AI writing prompts for blogs, essays, news, fiction, and technical documents.">
+<link rel="canonical" href="https://example.com/en/tools/article.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/article.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/article.html">
+<link rel="stylesheet" href="../../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/en/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Complex AI Prompt Builder
+    </a>
+    <nav class="nav-links">
+      <a href="/en/">Home</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">Writing</a>
+      <a href="image.html">Image</a>
+      <a href="video.html">Video</a>
+      <a href="skill.html">Skill</a>
+      <a href="research.html">Research</a>
+      <a href="app.html">App</a>
+      <a href="web.html">Web</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">Resume</a>
+      <a href="business.html">Business</a>
+      <a href="bid.html">Bid</a>
+      <button class="lang-switch" onclick="location.href='../../tools/article.html'">中文</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/en/">Home</a> / Writing Prompt Generator
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 Prompt Preview</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">Live update</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">✍️ Writing Prompt Builder</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">Fill the form to generate a high-quality AI writing prompt tailored to your article type.</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: 'Writing-Prompt',
+  fields: [
+    { name: 'type', label: 'Article Type', type: 'select', options: [
+      { value: 'Blog Post', label: 'Blog Post' },
+      { value: 'Academic Essay', label: 'Academic Essay' },
+      { value: 'News Article', label: 'News Article' },
+      { value: 'Fiction Story', label: 'Fiction Story' },
+      { value: 'Technical Doc', label: 'Technical Doc' },
+      { value: 'Product Review', label: 'Product Review' },
+      { value: 'Social Media Long-form', label: 'Social Media Long-form' }
+    ], hint: 'Different types have different structures and writing norms.' },
+    { name: 'topic', label: 'Article Topic', type: 'text', placeholder: 'e.g. Breakthroughs and challenges of AI in medical diagnosis', hint: 'The more specific, the more accurate the AI output.' },
+    { name: 'audience', label: 'Target Readers', type: 'text', placeholder: 'e.g. General public, industry practitioners, academic researchers', hint: 'Determines content depth, terminology, and case selection.' },
+    { name: 'tone', label: 'Tone & Style', type: 'radio', options: [
+      { value: 'Professional & Rigorous', label: 'Professional & Rigorous' },
+      { value: 'Light & Lively', label: 'Light & Lively' },
+      { value: 'Objective & Neutral', label: 'Objective & Neutral' },
+      { value: 'Deep & Speculative', label: 'Deep & Speculative' },
+      { value: 'Storytelling', label: 'Storytelling' }
+    ], hint: 'Tone should match the article type and reader expectations.' },
+    { name: 'length', label: 'Target Word Count', type: 'text', placeholder: 'e.g. 2,000 words / 3,000-5,000 words', hint: 'Provide a range or exact number.' },
+    { name: 'keywords', label: 'Core / SEO Keywords', type: 'text', placeholder: 'AI healthcare, deep learning, diagnostic accuracy', hint: 'Helps the AI naturally integrate keywords for better SEO.' },
+    { name: 'outline', label: 'Desired Outline / Structure', type: 'textarea', placeholder: '1. Introduction: current status\n2. Core breakthroughs\n3. Real-world cases\n4. Challenges ahead\n5. Future outlook\n6. Conclusion', hint: 'Provide your preferred article structure.', rows: 6 },
+    { name: 'refs', label: 'References / Background Info', type: 'textarea', placeholder: 'Paste relevant research links, data, background materials...', hint: 'Reference materials help the AI generate more accurate, evidence-based content.', rows: 4 },
+    { name: 'lang', label: 'Output Language', type: 'radio', options: [
+      { value: 'English', label: 'English' },
+      { value: 'Chinese', label: 'Chinese' },
+      { value: 'Bilingual', label: 'Bilingual' }
+    ] }
+  ],
+  template: function(v) {
+    var ol = (v.outline || '').split('\n').filter(function(l){return l.trim();});
+    return '# Writing Prompt\n\n> Please write a high-quality article based on the following requirements.\n\n## Article Settings\n- **Type**: ' + (v.type || 'Not provided; please infer from topic.') + '\n- **Topic**: ' + (v.topic || 'Not provided; please infer from context and supplement.') + '\n- **Target Readers**: ' + (v.audience || 'Not provided; please infer from topic.') + '\n- **Tone & Style**: ' + (v.tone || 'Not provided') + '\n- **Target Length**: ' + (v.length || 'Not provided; please infer from topic.') + '\n- **Output Language**: ' + (v.lang || 'English') + '\n\n## Keyword Requirements\n' + (v.keywords ? 'Please naturally integrate the following keywords: ' + v.keywords : 'No specific keyword requirements.') + '\n\n## Article Structure\n' + (ol.length ? ol.map(function(l, i){ return (i+1) + '. ' + l.trim(); }).join('\n') : 'Not provided; please design a reasonable structure based on the topic.') + '\n\n## Reference Info\n' + (v.refs || 'None provided; please generate based on your knowledge base.') + '\n\n## Output Requirements\n1. Strictly follow the above structure and length.\n2. Start with a hook and end with a strong conclusion.\n3. Ensure smooth transitions and clear logic between paragraphs.\n4. Use specific cases or data to support arguments where applicable.\n5. Avoid clichés; maintain originality and readability.\n6. After completion, self-check for factual accuracy, grammar, and logical consistency.';
+  }
+};
+</script>
+<script src="../../js/tool-engine.js"></script>
+</body>
+</html>

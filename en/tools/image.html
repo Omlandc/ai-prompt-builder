@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Image Prompt Generator - Complex AI Prompt Builder</title>
+<meta name="description" content="Generate detailed image description prompts for Midjourney, Stable Diffusion, and DALL·E. Supports style, lighting, composition, and color.">
+<link rel="canonical" href="https://example.com/en/tools/image.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/image.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/image.html">
+<link rel="stylesheet" href="../../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/en/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Complex AI Prompt Builder
+    </a>
+    <nav class="nav-links">
+      <a href="/en/">Home</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">Writing</a>
+      <a href="image.html">Image</a>
+      <a href="video.html">Video</a>
+      <a href="skill.html">Skill</a>
+      <a href="research.html">Research</a>
+      <a href="app.html">App</a>
+      <a href="web.html">Web</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">Resume</a>
+      <a href="business.html">Business</a>
+      <a href="bid.html">Bid</a>
+      <button class="lang-switch" onclick="location.href='../../tools/image.html'">中文</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/en/">Home</a> / AI Image Prompt Generator
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 Prompt Preview</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">Live update</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">🎨 AI Image Prompt Builder</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">Generate professional image prompts for Midjourney, Stable Diffusion, and DALL·E.</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: 'Image-Prompt',
+  fields: [
+    { name: 'subject', label: 'Subject / Scene', type: 'text', placeholder: 'e.g. A futuristic astronaut in advanced armor standing on the Martian surface', hint: 'Describe the core subject and scene.' },
+    { name: 'style', label: 'Art Style', type: 'select', options: [
+      { value: 'Photorealistic', label: 'Photorealistic' },
+      { value: 'Anime Illustration', label: 'Anime Illustration' },
+      { value: 'Oil Painting', label: 'Oil Painting' },
+      { value: 'Watercolor', label: 'Watercolor' },
+      { value: 'Cyberpunk', label: 'Cyberpunk' },
+      { value: 'Pixel Art', label: 'Pixel Art' },
+      { value: '3D Render', label: '3D Render' },
+      { value: 'Ink Wash', label: 'Ink Wash' },
+      { value: 'Pop Art', label: 'Pop Art' }
+    ], hint: 'Select the desired overall visual style.' },
+    { name: 'composition', label: 'Composition', type: 'radio', options: [
+      { value: 'Close-up', label: 'Close-up' },
+      { value: 'Medium shot', label: 'Medium shot' },
+      { value: 'Wide-angle / Panorama', label: 'Wide-angle / Panorama' },
+      { value: 'Symmetrical', label: 'Symmetrical' },
+      { value: 'Rule of thirds', label: 'Rule of thirds' },
+      { value: 'Leading lines', label: 'Leading lines' },
+      { value: 'Frame within frame', label: 'Frame within frame' }
+    ], hint: 'Composition determines visual focus and spatial feel.' },
+    { name: 'lighting', label: 'Lighting Type', type: 'select', options: [
+      { value: 'Natural daylight', label: 'Natural daylight' },
+      { value: 'Golden hour', label: 'Golden hour' },
+      { value: 'Rembrandt lighting', label: 'Rembrandt lighting' },
+      { value: 'Neon / Cyber light', label: 'Neon / Cyber light' },
+      { value: 'Backlight / Silhouette', label: 'Backlight / Silhouette' },
+      { value: 'Softbox / Studio', label: 'Softbox / Studio' },
+      { value: 'Candle / Firelight', label: 'Candle / Firelight' },
+      { value: 'Overcast diffused', label: 'Overcast diffused' }
+    ], hint: 'Lighting is key to atmosphere and texture.' },
+    { name: 'color', label: 'Color Mood', type: 'text', placeholder: 'e.g. Warm orange tones, high saturation, cinematic color grading', hint: 'Describe hue, saturation, contrast, etc.' },
+    { name: 'details', label: 'Details & Texture', type: 'textarea', placeholder: 'e.g. Armor has wear scratches; distant ruined city in background; two satellites in sky', hint: 'Add material, background elements, environmental details.', rows: 5 },
+    { name: 'exclude', label: 'Elements to Exclude', type: 'text', placeholder: 'e.g. Text, watermarks, deformed fingers, low quality', hint: 'List anything you do not want in the image.' },
+    { name: 'ratio', label: 'Aspect Ratio / Usage', type: 'select', options: [
+      { value: '1:1 (Avatar / Social)', label: '1:1 (Avatar / Social)' },
+      { value: '16:9 (Wallpaper / Landscape)', label: '16:9 (Wallpaper / Landscape)' },
+      { value: '9:16 (Mobile / Portrait)', label: '9:16 (Mobile / Portrait)' },
+      { value: '4:3 (Presentation / Print)', label: '4:3 (Presentation / Print)' },
+      { value: '21:9 (Ultrawide)', label: '21:9 (Ultrawide)' }
+    ] },
+    { name: 'params', label: 'Extra Parameters (if applicable)', type: 'text', placeholder: 'e.g. --ar 16:9 --v 6 --s 750 --q 2', hint: 'Technical parameters for Midjourney and similar models.' }
+  ],
+  template: function(v) {
+    return '# AI Image Prompt\n\n> Please generate an image based on the following description, or use this directly as a prompt for an image generation model.\n\n## Subject Description\n' + (v.subject || 'Not provided; please infer from other info and supplement.') + '\n\n## Visual Settings\n- **Art Style**: ' + (v.style || 'Not provided; please infer from theme.') + '\n- **Composition**: ' + (v.composition || 'Not provided') + '\n- **Lighting**: ' + (v.lighting || 'Not provided; please infer from mood.') + '\n- **Color Mood**: ' + (v.color || 'Not provided; please infer from style.') + '\n- **Aspect Ratio / Usage**: ' + (v.ratio || 'Not provided') + '\n\n## Details & Texture\n' + (v.details || 'Not provided; please add reasonable details based on the subject.') + '\n\n## Exclusions\n' + (v.exclude ? 'Must NOT appear in the image: ' + v.exclude : 'No specific exclusions.') + '\n\n## Model Parameters\n' + (v.params || 'Please recommend suitable parameters based on the description and best practices.') + '\n\n## Additional Requirements\n1. Clear image with rich details; no low-quality or deformed elements.\n2. Consistent style and coherent lighting logic.\n3. If generating multiple variants, keep the theme consistent while exploring different compositions or lighting.';
+  }
+};
+</script>
+<script src="../../js/tool-engine.js"></script>
+</body>
+</html>

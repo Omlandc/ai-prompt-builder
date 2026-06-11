@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>商业计划书提示词生成器 - 复杂AI提示词构造</title>
+<meta name="description" content="生成商业计划书、融资BP、合作方案的市场分析、商业模式与竞争优势提示词。">
+<link rel="canonical" href="https://example.com/tools/business.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/business.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/business.html">
+<link rel="stylesheet" href="../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      复杂AI提示词构造
+    </a>
+    <nav class="nav-links">
+      <a href="/">首页</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">写文章</a>
+      <a href="image.html">画图片</a>
+      <a href="video.html">视频脚本</a>
+      <a href="skill.html">技能</a>
+      <a href="research.html">调研</a>
+      <a href="app.html">APP</a>
+      <a href="web.html">网页</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">简历</a>
+      <a href="business.html">商业书</a>
+      <a href="bid.html">标书</a>
+      <button class="lang-switch" onclick="location.href='../en/tools/business.html'">English</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/">首页</a> / 商业计划书提示词生成器
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 提示词预览</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">实时更新</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">💼 商业计划书提示词构造器</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">生成商业计划书、融资BP、合作方案的结构化提示词。</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: '商业计划书提示词',
+  fields: [
+    { name: 'doctype', label: '文档类型', type: 'select', options: [
+      { value: '融资BP（投资人版）', label: '融资BP（投资人版）' },
+      { value: '商业计划书（内部版）', label: '商业计划书（内部版）' },
+      { value: '合作方案', label: '合作方案' },
+      { value: '市场调研报告', label: '市场调研报告' }
+    ] },
+    { name: 'industry', label: '所在行业', type: 'text', placeholder: '例如：SaaS企业服务 / 新能源 / 跨境电商', hint: '行业决定了分析框架与关键指标。' },
+    { name: 'audience', label: '目标读者', type: 'select', options: [
+      { value: 'VC/天使投资人', label: 'VC/天使投资人' },
+      { value: '企业合作伙伴', label: '企业合作伙伴' },
+      { value: '银行/金融机构', label: '银行/金融机构' },
+      { value: '内部管理层', label: '内部管理层' }
+    ], hint: '不同读者关注的重点截然不同。' },
+    { name: 'product', label: '核心产品 / 服务', type: 'textarea', placeholder: '例如：面向中小企业的智能财税SaaS平台，通过AI自动识别票据并生成报表', hint: '一句话讲清楚你在做什么，为谁解决什么问题。', rows: 3 },
+    { name: 'model', label: '商业模式', type: 'select', options: [
+      { value: '订阅制SaaS', label: '订阅制SaaS' },
+      { value: '平台撮合', label: '平台撮合' },
+      { value: '自营电商', label: '自营电商' },
+      { value: '广告变现', label: '广告变现' },
+      { value: '按需服务', label: '按需服务' },
+      { value: '硬件+服务', label: '硬件+服务' },
+      { value: '授权/加盟', label: '授权/加盟' }
+    ], hint: '清晰的商业模式是商业计划书的核心。' },
+    { name: 'market', label: '市场规模与趋势', type: 'textarea', placeholder: '例如：中国中小企业财税服务市场约2000亿，年增长率15%，政策推动数字化转型...', hint: '用TAM/SAM/SOM或权威数据支撑市场判断。', rows: 4 },
+    { name: 'advantage', label: '核心竞争优势', type: 'textarea', placeholder: '例如：\n- 技术壁垒：自研OCR准确率99.5%\n- 先发优势：已服务5000+企业\n- 网络效应：用户越多，模型越准', hint: '为什么是你？为什么现在？为什么你能赢？', rows: 4 },
+    { name: 'finance', label: '财务预测 / 融资需求', type: 'textarea', placeholder: '例如：寻求Pre-A轮融资1000万，出让10%股权，资金用于产品研发与市场拓展...', hint: '如果是融资BP，这部分是投资人最关心的。', rows: 4 },
+    { name: 'team', label: '核心团队', type: 'textarea', placeholder: '例如：CEO连续创业者，CTO前大厂架构师，CMO 10年B端市场经验...', hint: '投资人投人，展示团队的互补性与执行力。', rows: 3 }
+  ],
+  template: function(v) {
+    return '# 商业计划书提示词\n\n> 请根据以下信息生成一份专业的' + (v.doctype || '商业计划书') + '。\n\n## 文档设定\n- **文档类型**：' + (v.doctype || '暂无') + '\n- **目标读者**：' + (v.audience || '暂无') + '\n- **所在行业**：' + (v.industry || '暂无') + '\n- **商业模式**：' + (v.model || '暂无') + '\n\n## 产品与服务\n' + (v.product || '暂无，请根据其他信息自动判断并补充。') + '\n\n## 市场分析\n' + (v.market || '暂无，请根据行业自动补充合理的市场规模与趋势分析。') + '\n\n## 核心竞争优势\n' + (v.advantage || '暂无，请根据产品与模式自动补充合理的竞争壁垒分析。') + '\n\n## 团队介绍\n' + (v.team || '暂无，请自动补充合理的团队配置建议。') + '\n\n## 财务与融资\n' + (v.finance || '暂无，请根据商业模式自动补充合理的财务预测框架。') + '\n\n## 输出要求\n1. 按照标准商业计划书结构输出：执行摘要、公司介绍、产品/服务、市场分析、竞争格局、商业模式、营销策略、运营计划、管理团队、财务预测、融资需求、风险分析、附录。\n2. 执行摘要要精炼有力，能在2分钟内打动读者。\n3. 市场分析要有数据支撑，引用权威来源。\n4. 竞争分析使用矩阵或对比表形式呈现。\n5. 财务预测提供3-5年的收入、成本、利润、现金流框架。\n6. 语言专业、自信但不浮夸，数据驱动。\n7. 标注需要补充真实数据的占位符。';
+  }
+};
+</script>
+<script src="../js/tool-engine.js"></script>
+</body>
+</html>

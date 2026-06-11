@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UI设计提示词生成器 - 复杂AI提示词构造</title>
+<meta name="description" content="生成UI设计、界面设计、设计系统、图标集等场景的专业提示词，支持Figma、Sketch等工具。">
+<link rel="canonical" href="https://example.com/tools/ui.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/ui.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/ui.html">
+<link rel="stylesheet" href="../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      复杂AI提示词构造
+    </a>
+    <nav class="nav-links">
+      <a href="/">首页</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">写文章</a>
+      <a href="image.html">画图片</a>
+      <a href="video.html">视频脚本</a>
+      <a href="skill.html">技能</a>
+      <a href="research.html">调研</a>
+      <a href="app.html">APP</a>
+      <a href="web.html">网页</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">简历</a>
+      <a href="business.html">商业书</a>
+      <a href="bid.html">标书</a>
+      <button class="lang-switch" onclick="location.href='../en/tools/ui.html'">English</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/">首页</a> / UI设计提示词生成器
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 提示词预览</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">实时更新</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">🎨 UI设计提示词构造器</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">生成UI界面设计、设计系统、图标集等场景的专业提示词。</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: 'UI设计提示词',
+  fields: [
+    { name: 'ptype', label: '项目类型', type: 'select', options: [
+      { value: 'App界面设计', label: 'App界面设计' },
+      { value: 'Web界面设计', label: 'Web界面设计' },
+      { value: '设计系统', label: '设计系统' },
+      { value: '图标集', label: '图标集' },
+      { value: '插画/运营图', label: '插画/运营图' },
+      { value: '数据可视化', label: '数据可视化' }
+    ], hint: '不同项目类型的交付物与规范差异很大。' },
+    { name: 'style', label: '设计风格', type: 'radio', options: [
+      { value: '扁平化', label: '扁平化' },
+      { value: '拟物风', label: '拟物风' },
+      { value: '玻璃拟态', label: '玻璃拟态' },
+      { value: '新拟态', label: '新拟态' },
+      { value: '3D立体', label: '3D立体' },
+      { value: '手绘插画风', label: '手绘插画风' }
+    ], hint: '风格是UI设计的核心视觉语言。' },
+    { name: 'color', label: '配色方案', type: 'text', placeholder: '例如：主色#2563EB，辅色#F59E0B，背景#F8FAFC', hint: '可填写色值、色彩关键词或参考品牌色。' },
+    { name: 'font', label: '字体偏好', type: 'text', placeholder: '例如：中文用思源黑体，英文用Inter', hint: '字体影响整体阅读体验与品牌气质。' },
+    { name: 'components', label: '所需组件范围', type: 'checkbox', options: [
+      { value: '按钮', label: '按钮' },
+      { value: '表单输入', label: '表单输入' },
+      { value: '卡片/列表', label: '卡片/列表' },
+      { value: '导航/标签', label: '导航/标签' },
+      { value: '弹窗/模态框', label: '弹窗/模态框' },
+      { value: '图表/数据', label: '图表/数据' },
+      { value: '空状态/加载', label: '空状态/加载' },
+      { value: '状态反馈(Toast/Alert)', label: '状态反馈(Toast/Alert)' }
+    ], hint: '明确组件范围有助于输出更完整的设计规范。' },
+    { name: 'tool', label: '设计工具', type: 'select', options: [
+      { value: 'Figma', label: 'Figma' },
+      { value: 'Sketch', label: 'Sketch' },
+      { value: 'Adobe XD', label: 'Adobe XD' },
+      { value: 'MasterGo/即时设计', label: 'MasterGo/即时设计' },
+      { value: '无特殊要求', label: '无特殊要求' }
+    ], hint: '不同工具的插件生态与交付方式不同。' },
+    { name: 'deliver', label: '交付物', type: 'checkbox', options: [
+      { value: '设计稿源文件', label: '设计稿源文件' },
+      { value: '切图/导出资源', label: '切图/导出资源' },
+      { value: '标注/ redline', label: '标注/ redline' },
+      { value: '交互原型', label: '交互原型' },
+      { value: '设计规范文档', label: '设计规范文档' }
+    ], hint: '不同交付物对应不同的工作深度。' },
+    { name: 'a11y', label: '无障碍要求', type: 'radio', options: [
+      { value: '需满足WCAG 2.1 AA', label: '需满足WCAG 2.1 AA' },
+      { value: '基础可读性即可', label: '基础可读性即可' },
+      { value: '无特殊要求', label: '无特殊要求' }
+    ], hint: '无障碍设计影响色彩对比度、焦点状态、语义化等。' }
+  ],
+  template: function(v) {
+    var cm = Array.isArray(v.components) ? v.components.join('、') : (v.components || '暂无');
+    var dl = Array.isArray(v.deliver) ? v.deliver.join('、') : (v.deliver || '暂无');
+    return '# UI设计提示词\n\n> 请根据以下要求生成一份专业的UI设计需求与规范文档。\n\n## 项目设定\n- **项目类型**：' + (v.ptype || '暂无') + '\n- **设计风格**：' + (v.style || '暂无') + '\n- **配色方案**：' + (v.color || '暂无，请根据风格自动推荐配色。') + '\n- **字体偏好**：' + (v.font || '暂无，请根据风格自动推荐字体搭配。') + '\n- **设计工具**：' + (v.tool || '暂无') + '\n- **无障碍要求**：' + (v.a11y || '暂无') + '\n\n## 所需组件\n' + cm + '\n\n## 交付物\n' + dl + '\n\n## 输出要求\n1. 提供整体设计原则与视觉语言说明。\n2. 为每个组件提供：设计说明、状态变体（默认/悬停/点击/禁用）、尺寸与间距标注、色彩与字体规范。\n3. 提供页面布局栅格系统建议。\n4. 提供动效与微交互建议（如按钮反馈、页面转场）。\n5. ' + (v.a11y==='需满足WCAG 2.1 AA' ? '提供无障碍检查清单（对比度、焦点指示、屏幕阅读器兼容）。' : '提及基本可读性建议。') + '\n6. 提供文件组织与命名规范建议（便于团队协作）。\n7. 输出结构化、可落地，设计师可直接参照执行。';
+  }
+};
+</script>
+<script src="../js/tool-engine.js"></script>
+</body>
+</html>

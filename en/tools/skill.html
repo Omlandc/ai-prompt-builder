@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Skill / Role Prompt Generator - Complex AI Prompt Builder</title>
+<meta name="description" content="Build AI character settings, expert skill packs, constraints, and example dialogues to create reusable custom AI assistants.">
+<link rel="canonical" href="https://example.com/en/tools/skill.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/tools/skill.html">
+<link rel="alternate" hreflang="zh-CN" href="https://example.com/tools/skill.html">
+<link rel="stylesheet" href="../../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DDFY2JPSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DDFY2JPSL');
+</script></head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/en/" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Complex AI Prompt Builder
+    </a>
+    <nav class="nav-links">
+      <a href="/en/">Home</a>
+      <a href="ppt.html">PPT</a>
+      <a href="article.html">Writing</a>
+      <a href="image.html">Image</a>
+      <a href="video.html">Video</a>
+      <a href="skill.html">Skill</a>
+      <a href="research.html">Research</a>
+      <a href="app.html">App</a>
+      <a href="web.html">Web</a>
+      <a href="ui.html">UI</a>
+      <a href="prd.html">PRD</a>
+      <a href="resume.html">Resume</a>
+      <a href="business.html">Business</a>
+      <a href="bid.html">Bid</a>
+      <button class="lang-switch" onclick="location.href='../../tools/skill.html'">中文</button>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/en/">Home</a> / AI Skill / Role Prompt Generator
+</div>
+
+<main class="tool-layout">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>📋 Prompt Preview</span>
+      <span style="font-size:0.8rem; color:var(--text-muted);">Live update</span>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+  </div>
+  <div class="form-panel">
+    <h2 style="margin-bottom:16px;">🧠 AI Role / Skill Builder</h2>
+    <p style="color:var(--text-muted); margin-bottom:20px;">Define professional roles, knowledge boundaries, output formats, and behavior rules for reusable expert AI assistants.</p>
+    <form id="tool-form"></form>
+  </div>
+</main>
+
+<script src="../../js/app.js"></script>
+<script>
+window.toolConfig = {
+  filename: 'AI-Role-Skill-Prompt',
+  fields: [
+    { name: 'name', label: 'Role Name / Identity', type: 'text', placeholder: 'e.g. Senior Python Architect / Market Insights Analyst', hint: 'The name should reflect the professional domain directly.' },
+    { name: 'domain', label: 'Domain of Expertise', type: 'text', placeholder: 'e.g. Cloud computing, digital marketing, legal documents', hint: 'Define what problems this role excels at solving.' },
+    { name: 'experience', label: 'Experience Background', type: 'text', placeholder: 'e.g. 10 years at top tech companies, led 3 products with 10M+ users', hint: 'Background affects answer depth and authority.' },
+    { name: 'style', label: 'Communication Style', type: 'radio', options: [
+      { value: 'Rigorous & Professional', label: 'Rigorous & Professional' },
+      { value: 'Friendly & Accessible', label: 'Friendly & Accessible' },
+      { value: 'Direct & Sharp', label: 'Direct & Sharp' },
+      { value: 'Guiding & Inspiring', label: 'Guiding & Inspiring' },
+      { value: 'Humorous & Witty', label: 'Humorous & Witty' }
+    ], hint: 'Style determines tone and expression in answers.' },
+    { name: 'scope', label: 'Knowledge Scope', type: 'textarea', placeholder: 'e.g. Proficient in Python/Go, familiar with AWS/GCP architecture, understands DevOps best practices', hint: 'Clarify what the role knows and implicitly what it does not.', rows: 4 },
+    { name: 'restrictions', label: 'Constraints / Prohibitions', type: 'textarea', placeholder: 'e.g. Do not answer non-technical questions; do not provide unverified medical advice; state uncertainty clearly when unsure', hint: 'Set boundaries to prevent off-topic answers or hallucinations.', rows: 4 },
+    { name: 'format', label: 'Output Format Requirements', type: 'textarea', placeholder: 'e.g.\n1. Start with a conclusion\n2. Then explain in detail\n3. Finally provide executable code or a checklist', hint: 'Consistent output format improves readability and usability.', rows: 4 },
+    { name: 'examples', label: 'Example Dialogue (Optional)', type: 'textarea', placeholder: 'User: How to optimize slow queries?\nAssistant: [Show desired answer style and depth]', hint: 'Examples help the AI precisely understand your expectations.', rows: 5 }
+  ],
+  template: function(v) {
+    return '# AI Role / Skill Setup Prompt\n\n> Please assume the designated role below and always answer from this role\'s perspective and capability.\n\n## Role Setup\n- **Role Name**: ' + (v.name || 'Not provided; please infer from other info.') + '\n- **Domain**: ' + (v.domain || 'Not provided') + '\n- **Experience**: ' + (v.experience || 'Not provided; please infer from domain.') + '\n- **Communication Style**: ' + (v.style || 'Not provided') + '\n\n## Knowledge Scope\n' + (v.scope || 'Not provided; please infer from the professional domain.') + '\n\n## Constraints\n' + (v.restrictions || 'Not provided; please infer reasonable safety and boundary rules from the domain.') + '\n\n## Output Format\n' + (v.format || 'Not provided; please choose the most suitable presentation based on question type.') + '\n\n' + (v.examples ? '## Example Dialogue\n' + v.examples + '\n\n' : '') + '## Startup Confirmation\nIf you understand the above setup, please reply: "Ready to serve you as 【' + (v.name || 'the designated role') + '】. What questions do you have?"';
+  }
+};
+</script>
+<script src="../../js/tool-engine.js"></script>
+</body>
+</html>
