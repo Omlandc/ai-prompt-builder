@@ -271,5 +271,49 @@
     URL.revokeObjectURL(url);
   }
 
+  // Mobile tab switcher
+  let mobileTabs = document.getElementById('mobile-tabs');
+  if (!mobileTabs) {
+    mobileTabs = document.createElement('div');
+    mobileTabs.id = 'mobile-tabs';
+    mobileTabs.className = 'mobile-tabs';
+    mobileTabs.innerHTML = `
+      <button type="button" data-target="form">${isZh ? '📝 填写表单' : '📝 Form'}</button>
+      <button type="button" data-target="preview">${isZh ? '📋 预览' : '📋 Preview'}</button>
+    `;
+    document.body.appendChild(mobileTabs);
+
+    const toolLayout = document.querySelector('.tool-layout');
+
+    function switchMobileTab(target) {
+      mobileTabs.querySelectorAll('button').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.target === target);
+      });
+      if (target === 'preview') {
+        toolLayout.classList.add('mobile-mode', 'show-preview');
+      } else {
+        toolLayout.classList.add('mobile-mode');
+        toolLayout.classList.remove('show-preview');
+      }
+    }
+
+    mobileTabs.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => switchMobileTab(btn.dataset.target));
+    });
+
+    function checkMobileMode() {
+      if (window.innerWidth <= 900) {
+        toolLayout.classList.add('mobile-mode');
+        if (!toolLayout.classList.contains('show-preview')) {
+          switchMobileTab('form');
+        }
+      } else {
+        toolLayout.classList.remove('mobile-mode', 'show-preview');
+      }
+    }
+    checkMobileMode();
+    window.addEventListener('resize', checkMobileMode);
+  }
+
   buildForm();
 })();
