@@ -17,7 +17,8 @@ window.showToast = showToast;
 async function copyText(text) {
   try {
     await navigator.clipboard.writeText(text);
-    showToast('已复制到剪贴板');
+    const isZhPage = document.documentElement.lang && document.documentElement.lang.startsWith('zh');
+    showToast(isZhPage ? '已复制到剪贴板' : 'Copied to clipboard');
   } catch (e) {
     const ta = document.createElement('textarea');
     ta.value = text;
@@ -25,29 +26,115 @@ async function copyText(text) {
     ta.select();
     document.execCommand('copy');
     document.body.removeChild(ta);
-    showToast('已复制到剪贴板');
+    const isZhPage = document.documentElement.lang && document.documentElement.lang.startsWith('zh');
+    showToast(isZhPage ? '已复制到剪贴板' : 'Copied to clipboard');
   }
 }
 window.copyText = copyText;
+
+// Desktop nav: collapse overflow links into "More" dropdown
+(function() {
+  const nav = document.querySelector('.nav-links');
+  if (!nav) return;
+
+  const links = Array.from(nav.querySelectorAll('a'));
+  const langBtn = nav.querySelector('.lang-switch');
+  if (links.length <= 8) return; // Short enough, skip
+
+  const primaryPaths = ['/', 'ppt', 'article', 'video', 'prd', 'resume'];
+  const primaryLinks = [];
+  const moreLinks = [];
+
+  links.forEach(link => {
+    const href = link.getAttribute('href') || '';
+    const isPolicy = href.includes('about') || href.includes('contact') || href.includes('privacy');
+    const isPrimary = primaryPaths.some(p => href.includes(p)) || isPolicy || href === '/' || href === '/en/';
+    if (isPrimary) {
+      primaryLinks.push(link);
+    } else {
+      moreLinks.push(link);
+    }
+  });
+
+  if (moreLinks.length === 0) return;
+
+  // Rebuild nav
+  nav.innerHTML = '';
+  primaryLinks.forEach(link => nav.appendChild(link));
+
+  const isZh = document.documentElement.lang && document.documentElement.lang.startsWith('zh');
+  const moreDiv = document.createElement('div');
+  moreDiv.className = 'nav-more';
+  const moreBtn = document.createElement('button');
+  moreBtn.type = 'button';
+  moreBtn.className = 'nav-more-btn';
+  moreBtn.textContent = isZh ? '更多 ▼' : 'More ▼';
+  const dropdown = document.createElement('div');
+  dropdown.className = 'nav-more-dropdown';
+  moreLinks.forEach(link => dropdown.appendChild(link.cloneNode(true)));
+
+  moreDiv.appendChild(moreBtn);
+  moreDiv.appendChild(dropdown);
+  nav.appendChild(moreDiv);
+  if (langBtn) nav.appendChild(langBtn);
+
+  moreBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    moreDiv.classList.toggle('open');
+  });
+  document.addEventListener('click', () => {
+    moreDiv.classList.remove('open');
+  });
+})();
 
 // Mobile nav
 (function() {
   const toggle = document.querySelector('.mobile-toggle');
   const nav = document.querySelector('.nav-links');
-  if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-      nav.style.position = 'absolute';
-      nav.style.top = '64px';
-      nav.style.left = '0';
-      nav.style.right = '0';
-      nav.style.background = '#fff';
-      nav.style.flexDirection = 'column';
-      nav.style.padding = '16px';
-      nav.style.borderBottom = '1px solid var(--border)';
-      nav.style.boxShadow = 'var(--shadow)';
-    });
+  if (!toggle || !nav) return;
+
+  function openMenu() {
+    nav.style.display = 'flex';
+    nav.style.position = 'absolute';
+    nav.style.top = '64px';
+    nav.style.left = '0';
+    nav.style.right = '0';
+    nav.style.background = '#fff';
+    nav.style.flexDirection = 'column';
+    nav.style.padding = '16px';
+    nav.style.borderBottom = '1px solid var(--border)';
+    nav.style.boxShadow = 'var(--shadow)';
+    nav.style.zIndex = '99';
+    nav.style.maxHeight = 'calc(100vh - 64px)';
+    nav.style.overflowY = 'auto';
+    toggle.setAttribute('aria-expanded', 'true');
   }
+
+  function closeMenu() {
+    nav.style.display = 'none';
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (nav.style.display === 'flex') {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  // Auto-close when clicking a link or button inside nav
+  nav.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('click', closeMenu);
+  });
+
+  // Auto-close when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!toggle.contains(e.target) && !nav.contains(e.target)) {
+      closeMenu();
+    }
+  });
 })();
 
 // FAQ toggle
