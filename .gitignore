@@ -1,3 +1,10 @@
 ﻿# Exclude project docs
 复杂ai提示词构造.md
 promotion.md
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
