@@ -88,8 +88,14 @@ window.copyText = copyText;
   const toggle = document.querySelector('.mobile-toggle');
   const nav = document.querySelector('.nav-links');
   if (!toggle || !nav) return;
+  const mobileQuery = window.matchMedia('(max-width: 900px)');
+
+  function isMobileNav() {
+    return mobileQuery.matches;
+  }
 
   function openMenu() {
+    if (!isMobileNav()) return;
     nav.style.display = 'flex';
     nav.style.position = 'absolute';
     nav.style.top = '64px';
@@ -107,6 +113,7 @@ window.copyText = copyText;
   }
 
   function closeMenu() {
+    if (!isMobileNav()) return;
     nav.style.display = 'none';
     toggle.setAttribute('aria-expanded', 'false');
   }
@@ -127,10 +134,23 @@ window.copyText = copyText;
 
   // Auto-close when clicking outside
   document.addEventListener('click', (e) => {
-    if (!toggle.contains(e.target) && !nav.contains(e.target)) {
+    if (isMobileNav() && !toggle.contains(e.target) && !nav.contains(e.target)) {
       closeMenu();
     }
   });
+
+  function resetDesktopNav() {
+    if (!isMobileNav()) {
+      nav.removeAttribute('style');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  if (mobileQuery.addEventListener) {
+    mobileQuery.addEventListener('change', resetDesktopNav);
+  } else {
+    mobileQuery.addListener(resetDesktopNav);
+  }
 })();
 
 // FAQ toggle
