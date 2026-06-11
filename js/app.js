@@ -41,14 +41,15 @@ window.copyText = copyText;
   const langBtn = nav.querySelector('.lang-switch');
   if (links.length <= 8) return; // Short enough, skip
 
-  const primaryPaths = ['/', 'ppt', 'article', 'video', 'prd', 'resume'];
+  const primaryPaths = ['ppt', 'article', 'video', 'prd', 'resume'];
   const primaryLinks = [];
   const moreLinks = [];
 
   links.forEach(link => {
     const href = link.getAttribute('href') || '';
     const isPolicy = href.includes('about') || href.includes('contact') || href.includes('privacy');
-    const isPrimary = primaryPaths.some(p => href.includes(p)) || isPolicy || href === '/' || href === '/en/';
+    const isHome = href === '/' || href === '/en/';
+    const isPrimary = primaryPaths.some(p => href.includes(p)) || isPolicy || isHome;
     if (isPrimary) {
       primaryLinks.push(link);
     } else {
