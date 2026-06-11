@@ -42,7 +42,6 @@ window.copyText = copyText;
   if (links.length <= 8) return; // Short enough, skip
 
   const primaryPaths = ['ppt', 'article', 'video', 'prd', 'resume'];
-  const primaryLinks = [];
   const moreLinks = [];
 
   links.forEach(link => {
@@ -50,18 +49,12 @@ window.copyText = copyText;
     const isPolicy = href.includes('about') || href.includes('contact') || href.includes('privacy');
     const isHome = href === '/' || href === '/en/';
     const isPrimary = primaryPaths.some(p => href.includes(p)) || isPolicy || isHome;
-    if (isPrimary) {
-      primaryLinks.push(link);
-    } else {
+    if (!isPrimary) {
       moreLinks.push(link);
     }
   });
 
   if (moreLinks.length === 0) return;
-
-  // Rebuild nav
-  nav.innerHTML = '';
-  primaryLinks.forEach(link => nav.appendChild(link));
 
   const isZh = document.documentElement.lang && document.documentElement.lang.startsWith('zh');
   const moreDiv = document.createElement('div');
@@ -72,7 +65,9 @@ window.copyText = copyText;
   moreBtn.textContent = isZh ? '更多 ▼' : 'More ▼';
   const dropdown = document.createElement('div');
   dropdown.className = 'nav-more-dropdown';
-  moreLinks.forEach(link => dropdown.appendChild(link.cloneNode(true)));
+
+  // Move overflow links into dropdown
+  moreLinks.forEach(link => dropdown.appendChild(link));
 
   moreDiv.appendChild(moreBtn);
   moreDiv.appendChild(dropdown);
