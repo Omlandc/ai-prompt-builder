@@ -97,18 +97,19 @@ async function main() {
       title: oc.title || `案例 ${id}`,
       category: oc.category || "未分类",
       source: "builtin",
-      description: oc.promptPreview || (oc.prompt ? oc.prompt.slice(0, 200) : ""),
+      // 描述：优先用 v2 的中文展示说明（是干净的元描述，不是原始 prompt）
+      description: v2?.prompt_display_cn || "",  // 这里不放原始 prompt 的裁切，避免露出破 JSON
       status: "ready",
       image_filename: imageFilename,
       // 我们的 public/data/images 部署路径 = 原仓库的 /images/ 路径加上 /data/ 前缀
       image_path: `/data/images/${imageFilename}`,
       thumb_path: `/data/images/${imageFilename}`,
       image_count: 1,
-      // 来自原始
+      // 原始提示词：是可以直接喂给 AI 生成器的纯文本，不含元描述/模板
       prompt_raw: synthesizePromptRaw(oc, v2),
-      prompt_preview: oc.promptPreview || "",
+      prompt_preview: "",  // 废弃，之前是裁切的坏 JSON
       // 来自 v2（如有），否则从 prompt 派生
-      prompt_display_cn: v2?.prompt_display_cn || oc.promptPreview || "",
+      prompt_display_cn: v2?.prompt_display_cn || "",
       prompt_template_cn: v2?.prompt_template_cn || "",
       // engine 与 template 一致时记为 null，前端不重复渲染
       prompt_engine_cn: v2?.prompt_engine_cn && v2.prompt_engine_cn !== v2.prompt_template_cn ? v2.prompt_engine_cn : null,
@@ -215,13 +216,15 @@ function isBrokenRawPrompt(raw) {
 }
 
 // 渲染 {argument name="X" default="Y"} → Y（如果没有 default 则保留为 X）
+// 支持带转义反斜杠的引号（JSON 字符串里的 \"）
 function renderTemplateDefaults(raw) {
   if (!raw) return raw;
-  return raw
-    .replace(/\{argument\s+name\s*=\s*"([^"]+)"\s+default\s*=\s*"([^"]*)"\s*\}/g, (_, _name, def) => def)
-    .replace(/\{argument\s+name\s*=\s*"([^"]+)"\s*\}/g, "$1")
-    .replace(/\{argument\s+name\s*=\s*'([^']+)'\s+default\s*=\s*'([^']*)'\s*\}/g, (_, _name, def) => def)
-    .replace(/\{argument\s+name\s*=\s*'([^']+)'\s*\}/g, "$1");
+  // 1. 先反转义：把 \" 变 "、\' 变 '。源数据是 JSON 编码的， quote 都被反斜杠转义
+  const normalized = raw.replace(/\\"/g, '"').replace(/\\'/g, "'");
+  return normalized.replace(
+    /\{argument\s+name\s*=\s*(["'])([\s\S]*?)\1\s*(?:default\s*=\s*(["'])([\s\S]*?)\3)?\s*\}/g,
+    (_, _q1, name, q2, def) => (q2 && def !== undefined ? def : name)
+  );
 }
 
 // 从 prompt_template_cn 里拍【】占位符，生成 variables_json
@@ -248,10 +251,10 @@ function extractVariablesFromTemplate(template) {
   return Array.from(seen.values());
 }
 
-// 合成一个可用的 prompt_raw：
-// 1. 优先用 v2 的（如果是好的）
-// 2. 否则用原仓库的（渲染默认参数后）
-// 3. 都不行就用 display_cn + template 拼
+// 合成一个可用的 prompt_raw：只放可直接喂给 AI 生成器的纯文本（不含元描述、不含模板）
+// 1. 优先 v2.prompt_raw（如果是干净文本，例如已翻译的英文 prompt）
+// 2. 否则用原仓库的 oc.prompt（渲染默认参数后）
+// 3. 都不行返回空字符串
 function synthesizePromptRaw(oc, v2) {
   if (v2?.prompt_raw && !isBrokenRawPrompt(v2.prompt_raw)) {
     return v2.prompt_raw;
@@ -259,7 +262,6 @@ function synthesizePromptRaw(oc, v2) {
   if (oc?.prompt && !isBrokenRawPrompt(oc.prompt)) {
     return oc.prompt;
   }
-  // 渲染默认参数
   if (v2?.prompt_raw) {
     const rendered = renderTemplateDefaults(v2.prompt_raw);
     if (rendered && !isBrokenRawPrompt(rendered)) return rendered;
@@ -268,12 +270,6 @@ function synthesizePromptRaw(oc, v2) {
     const rendered = renderTemplateDefaults(oc.prompt);
     if (rendered && !isBrokenRawPrompt(rendered)) return rendered;
   }
-  // 拼接：描述 + 填入模板
-  const desc = v2?.prompt_display_cn || oc?.promptPreview || "";
-  const tpl = v2?.prompt_template_cn || "";
-  if (desc && tpl) return `${desc}\n\n${tpl}`;
-  if (desc) return desc;
-  if (tpl) return tpl;
   return "";
 }
 
