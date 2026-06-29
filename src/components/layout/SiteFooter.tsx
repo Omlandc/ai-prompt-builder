@@ -16,8 +16,8 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
               {locale === "zh"
-                ? "13 款 AI 提示词工具 + 346 条图像配方，一站搞定。"
-                : "13 AI prompt tools + 346 image recipes, all in one place."}
+                ? "13 款 AI 提示词工具 + 图像配方库，一站搞定。"
+                : "13 AI prompt tools + an image recipe library, all in one place."}
             </p>
           </div>
 

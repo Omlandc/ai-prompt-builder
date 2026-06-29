@@ -6,6 +6,7 @@ import Contact from "@/pages/Contact";
 import Privacy from "@/pages/Privacy";
 import ToolPage from "@/pages/ToolPage";
 import ImageLibrary from "@/pages/ImageLibrary";
+import CaseDetailRoute from "@/pages/CaseDetailRoute";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/tools/image" element={<ImageLibrary />} />
         <Route path="/tools/:slug" element={<ToolPage />} />
+        <Route path="/case/:id" element={<CaseDetailRoute />} />
         <Route path="*" element={<Home />} />
       </Route>
     </Routes>

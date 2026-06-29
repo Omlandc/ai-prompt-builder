@@ -1,9 +1,10 @@
 import { Link, useOutletContext } from "react-router";
-import { ArrowRight, Layers, Sparkles, Workflow } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { SiteOutletContext } from "@/components/layout/SiteLayout";
 import { tools } from "@/config/tools";
 import { loc } from "@/lib/loc";
+import { CaseCarousel } from "@/components/home/CaseCarousel";
 
 export default function Home() {
   const { locale } = useOutletContext<SiteOutletContext>();
@@ -20,7 +21,7 @@ export default function Home() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary text-xs font-medium mb-4">
               <Sparkles className="h-3.5 w-3.5" />
-              {locale === "zh" ? "13 款提示词工具 + 346 条图像配方" : "13 prompt tools + 346 image recipes"}
+              {locale === "zh" ? "13 款提示词工具 + 图像配方库" : "13 prompt tools + an image recipe library"}
             </div>
             <h1 className="text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight">
               {locale === "zh" ? (
@@ -31,8 +32,8 @@ export default function Home() {
             </h1>
             <p className="mt-5 text-lg text-muted-foreground max-w-2xl leading-relaxed">
               {locale === "zh"
-                ? "复杂 AI 提示词构造是一个面向 Prompt Engineer 的工具集，覆盖图像、视频、文章、PPT、PRD、简历等 13 个高频场景。所有工具都在浏览器内运行，你的内容不会上传。"
-                : "Complex AI Prompt Builder is a toolset for prompt engineers — 13 high-frequency scenarios including image, video, article, PPT, PRD and resume. All tools run in your browser; nothing is uploaded."}
+                ? "面向写作者、设计师与产品人的 AI 提示词工作台：覆盖图像、视频、文章、PPT、PRD、简历等高频场景。所有工具都在浏览器内运行，你的内容不会上传。"
+                : "A prompt workspace for writers, designers, and product folks. Covers image, video, article, PPT, PRD, resume, and more. Everything runs in your browser — nothing is uploaded."}
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Button asChild size="lg" className="gap-2">
@@ -47,22 +48,8 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl">
-            <StatBlock
-              icon={<Layers className="h-5 w-5 text-blue-500" />}
-              title={locale === "zh" ? "13 个工具" : "13 tools"}
-              subtitle={locale === "zh" ? "覆盖写作、设计、规划场景" : "writing, design, planning"}
-            />
-            <StatBlock
-              icon={<Sparkles className="h-5 w-5 text-purple-500" />}
-              title={locale === "zh" ? "346 案例" : "346 cases"}
-              subtitle={locale === "zh" ? "图像提示词配方" : "image prompt recipes"}
-            />
-            <StatBlock
-              icon={<Workflow className="h-5 w-5 text-pink-500" />}
-              title={locale === "zh" ? "实时预览" : "Live preview"}
-              subtitle={locale === "zh" ? "输入即生成，可一键复制" : "Type, generate, copy"}
-            />
+          <div className="mt-12">
+            <CaseCarousel locale={locale} />
           </div>
         </div>
       </section>
@@ -110,8 +97,8 @@ export default function Home() {
           </h3>
           <p className="text-blue-50/90 mb-5 max-w-2xl">
             {locale === "zh"
-              ? "我们的图像工具直接集成 346 条经验证的提示词配方 + 即时填空模板，5 秒生成可用提示词。"
-              : "Our image tool integrates 346 verified prompt recipes + live fill-in templates — generate usable prompts in 5 seconds."}
+              ? "图像工具集成了策展过的提示词配方与填空模板，挑一个案例改造，或者从零开始拼装自己的版本。"
+              : "The image tool ships with curated prompt recipes and fill-in templates. Start from a real case, or compose one from scratch."}
           </p>
           <Button asChild variant="secondary" size="lg" className="gap-2">
             <Link to="/tools/image">
@@ -125,14 +112,4 @@ export default function Home() {
   );
 }
 
-function StatBlock({ icon, title, subtitle }: { icon: React.ReactNode; title: string; subtitle: string }) {
-  return (
-    <div className="rounded-xl bg-card border border-border p-5 flex items-start gap-4">
-      <div className="grid h-10 w-10 place-items-center rounded-lg bg-secondary">{icon}</div>
-      <div>
-        <div className="font-semibold">{title}</div>
-        <div className="text-xs text-muted-foreground mt-0.5">{subtitle}</div>
-      </div>
-    </div>
-  );
-}
+

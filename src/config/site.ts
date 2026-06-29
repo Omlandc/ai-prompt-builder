@@ -3,8 +3,8 @@ import type { Locale } from "@/types/tool";
 export const SITE_NAME = "复杂 AI 提示词构造";
 export const SITE_NAME_EN = "Complex AI Prompt Builder";
 export const SITE_TAGLINE = {
-  zh: "13 款 AI 提示词工具 + 346 条图像配方，一站搞定",
-  en: "13 prompt tools + 346 image recipes, all in one place",
+  zh: "13 款 AI 提示词工具 + 图像配方库，一站搞定",
+  en: "13 AI prompt tools + an image recipe library, all in one place",
 };
 export const SITE_DESCRIPTION = {
   zh: "为 AI 模型生成高质量提示词。覆盖图像、视频、文章、PPT、PRD、简历等场景，并集成图像配方库。",

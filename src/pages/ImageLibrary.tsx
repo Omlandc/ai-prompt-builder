@@ -79,8 +79,8 @@ export default function ImageLibrary() {
         </h1>
         <p className="mt-2 text-muted-foreground max-w-3xl leading-relaxed">
           {locale === "zh"
-            ? "346 条经过策展的 AI 图像提示词配方。浏览、搜索、用填空模板生成你自己的版本。"
-            : "346 curated AI image prompt recipes. Browse, search, and generate your own with fill-in templates."}
+            ? "策展过的 AI 图像提示词配方。浏览、搜索、用填空模板生成你自己的版本。"
+            : "Curated AI image prompt recipes. Browse, search, and generate your own with fill-in templates."}
         </p>
         {headerStats}
       </div>

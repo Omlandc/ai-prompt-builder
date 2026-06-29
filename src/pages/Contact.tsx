@@ -17,22 +17,22 @@ export default function Contact() {
 
       <div className="grid md:grid-cols-2 gap-4">
         <ContactCard
-          icon={<Mail className="h-5 w-5" />}
-          title={locale === "zh" ? "邮箱" : "Email"}
-          subtitle="[email protected]"
-          href="mailto:[email protected]"
-        />
-        <ContactCard
           icon={<Github className="h-5 w-5" />}
           title={locale === "zh" ? "GitHub" : "GitHub"}
-          subtitle="Omlandc/ai-prompt-builder"
+          subtitle="ai-prompt-builder"
           href="https://github.com/Omlandc/ai-prompt-builder"
         />
         <ContactCard
           icon={<MessageSquare className="h-5 w-5" />}
-          title={locale === "zh" ? "反馈" : "Feedback"}
+          title={locale === "zh" ? "功能请求与反馈" : "Feature requests & feedback"}
           subtitle={locale === "zh" ? "欢迎在 GitHub Issues 中提建议" : "Open a GitHub issue"}
           href="https://github.com/Omlandc/ai-prompt-builder/issues"
+        />
+        <ContactCard
+          icon={<Mail className="h-5 w-5" />}
+          title={locale === "zh" ? "邮件" : "Email"}
+          subtitle={locale === "zh" ? "详细合作请发邮件" : "For collaboration, drop a line"}
+          href="#"
         />
         <Card>
           <CardContent className="pt-6">
