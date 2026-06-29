@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { ArrowLeft, Maximize2, X, ImageOff, Pencil, Save, Trash2, RotateCcw } from "lucide-react";
+import { ArrowLeft, Maximize2, X, ImageOff, Pencil } from "lucide-react";
 import type { CaseDetail as Detail, CaseImage } from "@/types/case";
-import { fetchCase, markBuiltinDeleted } from "@/lib/api";
-import { setOverride, subscribe, clearAll } from "@/lib/userStore";
+import { fetchCase } from "@/lib/api";
 import { CopyButton } from "@/components/common/CopyButton";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -75,12 +74,10 @@ function ImageStage({ images }: { images: CaseImage[] }) {
 function EditableSection({
   title,
   body,
-  onSave,
   language,
 }: {
   title: string;
   body: string;
-  onSave: (next: string) => void;
   language?: "json";
 }) {
   const [editing, setEditing] = useState(false);
@@ -96,7 +93,9 @@ function EditableSection({
     return (
       <div>
         <div className="flex items-center justify-between mb-1.5">
-          <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{title}</div>
+          <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            {title} <span className="text-muted-foreground/60">（编辑中）</span>
+          </div>
           <div className="flex gap-1.5">
             <Button
               variant="ghost"
@@ -110,17 +109,7 @@ function EditableSection({
               <X size={14} />
               取消
             </Button>
-            <Button
-              size="sm"
-              onClick={() => {
-                if (draft !== body) onSave(draft);
-                setEditing(false);
-              }}
-              className="gap-1.5"
-            >
-              <Save size={14} />
-              保存
-            </Button>
+            <CopyButton text={draft} variant="default" size="sm" />
           </div>
         </div>
         <Textarea
@@ -156,11 +145,9 @@ function EditableSection({
 function EditableMeta({
   c,
   tagList,
-  onSave,
 }: {
   c: Detail["case"];
   tagList: string[];
-  onSave: (patch: Partial<Detail["case"]> & { tagsString?: string }) => void;
 }) {
   const [editing, setEditing] = useState(false);
   const [title, setTitle] = useState(c.title || "");
@@ -174,10 +161,11 @@ function EditableMeta({
   }, [c.title, c.description, tagList.join("，")]);
 
   if (editing) {
+    const editedBlock = `# ${title.trim() || c.title}\n\n${description.trim()}\n\n标签：${tagsString.trim() || tagList.join("，")}`;
     return (
       <div className="space-y-3 p-4 rounded-lg border border-primary/30 bg-primary/5">
         <div className="flex items-center justify-between">
-          <div className="text-xs font-semibold uppercase tracking-wide text-primary">编辑案例</div>
+          <div className="text-xs font-semibold uppercase tracking-wide text-primary">编辑案例（不保存）</div>
           <div className="flex gap-1.5">
             <Button
               variant="ghost"
@@ -193,21 +181,7 @@ function EditableMeta({
               <X size={14} />
               取消
             </Button>
-            <Button
-              size="sm"
-              onClick={() => {
-                onSave({
-                  title: title.trim() || c.title,
-                  description: description.trim(),
-                  tagsString: tagsString.trim(),
-                });
-                setEditing(false);
-              }}
-              className="gap-1.5"
-            >
-              <Save size={14} />
-              保存
-            </Button>
+            <CopyButton text={editedBlock} variant="default" size="sm" />
           </div>
         </div>
         <div className="space-y-2">
@@ -260,48 +234,18 @@ export function CaseDetail({ id, onBack }: Props) {
   const [data, setData] = useState<Detail | null>(null);
   const [loading, setLoading] = useState(true);
 
-  async function load() {
-    setLoading(true);
-    const d = await fetchCase(id);
-    setData(d);
-    setLoading(false);
-  }
-
   useEffect(() => {
-    load();
-    const unsub = subscribe(() => load());
-    return unsub;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    let mounted = true;
+    setLoading(true);
+    fetchCase(id).then((d) => {
+      if (!mounted) return;
+      setData(d);
+      setLoading(false);
+    });
+    return () => {
+      mounted = false;
+    };
   }, [id]);
-
-  function saveField(field: keyof Detail["prompt"], value: string) {
-    if (!data) return;
-    // Save the field via setOverride on userStore
-    const patch: Record<string, string> = {};
-    if (field === "prompt_raw") patch.prompt_raw = value;
-    else if (field === "prompt_display_cn") patch.prompt_display_cn = value;
-    else if (field === "prompt_template_cn") patch.prompt_template_cn = value;
-    else if (field === "prompt_engine_cn") patch.prompt_engine_cn = value;
-    else if (field === "variables_json") patch.prompt_engine_cn = value; // proxy
-    setOverride(id, patch);
-  }
-
-  function saveMeta(patch: Partial<Detail["case"]> & { tagsString?: string }) {
-    if (!data) return;
-    const override: Record<string, string> = {};
-    if (patch.title !== undefined) override.title = patch.title;
-    if (patch.description !== undefined) override.description = patch.description;
-    if (patch.tagsString !== undefined) override.tags = patch.tagsString;
-    setOverride(id, override);
-  }
-
-  function deleteCase() {
-    if (!data) return;
-    const ok = window.confirm(`确定要从你的视图里隐藏 #${data.case.case_no}「${data.case.title}」吗？\n（不会删除内置数据，刷新页面后可在 localStorage 清除时恢复。）`);
-    if (!ok) return;
-    markBuiltinDeleted(typeof id === "number" ? id : Number(id));
-    onBack();
-  }
 
   if (loading) {
     return (
@@ -329,7 +273,6 @@ export function CaseDetail({ id, onBack }: Props) {
 
   const { case: c, images, prompt, tags } = data;
   const tagList = (tags || []).map((t) => t.name);
-  const isUserOverridden = hasOverride(id);
 
   return (
     <div className="container mx-auto px-4 py-6 md:py-10">
@@ -338,23 +281,6 @@ export function CaseDetail({ id, onBack }: Props) {
           <ArrowLeft size={14} />
           返回列表
         </Button>
-        <div className="flex items-center gap-1.5">
-          {isUserOverridden && (
-            <Button variant="ghost" size="sm" onClick={() => {
-              const ok = window.confirm("确定要恢复成原始数据吗？你的本地修改会被丢弃。");
-              if (ok) {
-                clearAll();
-              }
-            }} className="gap-1.5 text-muted-foreground" title="恢复成原始内置数据">
-              <RotateCcw size={14} />
-              恢复
-            </Button>
-          )}
-          <Button variant="ghost" size="sm" onClick={deleteCase} className="gap-1.5 text-destructive hover:text-destructive">
-            <Trash2 size={14} />
-            隐藏
-          </Button>
-        </div>
       </div>
 
       <div className="grid lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] gap-6 lg:gap-10">
@@ -363,7 +289,7 @@ export function CaseDetail({ id, onBack }: Props) {
         </div>
 
         <div className="space-y-5">
-          <EditableMeta c={c} tagList={tagList} onSave={saveMeta} />
+          <EditableMeta c={c} tagList={tagList} />
 
           <Tabs defaultValue="display" className="w-full">
             <TabsList className="grid w-full grid-cols-3">
@@ -372,42 +298,20 @@ export function CaseDetail({ id, onBack }: Props) {
               <TabsTrigger value="raw">原始提示词</TabsTrigger>
             </TabsList>
             <TabsContent value="display" className="space-y-3">
-              <EditableSection
-                title="中文展示说明"
-                body={prompt.prompt_display_cn}
-                onSave={(v) => saveField("prompt_display_cn", v)}
-              />
-              <EditableSection
-                title="原始提示词"
-                body={prompt.prompt_raw}
-                onSave={(v) => saveField("prompt_raw", v)}
-              />
+              <EditableSection title="中文展示说明" body={prompt.prompt_display_cn} />
+              <EditableSection title="原始提示词" body={prompt.prompt_raw} />
             </TabsContent>
             <TabsContent value="template" className="space-y-3">
-              <EditableSection
-                title="填空模板"
-                body={prompt.prompt_template_cn}
-                onSave={(v) => saveField("prompt_template_cn", v)}
-              />
-              <EditableSection
-                title="填空引擎"
-                body={prompt.prompt_engine_cn}
-                onSave={(v) => saveField("prompt_engine_cn", v)}
-              />
-              {prompt.variables_json && (
-                <EditableSection
-                  title="变量定义"
-                  body={prompt.variables_json}
-                  language="json"
-                  onSave={(v) => {
-                    // store via overriding prompt_engine_cn as a side-channel; we keep original logic simple
-                    setOverride(id, { prompt_engine_cn: v });
-                  }}
-                />
+              <EditableSection title="填空模板" body={prompt.prompt_template_cn} />
+              {prompt.prompt_engine_cn && (
+                <EditableSection title="填空引擎" body={prompt.prompt_engine_cn} />
+              )}
+              {prompt.variables_json && prompt.variables_json !== "[]" && prompt.variables_json !== "null" && (
+                <EditableSection title="变量定义" body={prompt.variables_json} language="json" />
               )}
             </TabsContent>
             <TabsContent value="raw" className="space-y-3">
-              <EditableSection title="原始提示词 (Raw)" body={prompt.prompt_raw} onSave={(v) => saveField("prompt_raw", v)} />
+              <EditableSection title="原始提示词 (Raw)" body={prompt.prompt_raw} />
               <div className="grid grid-cols-2 gap-3 text-xs">
                 <MetaItem label="语言模式" value={prompt.language_mode} />
                 <MetaItem label="提示词风格" value={prompt.prompt_style} />
@@ -430,16 +334,4 @@ function MetaItem({ label, value }: { label: string; value?: string }) {
       <div className="mt-1 font-medium">{value}</div>
     </div>
   );
-}
-
-function hasOverride(id: number | string): boolean {
-  if (typeof window === "undefined") return false;
-  try {
-    const raw = window.localStorage.getItem("ipl_user_store_v1");
-    if (!raw) return false;
-    const s = JSON.parse(raw);
-    return Boolean(s.overrides?.[String(id)] && Object.keys(s.overrides[String(id)]).length > 0);
-  } catch {
-    return false;
-  }
 }

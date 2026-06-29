@@ -40,7 +40,6 @@ export type FetchCasesParams = {
   q?: string;
   tag?: string;
   tag_group?: string;
-  source?: string;
   prompt_style?: string;
   language_mode?: string;
   limit?: number;
@@ -75,7 +74,6 @@ function matches(item: CaseListItem, params: FetchCasesParams): boolean {
       return false;
     }
   }
-  if (params.source && params.source !== "全部" && item.source !== params.source) return false;
   if (params.prompt_style && params.prompt_style !== "全部" && item.prompt_style !== params.prompt_style) return false;
   if (params.language_mode && params.language_mode !== "全部" && item.language_mode !== params.language_mode) return false;
   if (params.q) {
@@ -221,6 +219,7 @@ export async function fetchCase(id: number | string): Promise<CaseDetail | null>
       prompt_raw: flat.prompt_raw || "",
       prompt_display_cn: flat.prompt_display_cn || "",
       prompt_template_cn: flat.prompt_template_cn || "",
+      // engine 可能为 null（与 template 一致时，merge 阶段不重复存储）
       prompt_engine_cn: flat.prompt_engine_cn || "",
       variables_json: flat.variables_json || "[]",
       language_mode: flat.language_mode || "mixed",
