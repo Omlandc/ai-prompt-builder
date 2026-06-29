@@ -182,10 +182,59 @@ export async function fetchCase(id: number | string): Promise<CaseDetail | null>
   }
   const detail = await detailCache.get(cacheKey);
   if (!detail) return null;
-  const d = detail;
+
+  // Static JSON is FLAT: { id, title, ..., image_path, prompt_raw, ... }
+  // CaseDetail component expects NESTED: { case: {...}, images: [...], prompt: {...}, versions: [], tags: [...] }
+  // Map flat → nested on the fly:
+  const flat = detail as unknown as Record<string, any>;
+  const imagePath = flat.image_path || flat.thumb_path;
+  const tagList = String(flat.tags || "").split("，").filter(Boolean);
+  const wrapped: CaseDetail = {
+    case: {
+      id: flat.id,
+      case_no: flat.case_no,
+      title: flat.title,
+      category: flat.category,
+      source: flat.source,
+      description: flat.description,
+      status: flat.status,
+      created_at: flat.created_at,
+      updated_at: flat.updated_at,
+    },
+    images: imagePath
+      ? [
+          {
+            id: `${flat.id}-img0`,
+            case_id: flat.id,
+            role: "main",
+            page_index: 0,
+            filename: flat.image_filename || "",
+            file_path: imagePath,
+            thumb_path: flat.thumb_path || imagePath,
+          },
+        ]
+      : [],
+    prompt: {
+      id: `${flat.id}-pv0`,
+      case_id: flat.id,
+      version_name: "v1",
+      prompt_raw: flat.prompt_raw || "",
+      prompt_display_cn: flat.prompt_display_cn || "",
+      prompt_template_cn: flat.prompt_template_cn || "",
+      prompt_engine_cn: flat.prompt_engine_cn || "",
+      variables_json: flat.variables_json || "[]",
+      language_mode: flat.language_mode || "mixed",
+      prompt_style: flat.prompt_style || "natural",
+      rewrite_status: flat.rewrite_status || "fully_optimized_sample",
+      created_at: flat.created_at,
+    },
+    versions: [],
+    tags: tagList.map((name) => ({ name })),
+  };
+
   const override = getOverride(id);
-  if (override) return applyToDetail(d, override);
-  return d;
+  if (override) return applyToDetail(wrapped, override);
+  return wrapped;
 }
 
 export { subscribeUserStore, storeAddCustomCase, storeDeleteCustomCase, markBuiltinDeleted };
