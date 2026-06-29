@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import type { Locale, ToolDefinition, ToolField } from "@/types/tool";
 import { loc, locColumnLabel, locFieldHint, locFieldLabel, locFieldPlaceholder, locOptionLabel, type Localized } from "@/lib/loc";
 import { Input } from "@/components/ui/input";
+import { ClipboardList, Wand2 } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
@@ -10,7 +11,6 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { CopyButton } from "@/components/common/CopyButton";
-import { Wand2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -83,7 +83,7 @@ export function PromptForm({ tool, locale }: Props) {
       <section className="space-y-5">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold flex items-center gap-2">
-            <span className="text-2xl">{tool.icon}</span>
+            <tool.icon className="h-7 w-7" />
             {loc(tool.title, locale)}
           </h2>
           <Button variant="ghost" size="sm" onClick={fillExample} type="button" className="text-muted-foreground gap-1.5">
@@ -110,7 +110,8 @@ export function PromptForm({ tool, locale }: Props) {
         <div className="flex items-center justify-between">
           <div>
             <div className="text-sm font-medium flex items-center gap-2">
-              <span>📋 {locale === "zh" ? "提示词预览" : "Preview"}</span>
+              <ClipboardList className="h-4 w-4" />
+              <span>{locale === "zh" ? "提示词预览" : "Preview"}</span>
               <Badge variant="secondary" className="text-xs">
                 {locale === "zh" ? "实时更新" : "live"}
               </Badge>

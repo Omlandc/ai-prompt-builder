@@ -57,7 +57,6 @@ export function SiteHeader({ locale, onLocaleChange }: Props) {
 
         {/* Desktop nav (xl+) */}
         <nav className="hidden xl:flex items-center gap-0.5">
-          <NavItem to="/" end>{locale === "zh" ? "首页" : "Home"}</NavItem>
           {primaryTools.map((t) => (
             <NavItem key={t.slug} to={`/tools/${t.slug}`}>
               {loc(t.title, locale)}
@@ -69,8 +68,7 @@ export function SiteHeader({ locale, onLocaleChange }: Props) {
 
         {/* Compact nav (md-xl) — fewer items */}
         <nav className="hidden md:flex xl:hidden items-center gap-0.5">
-          <NavItem to="/" end>{locale === "zh" ? "首页" : "Home"}</NavItem>
-          <NavItem to="/tools/image">{locale === "zh" ? "图像" : "Image"}</NavItem>
+          <NavItem to="/tools/image">{locale === "zh" ? "AI 绘画" : "Image"}</NavItem>
           <NavItem to="/tools/video">{locale === "zh" ? "视频" : "Video"}</NavItem>
           <NavItem to="/tools/article">{locale === "zh" ? "文章" : "Article"}</NavItem>
           <MoreDropdown locale={locale} moreTools={moreTools} compact />
@@ -162,7 +160,7 @@ function MoreDropdown({
         {moreTools.map((t) => (
           <DropdownMenuItem key={t.slug} asChild>
             <Link to={`/tools/${t.slug}`} className="cursor-pointer">
-              <span className="mr-2 text-base">{t.icon}</span>
+              <t.icon className="mr-2 h-4 w-4" />
               {loc(t.title, locale)}
             </Link>
           </DropdownMenuItem>
@@ -192,7 +190,7 @@ function MobileMenu({ locale, onClose }: { locale: Locale; onClose: () => void }
       <MobileSectionTitle>{locale === "zh" ? "工具" : "Tools"}</MobileSectionTitle>
       {tools.map((t) => (
         <MobileNavItem key={t.slug} to={`/tools/${t.slug}`} onClose={onClose}>
-          <span className="mr-2 text-base">{t.icon}</span>
+          <t.icon className="mr-2 h-4 w-4" />
           {loc(t.title, locale)}
         </MobileNavItem>
       ))}

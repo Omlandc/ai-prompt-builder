@@ -6,12 +6,11 @@ type Props = {
   meta?: MetaData;
   tag: string;
   funSubTag: string;
-  source: string;
   promptStyle: string;
   language: string;
   open?: boolean;
   onClose?: () => void;
-  onChange: (patch: Partial<{ tag: string; funSubTag: string; source: string; promptStyle: string; language: string }>) => void;
+  onChange: (patch: Partial<{ tag: string; funSubTag: string; promptStyle: string; language: string }>) => void;
 };
 
 function FilterGroup({ title, children }: { title: string; children: React.ReactNode }) {
@@ -39,10 +38,9 @@ function OptionButton({ active, children, onClick }: { active: boolean; children
   );
 }
 
-export function CaseFilter({ meta, tag, funSubTag, source, promptStyle, language, open, onClose, onChange }: Props) {
+export function CaseFilter({ meta, tag, funSubTag, promptStyle, language, open, onClose, onChange }: Props) {
   const tags = [{ name: "全部", count: meta?.stats.cases || 0 }, ...((meta?.tags || []).filter((x) => /[\u3400-\u9fff]/.test(x.name)))];
   const funSubTags = meta?.funSubTags || [];
-  const sources = [{ name: "全部", count: meta?.stats.cases || 0 }, ...(meta?.sources || [])];
   const styles = [{ name: "全部", count: meta?.stats.cases || 0 }, ...(meta?.promptStyles || [])];
   const languages = [{ name: "全部", count: meta?.stats.cases || 0 }, ...(meta?.languages || [])];
 
@@ -96,14 +94,6 @@ export function CaseFilter({ meta, tag, funSubTag, source, promptStyle, language
               ))}
             </FilterGroup>
           )}
-
-          <FilterGroup title="来源">
-            {sources.map((s) => (
-              <OptionButton key={s.name} active={source === s.name} onClick={() => onChange({ source: s.name })}>
-                {s.name}
-              </OptionButton>
-            ))}
-          </FilterGroup>
 
           <FilterGroup title="提示词风格">
             {styles.map((s) => (

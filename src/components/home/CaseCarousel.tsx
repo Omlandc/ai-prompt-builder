@@ -76,7 +76,7 @@ export function CaseCarousel({ locale }: Props) {
             <CarouselCard
               key={`${item.id}-${i}`}
               item={item}
-              onClick={() => navigate(`/#/case/${item.id}`)}
+              onClick={() => navigate(`/case/${item.id}`)}
             />
           ))}
         </div>

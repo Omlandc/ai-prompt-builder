@@ -38,7 +38,9 @@ export default function ToolPage() {
       {/* Title */}
       <div className="mb-8">
         <h1 className="text-3xl md:text-4xl font-bold flex items-center gap-3">
-          <span className="text-4xl md:text-5xl">{tool.icon}</span>
+          <span className="grid h-14 w-14 sm:h-16 sm:w-16 place-items-center rounded-2xl bg-primary/10 text-primary">
+            <tool.icon className="h-7 w-7 sm:h-8 sm:w-8" />
+          </span>
           {loc(tool.title, locale)}
         </h1>
         <p className="mt-3 text-muted-foreground max-w-3xl leading-relaxed">
@@ -58,7 +60,9 @@ export default function ToolPage() {
               to={`/tools/${t.slug}`}
               className="block bg-card border border-border rounded-lg p-3 hover:border-primary/60 transition-all"
             >
-              <div className="text-2xl">{t.icon}</div>
+              <div className="grid h-9 w-9 place-items-center rounded-md bg-primary/10 text-primary">
+                <t.icon className="h-4 w-4" />
+              </div>
               <div className="text-sm font-medium mt-2 line-clamp-1">{loc(t.title, locale)}</div>
             </Link>
           ))}

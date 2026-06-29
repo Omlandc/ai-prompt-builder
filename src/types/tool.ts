@@ -1,4 +1,7 @@
+import type { ComponentType, SVGProps } from "react";
 import type { Localized } from "@/lib/loc";
+
+export type ToolIcon = ComponentType<SVGProps<SVGSVGElement> & { size?: number | string }>;
 
 export type ToolFieldOption = { value: string; label: Localized };
 
@@ -61,7 +64,7 @@ export type ToolField =
 export type ToolDefinition = {
   slug: string;
   filename: string;
-  icon: string; // emoji
+  icon: ToolIcon; // lucide-react component
   title: Localized;
   description: Localized;
   hint?: Localized;

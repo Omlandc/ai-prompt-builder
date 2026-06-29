@@ -15,12 +15,12 @@ export default function About() {
       <Section
         title={locale === "zh" ? "我们提供什么" : "What we offer"}
         items={locale === "zh" ? [
-          "13 个针对常见场景的提示词生成器，全部在浏览器内运行",
+          "13 个针对常见场景的工具，全部在浏览器内运行",
           "500+ 条经过策展的图像提示词配方，覆盖海报、UI、插画、摄影、商品等 14 个主分类",
           "中英双语界面，照顾国内外创作者",
           "无登录、无后端、无追踪，所有数据保存在你的浏览器中",
         ] : [
-          "13 browser-side prompt generators for common scenarios",
+          "13 browser-side tools for common scenarios",
           "500+ curated image prompt recipes across 14 main categories — posters, UI, illustration, photography, commerce, and more",
           "Bilingual CN/EN interface for creators worldwide",
           "No login, no backend, no tracking. All data stays in your browser.",

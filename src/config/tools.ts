@@ -1,4 +1,19 @@
 import type { ToolDefinition } from "@/types/tool";
+import {
+  ImageIcon,
+  Video,
+  PenLine,
+  Smartphone,
+  Presentation,
+  FileCheck2,
+  Search,
+  User,
+  WandSparkles,
+  Palette,
+  Globe,
+  Briefcase,
+  FileSpreadsheet,
+} from "lucide-react";
 
 // 13 tools migrated from the original ai-prompt-builder static site.
 // 每个工具的字段定义 + 模板与原 HTML 中的 window.toolConfig 等价。
@@ -31,9 +46,9 @@ export const tools: ToolDefinition[] = [
   // ─── 1) image ─────────────────────────────────────────
   {
     slug: "image",
-    icon: "🎨",
+    icon: ImageIcon,
     filename: "AI绘画提示词",
-    title: { zh: "AI 绘画提示词生成器", en: "AI Image Prompt Generator" },
+    title: { zh: "AI 绘画", en: "Image" },
     description: {
       zh: "为 Midjourney、Stable Diffusion、DALL·E 等图像模型生成专业描述提示词。",
       en: "Generate professional prompts for Midjourney, Stable Diffusion, DALL·E and other image models.",
@@ -174,9 +189,9 @@ ${txtOrFill(v, "params", "请根据上述描述和常用最佳实践推荐合适
   // ─── 2) video ─────────────────────────────────────────
   {
     slug: "video",
-    icon: "🎬",
+    icon: Video,
     filename: "视频脚本提示词",
-    title: { zh: "视频脚本提示词生成器", en: "Video Script Prompt Generator" },
+    title: { zh: "视频脚本", en: "Video" },
     description: {
       zh: "为短视频、广告、纪录片、直播等场景生成结构化视频脚本提示词。",
       en: "Generate structured video scripts for short videos, ads, docs, live, etc.",
@@ -254,9 +269,9 @@ ${v.storyboard === "是" ? `## 分镜表（按要求展开）
   // ─── 3) article ───────────────────────────────────────
   {
     slug: "article",
-    icon: "📝",
+    icon: PenLine,
     filename: "写文章提示词",
-    title: { zh: "文章写作提示词生成器", en: "Article Prompt Generator" },
+    title: { zh: "文章", en: "Article" },
     description: {
       zh: "生成博客、论文、新闻、技术文档、产品评测等结构化写作提示词。",
       en: "Generate structured writing prompts for blog, academic, news, technical, review, etc.",
@@ -321,9 +336,9 @@ ${txtOrFill(v, "refs", "无外部参考资料。")}
   // 以下为简化工具 - 字段精简，模板共用通用结构生成器
   {
     slug: "app",
-    icon: "📱",
+    icon: Smartphone,
     filename: "APP提示词",
-    title: { zh: "APP 产品提示词生成器", en: "App Product Prompt Generator" },
+    title: { zh: "APP", en: "App" },
     description: { zh: "为移动应用规划生成结构化 PRD / 设计 / 上架描述提示词。", en: "Plan mobile apps: PRD / design / store listing in one prompt." },
     fields: [
       { name: "name", label: { zh: "App 名称", en: "App name" }, type: "text", placeholder: { zh: "例如：薄荷记账", en: "e.g. MintLedger" } },
@@ -377,9 +392,9 @@ ${v.store === "是" ? "- 生成 App Store / Google Play 上架文案（中英双
 
   {
     slug: "ppt",
-    icon: "📊",
+    icon: Presentation,
     filename: "PPT提示词",
-    title: { zh: "PPT 大纲提示词生成器", en: "PPT Outline Generator" },
+    title: { zh: "PPT 大纲", en: "PPT" },
     description: { zh: "为汇报、提案、培训、产品发布生成结构化 PPT 大纲。", en: "Outline decks for reports, pitches, training, launches." },
     fields: [
       { name: "title", label: { zh: "PPT 主题 / 标题", en: "Title" }, type: "text", placeholder: { zh: "2026年Q3产品战略汇报", en: "Q3 2026 product strategy" } },
@@ -431,9 +446,9 @@ ${v.speaker === "是" ? "> 每页提供 30-60 秒演讲备注，便于讲述。"
 
   {
     slug: "prd",
-    icon: "📋",
+    icon: FileCheck2,
     filename: "PRD提示词",
-    title: { zh: "PRD 产品需求文档生成器", en: "PRD Generator" },
+    title: { zh: "PRD", en: "PRD" },
     description: { zh: "为产品经理生成结构化 PRD 提示词，覆盖功能/场景/指标。", en: "Structured PRD prompts for PMs: features, scenarios, metrics." },
     fields: [
       { name: "product", label: { zh: "产品名称", en: "Product" }, type: "text" },
@@ -481,9 +496,9 @@ ${txtOrFill(v, "constraints", "未指定")}`,
 
   {
     slug: "research",
-    icon: "🔍",
+    icon: Search,
     filename: "调研提示词",
-    title: { zh: "调研提示词生成器", en: "Research Prompt Generator" },
+    title: { zh: "调研", en: "Research" },
     description: { zh: "为市场/用户/竞品/学术调研生成结构化方案提示词。", en: "Plan market/user/competitor/academic research prompts." },
     fields: [
       { name: "type", label: { zh: "调研类型", en: "Type" }, type: "select", options: [
@@ -538,9 +553,9 @@ ${txtOrFill(v, "questions", "未指定")}
 
   {
     slug: "resume",
-    icon: "💼",
+    icon: User,
     filename: "简历提示词",
-    title: { zh: "简历提示词生成器", en: "Resume Prompt Generator" },
+    title: { zh: "简历", en: "Resume" },
     description: { zh: "为目标岗位生成亮点突出、数据驱动的简历提示词。", en: "Generate resume prompts tailored to your target role." },
     fields: [
       { name: "job", label: { zh: "目标岗位", en: "Target role" }, type: "text" },
@@ -594,9 +609,9 @@ ${txtOrFill(v, "highlights", "未指定")}
 
   {
     slug: "skill",
-    icon: "🎭",
+    icon: WandSparkles,
     filename: "AI角色Skill提示词",
-    title: { zh: "AI 角色 Skill 生成器", en: "AI Role / Skill Generator" },
+    title: { zh: "AI 角色", en: "Skill" },
     description: { zh: "为特定 AI 角色生成边界清晰、可复用的系统提示词。", en: "Generate crisp, reusable system prompts for AI roles." },
     fields: [
       { name: "name", label: { zh: "角色名称 / 身份", en: "Name / role" }, type: "text", placeholder: { zh: "资深 Python 架构师", en: "Senior Python architect" } },
@@ -652,9 +667,9 @@ ${txtOrFill(v, "restrictions", "[请补充]")}
 
   {
     slug: "ui",
-    icon: "🎨",
+    icon: Palette,
     filename: "UI设计提示词",
-    title: { zh: "UI 设计提示词生成器", en: "UI Design Prompt Generator" },
+    title: { zh: "UI 设计", en: "UI" },
     description: { zh: "为 UI 设计项目生成风格、组件、交付物提示词。", en: "Generate UI design prompts for style, components, deliverables." },
     fields: [
       { name: "ptype", label: { zh: "项目类型", en: "Project type" }, type: "select", options: [
@@ -731,9 +746,9 @@ ${pickList(v, "deliver") || "未指定"}
 
   {
     slug: "web",
-    icon: "🌐",
+    icon: Globe,
     filename: "网页提示词",
-    title: { zh: "网页生成提示词", en: "Web Page Prompt Generator" },
+    title: { zh: "网页", en: "Web" },
     description: { zh: "为品牌官网、落地页、电商站、作品集等生成网页提示词。", en: "Generate prompts for landing, e-commerce, portfolio, docs sites." },
     fields: [
       { name: "wtype", label: { zh: "网站类型", en: "Site type" }, type: "select", options: [
@@ -808,9 +823,9 @@ ${txtOrFill(v, "requirements", "无")}
 
   {
     slug: "business",
-    icon: "📈",
+    icon: Briefcase,
     filename: "商业计划书提示词",
-    title: { zh: "商业计划书生成器", en: "Business Plan Generator" },
+    title: { zh: "商业书", en: "Business" },
     description: { zh: "为融资 BP / 内部 BP / 合作方案 / 调研报告生成提示词。", en: "Generate prompts for pitch decks / internal plans / collabs / research." },
     fields: [
       { name: "doctype", label: { zh: "文档类型", en: "Type" }, type: "select", options: [
@@ -871,9 +886,9 @@ ${txtOrFill(v, "team", "未指定")}
 
   {
     slug: "bid",
-    icon: "📑",
+    icon: FileSpreadsheet,
     filename: "标书提示词",
-    title: { zh: "标书生成器", en: "Bid / RFP Generator" },
+    title: { zh: "标书", en: "Bid" },
     description: { zh: "为软件、系统集成、咨询、工程、设备采购类标书生成提示词。", en: "Generate bid prompts for software / integration / consulting / civil / procurement." },
     fields: [
       { name: "project", label: { zh: "项目名称", en: "Project" }, type: "text" },

@@ -78,7 +78,11 @@ export default function Home() {
                 to={`/tools/${slug}`}
                 className="group bg-card border border-border rounded-xl p-5 hover:border-primary/60 hover:shadow-lg transition-all"
               >
-                <div className="text-3xl mb-3">{tool.icon}</div>
+                <div className="mb-3">
+                  <div className="grid h-10 w-10 place-items-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary/15 transition-colors">
+                    <tool.icon className="h-5 w-5" />
+                  </div>
+                </div>
                 <div className="font-semibold mb-1 group-hover:text-primary">{loc(tool.title, locale)}</div>
                 <div className="text-xs text-muted-foreground line-clamp-2 min-h-[2.4em]">
                   {loc(tool.description, locale)}

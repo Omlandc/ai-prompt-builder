@@ -26,7 +26,6 @@ export default function ImageLibrary() {
   const [q, setQ] = useState("");
   const [tag, setTag] = useState("全部");
   const [funSubTag, setFunSubTag] = useState("全部");
-  const [source, setSource] = useState("全部");
   const [promptStyle, setPromptStyle] = useState("全部");
   const [language, setLanguage] = useState("全部");
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -42,14 +41,13 @@ export default function ImageLibrary() {
       q,
       tag: tag === "趣味配方" && funSubTag !== "全部" ? funSubTag : tag,
       tag_group: tag === "趣味配方" && funSubTag === "全部" ? "fun" : undefined,
-      source,
       prompt_style: promptStyle,
       language_mode: language,
       limit: 1000,
     })
       .then((res) => setItems(res.items))
       .finally(() => setLoading(false));
-  }, [tab, q, tag, funSubTag, source, promptStyle, language]);
+  }, [tab, q, tag, funSubTag, promptStyle, language]);
 
   const openCase = (id: number | string) => {
     setDetailId(id);
@@ -74,7 +72,9 @@ export default function ImageLibrary() {
       {/* Title */}
       <div className="mb-6">
         <h1 className="text-3xl md:text-4xl font-bold flex items-center gap-3">
-          <span className="text-4xl">{tool.icon}</span>
+          <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary">
+            <tool.icon className="h-6 w-6" />
+          </span>
           {locale === "zh" ? "图像配方库" : "Image Prompt Library"}
         </h1>
         <p className="mt-2 text-muted-foreground max-w-3xl leading-relaxed">
@@ -100,13 +100,11 @@ export default function ImageLibrary() {
                 meta={meta}
                 tag={tag}
                 funSubTag={funSubTag}
-                source={source}
                 promptStyle={promptStyle}
                 language={language}
                 onChange={(patch) => {
                   if (patch.tag !== undefined) setTag(patch.tag);
                   if (patch.funSubTag !== undefined) setFunSubTag(patch.funSubTag);
-                  if (patch.source !== undefined) setSource(patch.source);
                   if (patch.promptStyle !== undefined) setPromptStyle(patch.promptStyle);
                   if (patch.language !== undefined) setLanguage(patch.language);
                 }}
@@ -143,11 +141,10 @@ export default function ImageLibrary() {
 
               {/* Active filters */}
               <ActiveFilters
-                items={[tag, funSubTag, source, promptStyle, language].filter((x) => x && x !== "全部")}
+                items={[tag, funSubTag, promptStyle, language].filter((x) => x && x !== "全部")}
                 onClearAll={() => {
                   setTag("全部");
                   setFunSubTag("全部");
-                  setSource("全部");
                   setPromptStyle("全部");
                   setLanguage("全部");
                 }}
@@ -159,7 +156,6 @@ export default function ImageLibrary() {
                   meta={meta}
                   tag={tag}
                   funSubTag={funSubTag}
-                  source={source}
                   promptStyle={promptStyle}
                   language={language}
                   open={drawerOpen}
@@ -167,7 +163,6 @@ export default function ImageLibrary() {
                   onChange={(patch) => {
                     if (patch.tag !== undefined) setTag(patch.tag);
                     if (patch.funSubTag !== undefined) setFunSubTag(patch.funSubTag);
-                    if (patch.source !== undefined) setSource(patch.source);
                     if (patch.promptStyle !== undefined) setPromptStyle(patch.promptStyle);
                     if (patch.language !== undefined) setLanguage(patch.language);
                     setDrawerOpen(false);
