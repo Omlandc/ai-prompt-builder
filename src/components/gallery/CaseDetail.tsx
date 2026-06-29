@@ -294,6 +294,7 @@ export function CaseDetail({ id, onBack }: Props) {
           )}
 
           <div className="space-y-4">
+            <EditableSection title="原始提示词" body={prompt.prompt_raw} />
             <EditableSection title="填空模板" body={prompt.prompt_template_cn} />
             {prompt.prompt_engine_cn && (
               <EditableSection title="填空引擎" body={prompt.prompt_engine_cn} />
@@ -301,7 +302,6 @@ export function CaseDetail({ id, onBack }: Props) {
             {prompt.variables_json && prompt.variables_json !== "[]" && prompt.variables_json !== "null" && (
               <EditableSection title="变量定义" body={prompt.variables_json} language="json" />
             )}
-            <EditableSection title="原始提示词" body={prompt.prompt_raw} />
             <div className="grid grid-cols-2 gap-3 text-xs">
               <MetaItem label="语言模式" value={prompt.language_mode} />
               <MetaItem label="提示词风格" value={prompt.prompt_style} />
