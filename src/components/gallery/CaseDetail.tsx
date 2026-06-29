@@ -5,7 +5,6 @@ import { fetchCase } from "@/lib/api";
 import { CopyButton } from "@/components/common/CopyButton";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -215,9 +214,6 @@ function EditableMeta({
           编辑
         </Button>
       </div>
-      {c.description && (
-        <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{c.description}</p>
-      )}
       {tagList.length > 0 && (
         <div className="flex flex-wrap gap-1.5 mt-3">
           {tagList.map((t) => (
@@ -291,35 +287,28 @@ export function CaseDetail({ id, onBack }: Props) {
         <div className="space-y-5">
           <EditableMeta c={c} tagList={tagList} />
 
-          <Tabs defaultValue="display" className="w-full">
-            <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="display">展示说明</TabsTrigger>
-              <TabsTrigger value="template">填空模板</TabsTrigger>
-              <TabsTrigger value="raw">原始提示词</TabsTrigger>
-            </TabsList>
-            <TabsContent value="display" className="space-y-3">
-              <EditableSection title="中文展示说明" body={prompt.prompt_display_cn} />
-              <EditableSection title="原始提示词" body={prompt.prompt_raw} />
-            </TabsContent>
-            <TabsContent value="template" className="space-y-3">
-              <EditableSection title="填空模板" body={prompt.prompt_template_cn} />
-              {prompt.prompt_engine_cn && (
-                <EditableSection title="填空引擎" body={prompt.prompt_engine_cn} />
-              )}
-              {prompt.variables_json && prompt.variables_json !== "[]" && prompt.variables_json !== "null" && (
-                <EditableSection title="变量定义" body={prompt.variables_json} language="json" />
-              )}
-            </TabsContent>
-            <TabsContent value="raw" className="space-y-3">
-              <EditableSection title="原始提示词 (Raw)" body={prompt.prompt_raw} />
-              <div className="grid grid-cols-2 gap-3 text-xs">
-                <MetaItem label="语言模式" value={prompt.language_mode} />
-                <MetaItem label="提示词风格" value={prompt.prompt_style} />
-                <MetaItem label="改写状态" value={prompt.rewrite_status} />
-                <MetaItem label="版本" value={prompt.version_name} />
-              </div>
-            </TabsContent>
-          </Tabs>
+          {prompt.prompt_display_cn && (
+            <p className="text-sm text-muted-foreground leading-relaxed border-l-2 border-border pl-3">
+              {prompt.prompt_display_cn}
+            </p>
+          )}
+
+          <div className="space-y-4">
+            <EditableSection title="填空模板" body={prompt.prompt_template_cn} />
+            {prompt.prompt_engine_cn && (
+              <EditableSection title="填空引擎" body={prompt.prompt_engine_cn} />
+            )}
+            {prompt.variables_json && prompt.variables_json !== "[]" && prompt.variables_json !== "null" && (
+              <EditableSection title="变量定义" body={prompt.variables_json} language="json" />
+            )}
+            <EditableSection title="原始提示词" body={prompt.prompt_raw} />
+            <div className="grid grid-cols-2 gap-3 text-xs">
+              <MetaItem label="语言模式" value={prompt.language_mode} />
+              <MetaItem label="提示词风格" value={prompt.prompt_style} />
+              <MetaItem label="改写状态" value={prompt.rewrite_status} />
+              <MetaItem label="版本" value={prompt.version_name} />
+            </div>
+          </div>
         </div>
       </div>
     </div>
