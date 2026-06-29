@@ -55,9 +55,6 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} {locale === "zh" ? SITE_NAME : SITE_NAME_EN}. {locale === "zh" ? "保留所有权利。" : "All rights reserved."}
           </p>
-          <p className="text-xs text-muted-foreground">
-            {locale === "zh" ? "由 React + Vite + shadcn/ui 驱动" : "Powered by React + Vite + shadcn/ui"}
-          </p>
         </div>
       </div>
     </footer>
